@@ -40,3 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 50);
         });
     });
+// 4. ИНИЦИАЛИЗАЦИЯ И РЕГИСТРАЦИЯ ТУРБО-КЭША (БЛОКИРАТОР TLS-РУКОПОЖАТИЙ)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then((registration) => {
+                console.log('BREVVO CACHE: Движок успешно активирован. TLS-лаги заблокированы.', registration.scope);
+            })
+            .catch((error) => {
+                console.log('BREVVO CACHE: Ошибка запуска кэш-движка:', error);
+            });
+    });
+}

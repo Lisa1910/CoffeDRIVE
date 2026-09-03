@@ -1,6 +1,6 @@
 @import url('https://googleapis.com');
 
-/* Интеграция акцентного премиального шрифта Perandory */
+/* Подключение премиального шрифта Perandory */
 @font-face {
     font-family: 'Perandory';
     src: url('https://jsdelivr.net') format('woff2'),
@@ -13,11 +13,12 @@
 :root {
     --bg-base: #060a08; 
     --color-dark-green: #0b1c14; 
+    --color-anthracite: #111314; 
     --color-brass-premium: #ccb083; /* Матовая кофейная карамель */
     --text-white: #ffffff;
     --text-sub: rgba(255, 255, 255, 0.72);
-    --radius-premium: 20px; 
-    --radius-inner: 10px;
+    --radius-premium: 16px; 
+    --radius-inner: 8px;
     --fs-xl: 130px;
 }
 
@@ -34,7 +35,6 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    transition: background-color 0.6s ease;
 }
 
 /* Оболочка: Крупная гофра контейнера + Карамельно-кофейные текстуры */
@@ -45,6 +45,7 @@ body {
         linear-gradient(90deg, rgba(6,10,8,0.6) 0%, transparent 20%, transparent 80%, rgba(6,10,8,0.6) 100%),
         repeating-linear-gradient(90deg, #060a08, #060a08 200px, #0c120f 200px, #0c120f 400px);
     background-size: 100% 100%, 400px 100%;
+    padding-bottom: 120px; /* Отступ снизу, чтобы контент не перекрывался нижними кнопками */
 }
 
 /* Настоящее изображение кофейной пены и карамельных разводов на фоне */
@@ -81,25 +82,25 @@ body {
     z-index: 100;
 }
 
-/* Нижний интерактивный переключатель версий кофейни (Switch-Tab) */
-.switch-tab-container {
+/* ГЛАВНЫЙ НИЖНИЙ ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ (Намертво зафиксирован снизу) */
+.global-page-switcher {
     position: fixed;
-    bottom: 35px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10, 13, 11, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(10, 13, 11, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 40px;
     padding: 6px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     backdrop-filter: blur(35px);
     -webkit-backdrop-filter: blur(35px);
-    z-index: 1000;
+    z-index: 2000;
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
 }
 
-.switch-btn {
+.global-btn {
     font-family: 'Perandory', serif;
     font-size: 13px;
     letter-spacing: 2px;
@@ -113,47 +114,30 @@ body {
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.switch-btn.active {
+.global-btn.active, .global-btn:hover {
     color: var(--text-white);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05), 0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* Переключатель вкладок внутри самой кофейни (Концепция / Смета) */
-.subtabs-nav {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.subtab-btn {
-    font-family: 'Perandory', serif;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.5);
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 12px 26px;
-    border-radius: 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.4s ease;
-}
-
-.subtab-btn.active, .subtab-btn:hover {
-    color: var(--text-white);
-    border-color: var(--color-brass-premium);
-    background: rgba(204, 176, 131, 0.1);
-}
-
-/* Переключение страниц */
-.main-page-view {
+/* Глобальные контейнеры страниц */
+.global-page-view {
     display: none;
     width: 100%;
 }
 
-.main-page-view.active {
+.global-page-view.active {
+    display: block;
+}
+
+/* ВНУТРЕННИЕ ПОДВКЛАДКИ (Концепция / Смета) */
+.internal-content-view {
+    display: none;
+    width: 100%;
+}
+
+.internal-content-view.active {
     display: block;
 }
 
@@ -164,9 +148,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 100px 40px;
+    padding: 80px 40px;
     z-index: 10;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .slide-container {
@@ -175,10 +158,10 @@ body {
     margin: 0 auto;
 }
 
-/* Типографика */
+/* Многослойная журнальная типографика */
 .title-wrap {
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 55px;
 }
 
 .giant-bg-text {
@@ -187,7 +170,7 @@ body {
     left: -15px;
     font-family: 'Perandory', serif;
     font-size: var(--fs-xl);
-    color: rgba(255, 255, 255, 0.04); 
+    color: rgba(255, 255, 255, 0.045); 
     text-transform: uppercase;
     letter-spacing: 3px;
     line-height: 0.8;
@@ -252,7 +235,28 @@ body {
     line-height: 1.65;
 }
 
-/* Визуальный дифференциатор (Бюджетные изменения) */
+.card-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.card-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--text-sub);
+    font-weight: 300;
+}
+
+.card-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-brass-premium);
+}
+
+/* Специфические блоки изменений для бюджетной сметы */
 .diff-card-box {
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -260,8 +264,7 @@ body {
     margin-top: 15px;
     border-left: 3px solid #10b981;
 }
-
-.diff-title-del { font-size: 13px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 4px; font-weight: 400; }
+.diff-title-del { font-size: 13px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 4px; }
 .diff-title-add { font-size: 15px; color: #10b981; display: block; font-weight: 500; }
 
 /* Таблицы сметы */
@@ -308,37 +311,83 @@ body {
     border-top: 1px solid rgba(204, 176, 131, 0.2);
 }
 
-/* Кнопки CTA */
-.action-btn-container { margin-top: 30px; }
-.premium-btn {
+/* Внутренние кнопки Слайдов (CTA) */
+.internal-nav-block {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.internal-btn {
     font-family: 'Perandory', serif;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 2px;
     color: var(--text-white);
-    padding: 14px 32px;
-    background: rgba(204, 176, 131, 0.12);
-    border: 1px solid rgba(204, 176, 131, 0.25);
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.4s ease;
 }
-.premium-btn:hover { background: rgba(204, 176, 131, 0.25); border-color: var(--color-brass-premium); }
 
-/* Галерея */
+.internal-btn.active, .internal-btn:hover {
+    background: rgba(204, 176, 131, 0.15);
+    border-color: var(--color-brass-premium);
+}
+
+/* Блок контактов */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: var(--radius-inner);
+}
+
+.contact-item span {
+    display: block;
+    font-size: 12px;
+    color: var(--color-brass-premium);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.contact-item a { font-size: 16px; color: var(--text-white); text-decoration: none; }
+
+.premium-footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Галерея рендеров */
 .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; width: 100%; }
 .gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #090d0b; border-radius: var(--radius-premium); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.06); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s ease; }
-.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 @media (max-width: 1024px) { :root { --fs-xl: 85px; } .content-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {
     :root { --fs-xl: 54px; }
-    .slide-section { padding: 80px 20px; }
+    .slide-section { padding: 60px 20px; }
     .premium-card { padding: 30px; }
-    .switch-tab-container { width: 92%; justify-content: center; }
-    .switch-btn { padding: 10px 18px; font-size: 11px; }
     .gallery-grid { grid-template-columns: 1fr; }
-    .premium-footer { flex-direction: column; gap: 10px; text-align: center; }
-    .subtabs-nav { flex-direction: column; gap: 10px; }
-}
+.premium-footer { flex-direction: column; gap: 10px; text-align: center; }
+    .internal-nav-block { flex-direction: column; gap: 10px; }
+    }

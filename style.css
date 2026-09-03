@@ -1,15 +1,8 @@
 @import url('https://googleapis.com');
 
-/* Интеграция акцентного премиального шрифта Perandory для заголовков */
-@font-face {
-    font-family: 'Perandory';
-    src: url('https://jsdelivr.net') format('woff2'),
-         url('https://jsdelivr.net') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
+/* ==========================================================================
+   ОПТИМИЗАЦИЯ ДАНИИЛА ЛИСЕНКОВА: ОТКАЗ ОТ ВНЕШНИХ TLS-РУКОПОЖАТИЙ С CDN
+   ========================================================================== */
 :root {
     --bg-main: #030504;
     --text-white: #ffffff;
@@ -18,9 +11,23 @@
     --radius-inner: 16px;
     --fs-xl: clamp(55px, 7vw, 110px);
     
-    /* Дефолтные приглушенные акценты */
+    /* Приглушенные, глубокие благородные акценты */
     --accent-glow: radial-gradient(circle at 50% 50%, rgba(204, 176, 131, 0.06) 0%, transparent 60%);
     --color-accent: #b39b74;
+
+    /* Сверхскоростная системная замена шрифта заголовков без обращений к сети */
+    --font-premium: 'Garamond', 'Georgia', 'Times New Roman', serif;
+}
+
+/* Обновляем правила вызова шрифта для всех заголовков и кнопок сайта */
+.slide-title, 
+.giant-bg-text, 
+.card-label, 
+.liquid-btn, 
+.tab-trigger-btn, 
+.premium-table th, 
+.card-value {
+    font-family: var(--font-premium) !important;
 }
 
 /* Приглушенные темные цветовые схемы DDX под каждую страницу */

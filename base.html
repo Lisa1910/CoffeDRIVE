@@ -20,21 +20,22 @@
     <div class="bg-layer-foam"></div>
     <div class="bg-layer-linen"></div>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ BASE -->
+    <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ BASE -->
     <main class="slide-container">
         
-        <!-- ЗАГЛАВНЫЙ СЛАЙД С ТАРИФОМ -->
+        <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
         <section class="slide-section" style="padding-top: 60px;">
             <div class="title-wrap">
                 <div class="giant-bg-text" style="color: rgba(0, 191, 255, 0.04);">Brevvo Base</div>
                 <h1 class="slide-title">Бюджетный Пакетированный <span>Старт Base</span></h1>
             </div>
 
-            <!-- Внутренние кнопки переключения контента (Жидкое стекло внутри слайда) -->
+            <!-- Внутренние кнопки управления КОНТЕНТОМ этой страницы -->
             <div class="inner-tab-panel">
                 <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
                 <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
             </div>
+
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ BASE (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
@@ -56,126 +57,260 @@
                     </div>
                 </div>
             </div>
-            <!-- ВНУТРЕННЯЯ ВКЛАДКА 2: РЕАЛЬНАЯ РЫНОЧНАЯ СМЕТА И ФИНМОДЕЛЬ (СТРОГО БЕЗ ФОТО) -->
+            <!-- ВНУТРЕННЯЯ ВКЛАДКА 2: ДЕТАЛЬНАЯ ИНЖЕНЕРНО-СТРОИТЕЛЬНАЯ СМЕТА CAPEX (АКТИВНА ПРИ КЛИКЕ) -->
             <div class="tab-content-view" id="viewLocalFinance">
-                <div class="content-grid">
+                <div class="content-grid" style="grid-template-columns: 1fr;">
                     
-                    <!-- ТАБЛИЦА СМЕТЫ CAPEX (BASE) -->
                     <div class="premium-card">
-                        <div class="card-label">Капитальные вложения (MVP)</div>
-                        <div class="card-value">Смета урезанного пакета Base</div>
+                        <div class="card-label">Финансовый план • Локальный CAPEX Base</div>
+                        <div class="card-value">Развернутая ведомость оборудования и конструктива павильона</div>
+                        
+                        <!-- Широкая горизонтальная таблица (Защищена от вертикального сжатия и сливания шрифтов) -->
                         <div class="premium-table-wrap">
                             <table class="premium-table">
                                 <thead>
                                     <tr>
-                                        <th>Компонент спецификации</th>
-                                        <th>Рыночные импортозамещенные замены</th>
+                                        <th>Наименование позиции / Модуля</th>
+                                        <th>Технические характеристики и бренд (Импортозамещение)</th>
+                                        <th>Кол-во</th>
                                         <th>Стоимость (₽)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- БЛОК 1: СТРОИТЕЛЬНЫЙ КОНСТРУКТИВ -->
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Торговый модуль</td>
-                                        <td>Готовый зимний каркасный павильон 4 × 2.4 м с базовой отделкой</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Модульный торговый павильон (НТО)</td>
+                                        <td>Каркас из профильной трубы 80×80 мм, наружные габариты 4.0×2.4×2.6 м. Утепление: базальтовая плита 150 мм (пол/стены/потолок) под зиму Сибири. Панорамное остекление контура.</td>
+                                        <td>1 шт</td>
                                         <td>550 000</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Кофейная группа</td>
-                                        <td>Профессиональный 2GR полуавтомат и молки в бесплатную аренду под зерно</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Фильтр и мелкая кухня</td>
-                                        <td>Кофеварка Moccamaster, Б/У молка Anfim, прижимной гриль Hurakan, СВЧ</td>
-                                        <td>170 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Холод и сантехника</td>
-                                        <td>Стол-холодильник Carboma (окрашенный), насосная станция, баки, нагреватель</td>
-                                        <td>235 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">ИТ и Подключение</td>
-                                        <td>Касса Эвотор, эквайринг, субаренда силовой точки ТРЦ на 15 кВт сетей</td>
-                                        <td>225 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Фасад и вывеска</td>
-                                        <td>Светодиодный короб, декоративная рейка лиственницы (своими руками)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Внутренняя гигиеническая отделка</td>
+                                        <td>Стены: влагостойкий ГКЛ + облицовка листами белого матового ПВХ (пищевой допуск СЭС). Пол: коммерческий гомогенный линолеум Tarkett (износостойкий) с заводом на стены.</td>
+                                        <td>1 компл</td>
                                         <td>120 000</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Резервы и Оборот</td>
-                                        <td>Первый закуп сырья и заморозки, 2 месяца подушки безопасности на ФОТ</td>
-                                        <td>550 000</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Внешний декор фасада и брендинг</td>
+                                        <td>Декоративная рейка из натуральной лиственницы (покрытие матовым защитным маслом Pinotex), фасадные композитные панели (антрацит). Светодиодный вывесочный короб.</td>
+                                        <td>1 компл</td>
+                                        <td>120 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 2: ТЕХНОЛОГИЧЕСКОЕ ОБОРУДОВАНИЕ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Профессиональная кофе-группа</td>
+                                        <td>Двухгруппная профессиональная итальянская кофемашина (Nuova Simonelli Appia/Faema) + 2 автоматические кофемолки. <strong>Бесплатная долгосрочная аренда под закупку зерна.</strong></td>
+                                        <td>1 пак</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Фильтр-станция капельного кофе</td>
+                                        <td>Капельная кофеварка <strong>Moccamaster KBGT-741</strong> (Нидерланды, термокувшин 1.25 л) + Восстановленная Б/У кофемолка <strong>Anfim Caimano</strong> (Италия, плоские жернова) под фильтр.</td>
+                                        <td>1 пак</td>
+                                        <td>65 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Тепловая линия горячей кухни</td>
+                                        <td>Прижимной контактный гриль <strong>Hurakan HKN-PE22R</strong> (рифленый чугун, 1.8 кВт) + Профессиональная СВЧ-печь <strong>Hurakan HKN-WP900</strong> (нержавеющая сталь, объем 25 л, 0.9 кВт).</td>
+                                        <td>1 пак</td>
+                                        <td>105 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Холодильное оборудование кухни</td>
+                                        <td>Стол-холодильник среднетемпературный <strong>Carboma BAR-250</strong> (окрашенная сталь, 2 двери, объем 250 л) + Компактный бытовой шкаф-морозильник для хранения полуфабрикатов.</td>
+                                        <td>1 пак</td>
+                                        <td>125 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Барная стойка и эргономика Lean</td>
+                                        <td>Каркас из влагостойкой фанеры, столешницы из износостойкого HPL-пластика (постформинг). Встроенный врезной скоростной ринзер (омыватель питчеров) из нержавеющей стали.</td>
+                                        <td>1 компл</td>
+                                        <td>110 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 3: ИНЖЕНЕРНЫЕ СЕТИ И ИТ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Автономная сантехника и баки</td>
+                                        <td>Насосная станция (напорный контур), пищевая емкость для чистой воды (500 л), бак под слив стоков (500 л) с датчиком перелива, проточный водонагреватель Electrolux (3.5 кВт).</td>
+                                        <td>1 пак</td>
+                                        <td>110 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Климат, вентиляция и завеса</td>
+                                        <td>Бытовой инверторный кондиционер (работа на тепло/холод до -15°C) + Компактная приточная вентиляция + Скоростная электрическая тепловая завеса Ballu над сервисным окном.</td>
+                                        <td>1 пак</td>
+                                        <td>140 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Кассовый модуль и POS-система</td>
+                                        <td>Умная онлайн-касса <strong>Эвотор 10</strong>, сканер штрихкодов, чековый принтер, банковский POS-терминал эквайринга, Wi-Fi роутер (основной LTE-модем + резервный провайдер).</td>
+                                        <td>1 пак</td>
+                                        <td>75 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Подключение и субаренда сетей</td>
+                                        <td>Согласование размещения павильона на территории парковки ТРЦ, прокладка кабеля от щитовой до павильона, выделенный лимит электрической мощности 15 кВт.</td>
+                                        <td>1 дог</td>
+                                        <td>150 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Оборотный капитал и резервы</td>
+                                        <td>Первичный закуп брендированных стаканов, упаковки, кофе и заморозки (200 000 ₽) + Неприкосновенный строительный резерв на монтаж + 2 месяца аренды/ФОТ подушки.</td>
+                                        <td>1 пак</td>
+                                        <td>650 000</td>
+                                    </tr>
+                                    
+                                    <!-- ИТОГОВАЯ СТРОКА -->
+                                    <tr class="row-total">
+                                        <td colspan="3">ИТОГО ИНВЕСТИЦИОННЫЙ БЮДЖЕТ (ПАКЕТ BASE)</td>
+                                        <td>2 350 000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        <!-- СЛАЙД 3: ОПЕРАЦИОННАЯ ЭКОНОМИКА И СЦЕНАРИИ ПРИБЫЛЬНОСТИ BASE -->
+        <section class="slide-section" style="padding-top: 40px;">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text" style="color: rgba(0, 191, 255, 0.04);">Brevvo Economy</div>
+                    <h1 class="slide-title">Операционная <span>Эффективность Base</span></h1>
+                </div>
+
+                <div class="content-grid">
+                    
+                    <!-- ТАБЛИЦА ЕЖЕМЕСЯЧНЫХ ОПЕРАЦИОННЫХ РАСХОДОВ (OPEX) -->
+                    <div class="premium-card">
+                        <div class="card-label" style="color: var(--color-accent);">Текущее содержание • Фиксированный OPEX</div>
+                        <div class="card-value">Постоянные ежемесячные затраты точки (Walk-Through)</div>
+                        
+                        <div class="premium-table-wrap">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Статья постоянных расходов</th>
+                                        <th>Детализация и штатное обоснование затрат</th>
+                                        <th>Сумма (₽/мес)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">ФОТ линейного персонала</td>
+                                        <td>Штат: 2 профессиональных бариста со сменным графиком работы 2/2 (ставка 55 000 ₽ net на руки каждому). Сумма включает НДФЛ 13% и полные страховые взносы работодателя во внебюджетные фонды (СФР) по льготной ставке МСП.</td>
+                                        <td>150 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Аренда земельного участка</td>
+                                        <td>Фиксированная ставка субаренды площади 10 м² под размещение некапитального павильона на охраняемой парковочной зоне или прилегающей территории торгово-развлекательного центра (ТРЦ).</td>
+                                        <td>60 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Коммунальные ресурсы</td>
+                                        <td>Оплата фактически потребляемой активной электрической мощности в рамках лимита 15 кВт по коммерческому тарифу субарендатора (включая зимний обогрев контура тепловой завесой Ballu и инверторным кондиционером).</td>
+                                        <td>45 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Обеспечение инженерии</td>
+                                        <td>Регулярный централизованный подвоз чистой бутилированной/фильтрованной воды для кофемашины и бытовых нужд + вывоз жидких бытовых стоков (ЖБО) из накопительного резервуара, утилизация ТБО.</td>
+                                        <td>20 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Маркетинг и продвижение</td>
+                                        <td>Локальный таргетинг на пешеходные потоки, брендированная полиграфия, ведение карт (Яндекс.Карты, 2GIS), акции утреннего привлечения трафика ("каждый 6-й кофе в подарок").</td>
+                                        <td>15 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Администрирование и ИТ</td>
+                                        <td>Абонентская плата за облачный кассовый софт (Эвотор/iiko), эквайринг банка, безлимитный коммерческий интернет (основной канал LTE + резервный), удаленные услуги бухгалтера.</td>
+                                        <td>10 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">ТО и амортизационный фонд</td>
+                                        <td>Регламентное обслуживание фильтра Moccamaster, чистка групп арендованной кофемашины, замена фильтрующих картриджей, закупка профессиональной химии для промывки оборудования.</td>
+                                        <td>10 000</td>
                                     </tr>
                                     <tr class="row-total">
-                                        <td>ИТОГО ПАКЕТ BASE</td>
-                                        <td>Полный запуск компактной точки под ключ</td>
-                                        <td>1 850 000</td>
+                                        <td>ИТОГО ФИКСИРОВАННЫЙ OPEX</td>
+                                        <td>Постоянные затраты павильона до учета себестоимости сырья (Foodcost)</td>
+                                        <td>310 000</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- ТАБЛИЦА ФИНМОДЕЛИ И OPEX -->
+                    <!-- ТАБЛИЦА ИНВЕСТИЦИОННЫХ СЦЕНАРИЕВ ДОХОДНОСТИ -->
                     <div class="premium-card">
-                        <div class="card-label">Операционная эффективность</div>
-                        <div class="card-value">Экономические сценарии и OPEX</div>
+                        <div class="card-label" style="color: var(--color-accent);">Инвестиционный прогноз • Сценарии</div>
+                        <div class="card-value">Расчет чистой прибыли и маржинальности Base</div>
+                        
                         <div class="premium-table-wrap">
                             <table class="premium-table">
                                 <thead>
                                     <tr>
-                                        <th>Показатель / Метрика</th>
+                                        <th>Финансовый показатель / Метрика</th>
                                         <th>Пессимистичный</th>
-                                        <th>Базовый (MVP)</th>
-                                        <th>Целевой</th>
+                                        <th>Базовый (MVP план)</th>
+                                        <th>Целевой (Пик)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Чеков в сутки (чек 350 ₽)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Количество чеков в сутки</td>
                                         <td>60 чеков</td>
                                         <td style="color: #ffffff; font-weight: 500;">125 чеков</td>
                                         <td>200 чеков</td>
                                     </tr>
                                     <tr>
-                                        <td>Выручка в месяц</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Средний чек (кофе + выпечка)</td>
+                                        <td>350 ₽</td>
+                                        <td style="color: #ffffff; font-weight: 500;">350 ₽</td>
+                                        <td>350 ₽</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Валовая выручка в месяц</td>
                                         <td>630 000 ₽</td>
                                         <td style="color: #ffffff; font-weight: 500;">1 312 500 ₽</td>
                                         <td>2 100 000 ₽</td>
                                     </tr>
                                     <tr>
-                                        <td>Foodcost (Переменные 35%)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Foodcost (Себестоимость сырья 35%)</td>
                                         <td>220 500 ₽</td>
                                         <td>459 375 ₽</td>
                                         <td>735 000 ₽</td>
                                     </tr>
                                     <tr>
-                                        <td>Фиксированный OPEX (мес.)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Постоянные расходы (Фикс. OPEX)</td>
                                         <td>310 000 ₽</td>
                                         <td>310 000 ₽</td>
                                         <td>310 000 ₽</td>
                                     </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Налоги и эквайринг (УСН 6% + комиссия)</td>
+                                        <td>63 000 ₽</td>
+                                        <td>131 250 ₽</td>
+                                        <td>210 000 ₽</td>
+                                    </tr>
                                     <tr class="row-total">
-                                        <td>ЧИСТАЯ ПРИБЫЛЬ</td>
+                                        <td>ЧИСТАЯ ПРИБЫЛЬ В МЕСЯЦ</td>
                                         <td style="color: #cc7a7a;">36 500 ₽</td>
                                         <td style="color: #83cc83; font-weight: 600;">411 875 ₽</td>
                                         <td style="color: #83cc83;">845 000 ₽</td>
                                     </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Период возврата инвестиций</td>
+                                        <td>Вне зоны окупаемости</td>
+                                        <td style="color: #ffffff;">7 – 9 месяцев</td>
+                                        <td>4 – 5 месяцев</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p style="margin-top: 15px; font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.5;">
-                            *Фиксированный OPEX оптимизирован за счет сокращения штата до 2-х бариста посменно. Расчетная точка безубыточности снижена до <strong>45 заказов в день</strong>. Прогнозный период возврата инвестиций: всего 7–9 месяцев работы.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <!-- КОНТАКТНЫЙ СЛАЙД BASE -->
+               <!-- КОНТАКТНЫЙ СЛАЙД BASE -->
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
             <div class="premium-card" style="border-left: 4px solid var(--color-accent);">
                 <div class="card-label">Автор ИС и разработки MVP</div>
@@ -197,7 +332,7 @@
 
 <!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ ДЛЯ СТРАНИЦЫ BASE -->
 <nav class="liquid-nav-panel">
-    <a href="index.html" class="liquid-btn">📊 Главная</a>
+    <a href="index.html" class="liquid-btn">📊 Главная матрица</a>
     <a href="base.html" class="liquid-btn active">⚡ Base (2-3 млн)</a>
     <a href="universal.html" class="liquid-btn">🔥 Universal (5-7 млн)</a>
     <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
@@ -209,7 +344,10 @@
         const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        document.getElementById('progressBar').style.width = scrolled + '%';
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
     });
 
     // Логика локальных внутренних вкладок (Концепция / Смета)

@@ -23,7 +23,7 @@
     --color-accent: #ccb083;
 }
 
-/* Настройки цветовых схем в стиле DDX под каждую страницу */
+/* Настройки цветовых схем в неоновом стиле DDX под каждую страницу */
 body.page-main {
     --accent-glow: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     --color-accent: #ffffff;
@@ -31,7 +31,7 @@ body.page-main {
 body.page-base {
     --bg-main: #04080a;
     --accent-glow: radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.15) 0%, transparent 60%);
-    --color-accent: #00bfff; /* Неоновый голубой */
+    --color-accent: #00bfff; /* Холодный неоновый голубой */
 }
 body.page-universal {
     --bg-main: #0a0604;
@@ -66,7 +66,7 @@ body {
     padding-bottom: 140px;
 }
 
-/* Многослойные динамические фоновые текстуры */
+/* Многослойные динамические фоновые текстуры: Карамельный кофе и Мягкое свечение */
 .bg-layer-glow {
     position: fixed;
     inset: 0;
@@ -394,7 +394,7 @@ body {
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 6px;
+    margin-box: 6px;
 }
 
 .contact-item a { font-size: 16px; color: var(--text-white); text-decoration: none; font-weight: 400; }
@@ -419,7 +419,8 @@ body {
 .gallery-title { font-family: 'Perandory', serif; font-size: 20px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; width: 100%; }
 .gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #090d0b; border-radius: var(--radius-premium); overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.06); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s ease; }
+.gallery-item:hover img { transform: scale(1.04); }
 
 @media (max-width: 1024px) { .content-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {

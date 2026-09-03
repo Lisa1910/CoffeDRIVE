@@ -40,7 +40,7 @@
                     <div class="premium-card" style="padding: 55px;">
                         <div class="card-label">Концепт премиального сегмента</div>
                         <div class="card-value" style="font-family: 'Perandory', serif;">КОФЕ В ДВИЖЕНИИ</div>
-                        <p class="card-text">Новый стандарт качества в сегменте придорожного сервиса. BREVVO — это высокотехнологичный drive-through комплекс премиум-уровня, спроектированный на базе модифицированного 20-футового морского контейнера (стандарт One-Trip). Архитектурная концепция совмещает строгий индустриальный фасад в оттенках глубокого антрацита с мягкими, теплыми панелями из натурального дерева, латунными элементами и скрытой линейной подсветкой. Вся логистика объекта выстроена вокруг одной задачи: выдать бескомпромиссный продукт ресторанного класса за минимальное время, не заставляя водителя выходить из автомобиля.</p>
+                        <p class="card-text">Новый standard качества в сегменте придорожного сервиса. BREVVO — это высокотехнологичный drive-through комплекс премиум-уровня, спроектированный на базе модифицированного 20-футового морского контейнера (стандарт One-Trip). Архитектурная концепция совмещает строгий индустриальный фасад в оттенках глубокого антрацита с мягкими, теплыми панелями из натурального дерева, латунными элементами и скрытой линейной подсветкой. Вся логистика объекта выстроена вокруг одной задачи: выдать бескомпромиссный продукт ресторанного класса за минимальное время, не заставляя водителя выходить из автомобиля.</p>
                         <div class="action-btn-container">
                             <button class="premium-btn to-finance-trigger">Открыть финансовую модель →</button>
                         </div>
@@ -48,7 +48,6 @@
                 </div>
             </div>
         </section>
-
         <!-- СЛАЙД 2 -->
         <section class="slide-section">
             <div class="slide-container">
@@ -97,6 +96,7 @@
                 </div>
             </div>
         </section>
+
         <!-- СЛАЙД 4 -->
         <section class="slide-section">
             <div class="slide-container">
@@ -118,7 +118,6 @@
                 </div>
             </div>
         </section>
-
         <!-- СЛАЙД 5 -->
         <section class="slide-section">
             <div class="slide-container">
@@ -180,18 +179,10 @@
                 <div class="gallery-container">
                     <h2 class="gallery-title">Варианты представления объекта</h2>
                     <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="image1.png" alt="Вариант представления 1">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="image2.png" alt="Вариант представления 2">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="image3.png" alt="Вариант представления 3">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="image4.png" alt="Вариант представления 4">
-                        </div>
+                        <div class="gallery-item"><img src="image1.png" alt="Вариант представления 1"></div>
+                        <div class="gallery-item"><img src="image2.png" alt="Вариант представления 2"></div>
+                        <div class="gallery-item"><img src="image3.png" alt="Вариант представления 3"></div>
+                        <div class="gallery-item"><img src="image4.png" alt="Вариант представления 4"></div>
                     </div>
                 </div>
             </div>
@@ -283,7 +274,6 @@
                 </div>
             </div>
         </section>
-
         <!-- СЛАЙД 9: ЕЖЕМЕСЯЧНЫЕ РАСХОДЫ -->
         <section class="slide-section">
             <div class="slide-container">
@@ -324,7 +314,7 @@
                             </tr>
                             <tr>
                                 <td style="color: var(--color-brass-premium); font-weight: 500;">Маркетинг и Трафик</td>
-                                <td>Локальное продвижение точки, удержание автомобильного трафика, таргетированная реклама и обновление наружного меню.</td>
+                                <td>Локальная реклама, привлечение автомобильного потока, таргетированная реклама и обновление наружного меню.</td>
                                 <td>80 000</td>
                             </tr>
                             <tr>
@@ -347,6 +337,7 @@
                 </div>
             </div>
         </section>
+
         <!-- СЛАЙД 10: СЦЕНАРИИ ДОХОДНОСТИ -->
         <section class="slide-section">
             <div class="slide-container">
@@ -416,7 +407,6 @@
                 </p>
             </div>
         </section>
-
         <!-- СЛАЙД 11: КОНТАКТЫ АВТОРА -->
         <section class="slide-section">
             <div class="slide-container">
@@ -458,6 +448,22 @@
         </section>
     </main>
 
+</div>
+
+<!-- Премиальный Lightbox-модуль полноэкранного просмотра рендеров -->
+<div class="premium-lightbox" id="premiumLightbox">
+    <!-- Изящный крестик закрытия сверху слева -->
+    <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть"></button>
+    
+    <!-- Тонкие минималистичные стрелки навигации по бокам -->
+    <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" aria-label="Назад"></button>
+    <div class="lightbox-content">
+        <img src="" alt="Архитектурная визуализация во весь экран" class="lightbox-img" id="lightboxImg">
+    </div>
+    <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" aria-label="Вперед"></button>
+    
+    <!-- Навигационные точки индикации текущего кадра внизу -->
+    <div class="lightbox-dots" id="lightboxDots"></div>
 </div>
 
 <script>
@@ -511,6 +517,93 @@
     });
 
     btnBackToConcept.addEventListener('click', showConcept);
+
+    // Интерактивный Lightbox-скрипт управления полноэкранной галереей
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.getElementById("premiumLightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const closeBtn = document.getElementById("lightboxClose");
+    const prevBtn = document.getElementById("lightboxPrev");
+    const nextBtn = document.getElementById("lightboxNext");
+    const dotsContainer = document.getElementById("lightboxDots");
+    
+    let activeImgIndex = 0;
+    const imgSources = [];
+
+    galleryItems.forEach((img, idx) => {
+        imgSources.push(img.getAttribute("src"));
+        img.parentNode.addEventListener("click", () => {
+            activeImgIndex = idx;
+            openLightbox();
+        });
+    });
+
+    imgSources.forEach((_, idx) => {
+        const dot = document.createElement("div");
+        dot.classList.add("lightbox-dot");
+        dot.addEventListener("click", () => {
+            activeImgIndex = idx;
+            updateLightboxImage();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".lightbox-dot");
+
+    function openLightbox() {
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+        updateLightboxImage();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    function updateLightboxImage() {
+        lightboxImg.setAttribute("src", imgSources[activeImgIndex]);
+        dots.forEach((dot, idx) => {
+            if (idx === activeImgIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function showNextImage() {
+        activeImgIndex = (activeImgIndex + 1) % imgSources.length;
+        updateLightboxImage();
+    }
+
+    function showPrevImage() {
+        activeImgIndex = (activeImgIndex - 1 + imgSources.length) % imgSources.length;
+        updateLightboxImage();
+    }
+
+    closeBtn.addEventListener("click", closeLightbox);
+    nextBtn.addEventListener("click", showNextImage);
+    prevBtn.addEventListener("click", showPrevImage);
+
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox-content')) {
+            closeLightbox();
+        }
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    lightbox.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches.screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches.screenX;
+        if (touchEndX < touchStartX - 50) showNextImage();
+        if (touchEndX > touchStartX + 50) showPrevImage();
+    }, { passive: true });
 </script>
 </body>
 </html>

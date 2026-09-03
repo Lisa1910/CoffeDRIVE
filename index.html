@@ -14,8 +14,15 @@
 <!-- Индикатор прогресса скролла сверху страницы -->
 <div class="scroll-progress" id="progressBar"></div>
 
+<!-- Кастомный тактильный переключатель страниц (Liquid Glass Switch-Tab) -->
+<nav class="switch-tab-container">
+    <button class="switch-btn active" id="btnConcept">Концепт объекта</button>
+    <button class="switch-btn" id="btnFinance">Финансовая модель</button>
+</nav>
+
 <div class="presentation-wrapper">
-    <!-- Световые премиальные оверлеи и карамельно-кофейные текстуры -->
+    <!-- Текстурные премиальные слои: Туманные горы и Карамельный кофе -->
+    <div class="bg-layer-mist"></div>
     <div class="bg-layer-coffee-foam"></div>
     <div class="bg-layer-linen-texture"></div>
 
@@ -90,7 +97,6 @@
                 </div>
             </div>
         </section>
-
         <!-- СЛАЙД 4 -->
         <section class="slide-section">
             <div class="slide-container">
@@ -134,6 +140,7 @@
                 </div>
             </div>
         </section>
+
         <!-- СЛАЙД 6 -->
         <section class="slide-section">
             <div class="slide-container">
@@ -190,8 +197,6 @@
             </div>
         </section>
     </main>
-
-
     <!-- ================= СТРАНИЦА 2: ФИНАНСОВАЯ МОДЕЛЬ ================= -->
     <main class="page-view" id="pageFinance">
 
@@ -278,6 +283,7 @@
                 </div>
             </div>
         </section>
+
         <!-- СЛАЙД 9: ЕЖЕМЕСЯЧНЫЕ РАСХОДЫ -->
         <section class="slide-section">
             <div class="slide-container">
@@ -318,7 +324,7 @@
                             </tr>
                             <tr>
                                 <td style="color: var(--color-brass-premium); font-weight: 500;">Маркетинг и Трафик</td>
-                                <td>Локальная реклама, привлечение автомобильного потока, таргетинг и обновление меню.</td>
+                                <td>Локальное продвижение точки, удержание автомобильного трафика, таргетированная реклама и обновление наружного меню.</td>
                                 <td>80 000</td>
                             </tr>
                             <tr>
@@ -328,7 +334,7 @@
                             </tr>
                             <tr>
                                 <td style="color: var(--color-brass-premium); font-weight: 500;">Сервис и Амортизация</td>
-                                <td>Техническое обслуживание группы, замену фильтров BWT, профессиональная химия HoReCa.</td>
+                                <td>Техническое обслуживание группы, замена фильтров BWT, профессиональная химия HoReCa.</td>
                                 <td>70 000</td>
                             </tr>
                             <tr class="row-total">
@@ -341,7 +347,6 @@
                 </div>
             </div>
         </section>
-
         <!-- СЛАЙД 10: СЦЕНАРИИ ДОХОДНОСТИ -->
         <section class="slide-section">
             <div class="slide-container">
@@ -407,10 +412,11 @@
                     </table>
                 </div>
                 <p style="margin-top: 25px; font-size: 14px; color: var(--text-sub); font-weight: 300; text-align: center;">
-                    *Расчетная критическая точка безубыточности проекта составляет <strong style="color: var(--color-brass-premium);">160–190 заказов в день</strong>. Средний период возврата инвестиций: 14–18 месяцев.
+                    *Расчетная критическая точка безубыточности проекта составляет <strong style="color: var(--color-brass-premium);">160–190 заказов в день</strong>. Средний период возврата инвестиционного капитала: 14–18 месяцев.
                 </p>
             </div>
         </section>
+
         <!-- СЛАЙД 11: КОНТАКТЫ АВТОРА -->
         <section class="slide-section">
             <div class="slide-container">
@@ -445,7 +451,7 @@
                 <!-- Подвал / Лицензия и Защита Права -->
                 <footer class="premium-footer">
                     <div>© 2026 BREVVO DRIVE COFFEE. Все права защищены.</div>
-                    <div>Разработчик проекта: Даниил Лысенков</div>
+                    <div>Разработчик проекта: Даниил Лисенков</div>
                     <div>Концепт защищен авторским правом HoReCa Архитектуры</div>
                 </footer>
             </div>
@@ -478,22 +484,33 @@
     const pageFinance = document.getElementById('pageFinance');
     const toFinanceTriggers = document.querySelectorAll('.to-finance-trigger');
     const btnBackToConcept = document.getElementById('btnBackToConcept');
+    const btnConcept = document.getElementById('btnConcept');
+    const btnFinance = document.getElementById('btnFinance');
 
-    // Кнопки на страницах концепта переводят на смету
-    toFinanceTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            pageConcept.classList.remove('active');
-            pageFinance.classList.add('active');
-            window.scrollTo(0, 0);
-        });
-    });
-
-    // Кнопка в конце сметы возвращает обратно на концепт
-    btnBackToConcept.addEventListener('click', () => {
+    function showConcept() {
+        btnFinance.classList.remove('active');
+        btnConcept.classList.add('active');
         pageFinance.classList.remove('active');
         pageConcept.classList.add('active');
         window.scrollTo(0, 0);
+    }
+
+    function showFinance() {
+        btnConcept.classList.remove('active');
+        btnFinance.classList.add('active');
+        pageConcept.classList.remove('active');
+        pageFinance.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    btnConcept.addEventListener('click', showConcept);
+    btnFinance.addEventListener('click', showFinance);
+
+    toFinanceTriggers.forEach(trigger => {
+        trigger.addEventListener('click', showFinance);
     });
+
+    btnBackToConcept.addEventListener('click', showConcept);
 </script>
 </body>
 </html>

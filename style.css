@@ -1,61 +1,51 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   ОПТИМИЗАЦИЯ ДАНИИЛА ЛИСЕНКОВА: ОТКАЗ ОТ ВНЕШНИХ TLS-РУКОПОЖАТИЙ С CDN
+   1. ДИЗАЙН-СИСТЕМА BREVVO NEO-NOIR (УЛЬТИМАТИВНЫЙ ТЕМНЫЙ ДОРОГОЙ СТИЛЬ)
    ========================================================================== */
 :root {
-    --bg-main: #030504;
+    --bg-main: #020303; /* Глубокий угольно-чёрный премиальный фон */
     --text-white: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.55);
+    --text-dim: rgba(255, 255, 255, 0.5); /* Приглушенный, не выжигающий глаза текст */
     --radius-premium: 24px;
-    --radius-inner: 16px;
-    --fs-xl: clamp(55px, 7vw, 110px);
+    --radius-inner: 14px;
+    --fs-xl: clamp(50px, 7.5vw, 115px);
     
-    /* Приглушенные, глубокие благородные акценты */
-    --accent-glow: radial-gradient(circle at 50% 50%, rgba(204, 176, 131, 0.06) 0%, transparent 60%);
-    --color-accent: #b39b74;
-
-    /* Сверхскоростная системная замена шрифта заголовков без обращений к сети */
+    /* Дорогие, ультра-рассеянные благородные неоновые туманы */
+    --accent-glow: radial-gradient(circle at 50% 40%, rgba(204, 176, 131, 0.05) 0%, transparent 65%);
+    --color-accent: #a38b69;
     --font-premium: 'Garamond', 'Georgia', 'Times New Roman', serif;
 }
 
-/* Обновляем правила вызова шрифта для всех заголовков и кнопок сайта */
-.slide-title, 
-.giant-bg-text, 
-.card-label, 
-.liquid-btn, 
-.tab-trigger-btn, 
-.premium-table th, 
-.card-value {
-    font-family: var(--font-premium) !important;
-}
-
-/* Приглушенные темные цветовые схемы DDX под каждую страницу */
+/* Автоматическая смена сдержанных темных палитр DDX под классы body страниц */
 body.page-main {
-    --accent-glow: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-    --color-accent: #e5e5e5;
+    --accent-glow: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.015) 0%, transparent 50%);
+    --color-accent: #e0e5e3;
 }
 body.page-base {
-    --bg-main: #020508;
-    --accent-glow: radial-gradient(circle at 50% 30%, rgba(0, 140, 200, 0.06) 0%, transparent 60%);
-    --color-accent: #0088cc; /* Сдержанный глубокий синий */
+    --bg-main: #010406; /* Иссиня-чёрная роскошная ночь */
+    --accent-glow: radial-gradient(circle at 50% 30%, rgba(0, 110, 220, 0.04) 0%, transparent 65%);
+    --color-accent: #007ecc; /* Сдержанный, глубокий неоново-голубой */
 }
 body.page-universal {
-    --bg-main: #050302;
-    --accent-glow: radial-gradient(circle at 50% 30%, rgba(200, 50, 0, 0.05) 0%, transparent 60%);
-    --color-accent: #b33600; /* Глубокий бордово-оранжевый */
+    --bg-main: #040201; /* Тёмный терракотовый графит */
+    --accent-glow: radial-gradient(circle at 50% 30%, rgba(180, 40, 0, 0.035) 0%, transparent 65%);
+    --color-accent: #b33000; /* Приглушенный благородный оранжево-бордовый */
 }
 body.page-pro {
-    --bg-main: #020302;
-    --accent-glow: radial-gradient(circle at 70% 20%, rgba(12, 120, 80, 0.05) 0%, transparent 50%), 
-                  radial-gradient(circle at 30% 80%, rgba(100, 35, 160, 0.05) 0%, transparent 50%);
-    --color-accent: #0c8253; /* Фасадный приглушенный темно-зеленый */
+    --bg-main: #010201; /* Тёмно-изумрудный глубокий бархат */
+    --accent-glow: radial-gradient(circle at 70% 25%, rgba(8, 100, 60, 0.035) 0%, transparent 55%), 
+                  radial-gradient(circle at 30% 75%, rgba(80, 25, 150, 0.035) 0%, transparent 55%);
+    --color-accent: #097a49; /* Фасадный спокойный тёмно-зелёный */
 }
 
+/* Жесткие сбросы и оптимизация рендеринга шрифтов Apple/Google */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -65,14 +55,16 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.6s ease;
 }
 
+/* Физика интерактивной обертки презентации */
 .presentation-wrapper {
     position: relative;
     width: 100%;
-    background: repeating-linear-gradient(90deg, transparent, transparent 250px, rgba(255,255,255,0.002) 250px, rgba(255,255,255,0.002) 500px);
-    padding-bottom: 160px; /* Защитный отступ от нижней панели Liquid Glass */
+    /* Дорогая дизайнерская сетка на фоне */
+    background: repeating-linear-gradient(90deg, transparent, transparent 250px, rgba(255,255,255,0.0015) 250px, rgba(255,255,255,0.0015) 500px);
+    padding-bottom: 180px; /* Защитный буфер, чтобы контент не уходил под нижнее меню */
 }
 
 .bg-layer-glow {
@@ -89,7 +81,7 @@ body {
     background-image: url('https://unsplash.com');
     background-size: cover;
     background-position: center;
-    opacity: 0.015; /* Минимальная текстура кофейной пены */
+    opacity: 0.012; /* Сверхлегкая, благородная текстура кофейной пены */
     mix-blend-mode: color-dodge;
     pointer-events: none;
     z-index: 2;
@@ -99,7 +91,7 @@ body {
     position: fixed;
     inset: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-    background-size: 6px 6px;
+    background-size: 8px 8px;
     pointer-events: none;
     z-index: 3;
 }
@@ -116,35 +108,50 @@ body {
 }
 
 /* ==========================================================================
-   2. СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS (НИЖНЯЯ ПАНЕЛЬ С ТАКТИЛЬНЫМ UX)
+   2. СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS С АЙФОН-СКРОЛЛОМ (БЕЗ ОБРЕЗАНИЙ)
    ========================================================================== */
 .liquid-nav-panel {
     position: fixed;
-    bottom: 30px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(8, 10, 9, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(6, 8, 7, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 40px;
-    padding: 6px;
+    padding: 5px;
     display: flex;
     gap: 6px;
-    backdrop-filter: blur(40px) saturate(130%);
-    -webkit-backdrop-filter: blur(40px) saturate(130%);
+    backdrop-filter: blur(40px) saturate(140%);
+    -webkit-backdrop-filter: blur(40px) saturate(140%);
     z-index: 2500;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-    width: max-content;
-    max-width: 95vw;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    
+    /* Аппаратный горизонтальный скролл для мобилок и планшетов */
+    width: auto;
+    min-width: min-content;
+    max-width: 92vw; /* Зажимает панель по бокам экрана смартфона */
+    overflow-x: auto; /* Включает перемотку пальцем слева направо */
+    overflow-y: hidden;
+    white-space: nowrap; /* Запрещает кнопкам прыгать на вторую строку */
+    
+    /* Плавная физика прокрутки iOS Свайп */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Прячем полосу прокрутки на Firefox */
+}
+
+.liquid-nav-panel::-webkit-scrollbar {
+    display: none; /* Прячем полосу прокрутки на Safari/Chrome */
 }
 
 .liquid-btn {
-    font-family: 'Perandory', serif;
-    font-size: 13px;
-    letter-spacing: 2px;
+    font-family: var(--font-premium) !important;
+    font-size: 11px; /* Миниатюрный изящный размер шрифта */
+    letter-spacing: 1.5px;
     color: var(--text-dim);
-    padding: 13px 24px;
+    padding: 10px 18px; /* Уменьшенные отступы для компактности кнопок */
     background: transparent;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
@@ -152,14 +159,15 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-shrink: 0; /* Запрещает кнопкам сплющиваться в скролле */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .liquid-btn.active, .liquid-btn:hover {
     color: var(--text-white);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.03), 0 8px 20px rgba(0,0,0,0.5);
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.01), 0 5px 15px rgba(0,0,0,0.5);
     transform: scale(1.02);
 }
 
@@ -172,12 +180,12 @@ body {
 }
 
 .tab-trigger-btn {
-    font-family: 'Perandory', serif;
+    font-family: var(--font-premium) !important;
     font-size: 12px;
     letter-spacing: 1px;
     color: var(--text-dim);
     background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     padding: 11px 26px;
     border-radius: 30px;
     cursor: pointer;
@@ -189,7 +197,6 @@ body {
     color: var(--text-white);
     border-color: var(--color-accent);
     background: rgba(255, 255, 255, 0.02);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.01);
 }
 
 .tab-content-view {
@@ -199,16 +206,15 @@ body {
 
 .tab-content-view.active {
     display: block;
-    animation: slideFadeIn 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: slideFadeIn 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes slideFadeIn {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 /* ==========================================================================
-   3. АРХИТЕКТУРА СЕКЦИЙ И КАРКАС КАРТОЧЕК MICA ALT PRO
+   3. ГЕОМЕТРИЯ СЕКЦИЙ И СЕТКА КАРТОЧЕК ДЛЯ ЗАЩИТЫ КОНТЕЙНЕРОВ
    ========================================================================== */
 .slide-section {
     position: relative;
@@ -217,7 +223,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 100px 40px 100px 40px; /* Увеличен нижний зазор для подвала */
+    padding: 110px 40px 110px 40px; /* Большие вертикальные отступы-буферы */
     z-index: 10;
 }
 
@@ -236,9 +242,9 @@ body {
     position: absolute;
     top: -65px;
     left: -12px;
-    font-family: 'Perandory', serif;
+    font-family: var(--font-premium) !important;
     font-size: var(--fs-xl);
-    color: rgba(255, 255, 255, 0.015); /* Максимально приглушили фоновые титры */
+    color: rgba(255, 255, 255, 0.012); /* Ультра-рассеянные скрытые титры */
     text-transform: uppercase;
     letter-spacing: 4px;
     line-height: 0.8;
@@ -250,8 +256,8 @@ body {
 }
 
 .slide-title {
-    font-family: 'Perandory', serif;
-    font-size: clamp(30px, 4.5vw, 50px);
+    font-family: var(--font-premium) !important;
+    font-size: clamp(28px, 4.5vw, 48px);
     color: var(--text-white);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -260,6 +266,7 @@ body {
 }
 
 .slide-title span { color: var(--color-accent); }
+
 .content-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -267,22 +274,22 @@ body {
     width: 100%;
 }
 
-/* Глубокий матовый акрил Windows 11 Mica Alt Pro (Затемненный) */
+/* Глубокий, матовый премиальный акрил Mica Alt Pro */
 .premium-card {
-    background: rgba(4, 6, 5, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(3, 5, 4, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: var(--radius-premium);
     padding: 45px;
     backdrop-filter: blur(40px) saturate(110%);
     -webkit-backdrop-filter: blur(40px) saturate(110%);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.85);
     width: 100%;
-    overflow: hidden; /* Защищает карточку от расползания */
+    overflow: hidden;
 }
 
 .card-label {
-    font-family: 'Perandory', serif;
-    font-size: 15px;
+    font-family: var(--font-premium) !important;
+    font-size: 14px;
     color: var(--color-accent);
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -290,10 +297,11 @@ body {
 }
 
 .card-value {
-    font-size: 26px;
-    font-weight: 600;
+    font-family: var(--font-premium) !important;
+    font-size: 24px;
+    font-weight: 500;
     margin-bottom: 15px;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.5px;
 }
 
 .card-text {
@@ -302,44 +310,42 @@ body {
     font-weight: 300;
     line-height: 1.7;
 }
-
 /* ==========================================================================
-   4. ЖЕСТКАЯ ГОРИЗОНТАЛЬНАЯ ФИЗИКА ТАБЛИЦ (ЗАЩИТА ОТ СЛИПАНИЯ ЦИФР)
+   4. ЖЕСТКАЯ ГОРИЗОНТАЛЬНАЯ ФИЗИКА ТАБЛИЦ (ЗАЩИТА ЦИФР ОТ СЛИПАНИЯ)
    ========================================================================== */
 .premium-table-wrap {
     width: 100%;
-    overflow-x: auto; /* Включает идеальный горизонтальный скролл на мобилках */
+    overflow-x: auto; /* Включает идеальный горизонтальный скролл таблиц на телефонах */
     margin-top: 25px;
     border-radius: var(--radius-inner);
     border: 1px solid rgba(255, 255, 255, 0.03);
-    background: rgba(2, 4, 3, 0.5);
-    /* Убираем вертикальные ограничения */
-    max-height: none !important; 
+    background: rgba(2, 4, 3, 0.6);
+    max-height: none !important;
     height: auto !important;
 }
 
 .premium-table {
     width: 100%;
-    min-width: 900px; /* Силой держит таблицу горизонтально. Буквы не сожмутся! */
+    min-width: 900px; /* Принудительно держит таблицу горизонтально. Буквы не сжаты! */
     border-collapse: collapse;
     text-align: left;
 }
 
 .premium-table th, .premium-table td {
-    padding: 22px 24px;
+    padding: 20px 24px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     font-size: 15px;
     vertical-align: middle;
-    white-space: normal; /* Разрешает перенос длинных описаний строк внутри ячейки */
+    white-space: normal;
 }
 
 .premium-table th {
-    font-family: 'Perandory', serif;
+    font-family: var(--font-premium) !important;
     color: var(--color-accent);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: rgba(6, 8, 7, 0.95);
+    background: rgba(5, 7, 6, 0.96);
 }
 
 .premium-table td { 
@@ -351,12 +357,12 @@ body {
 .premium-table tr:last-child td { border-bottom: none; }
 
 .premium-table .row-total td {
-    font-family: 'Perandory', serif;
+    font-family: var(--font-premium) !important;
     font-size: 18px;
     color: var(--color-accent);
     font-weight: 600;
     background: rgba(255, 255, 255, 0.01);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .saas-highlight {
@@ -366,52 +372,49 @@ body {
 }
 
 /* ==========================================================================
-   5. ИСПРАВЛЕННАЯ ГАЛЕРЕЯ (ОТСТУПЫ, СКРУГЛЕНИЯ, ПРОПОРЦИИ)
+   5. МОДУЛЬ ГАЛЕРЕИ (ОТСТУПЫ 24PX, СКРУГЛЕНИЯ 14PX, ПРОПОРЦИИ 16:10)
    ========================================================================== */
-.gallery-container { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 30px; 
-    width: 100%; 
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
     margin-top: 40px;
 }
 
-.gallery-title { 
-    font-family: 'Perandory', serif; 
-    font-size: 20px; 
-    color: var(--color-accent); 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
+.gallery-title {
+    font-family: var(--font-premium) !important;
+    font-size: 20px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.gallery-grid { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 24px; /* Сочный отступ между картинками, чтобы они не слипались */
-    width: 100%; 
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* Сочные зазоры между картинками, чтобы они не слипались */
+    width: 100%;
 }
 
-.gallery-item { 
-    position: relative; 
-    width: 100%; 
-    aspect-ratio: 16 / 10; /* Фиксированные одинаковые пропорции рендеров */
-    background: #020302; 
+.gallery-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10; /* Фиксированные пропорции архитектурного кадра */
+    background: #020302;
     border-radius: var(--radius-inner); /* Скругление углов картинок */
-    overflow: hidden; 
-    border: 1px solid rgba(255, 255, 255, 0.04); 
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.gallery-item img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block; 
-    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
-
-.gallery-item:hover img { transform: scale(1.03); }
 /* ==========================================================================
-   6. МОДУЛЬ ЛИЧНЫХ КОНТАКТОВ И ПРЕМИАЛЬНЫЙ ПОДВАЛ (БЕЗ НАЛОЖЕНИЙ МЕНЮ)
+   6. ИСПРАВЛЕННЫЙ ПУНКТ РАЗРАБОТЧИКА И ПРЕМИАЛЬНЫЙ ПОДВАЛ (БЕЗ НАЛОЖЕНИЙ)
    ========================================================================== */
 .contact-grid {
     display: grid;
@@ -422,15 +425,10 @@ body {
 }
 
 .contact-item {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.008);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     padding: 24px;
     border-radius: var(--radius-inner);
-    transition: background 0.3s ease;
-}
-
-.contact-item:hover {
-    background: rgba(255, 255, 255, 0.02);
 }
 
 .contact-item span {
@@ -445,79 +443,76 @@ body {
 .contact-item a { 
     font-size: 16px; 
     color: var(--text-white); 
-    text-decoration: none; 
-    font-weight: 400; 
-    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
-.contact-item a:hover {
-    color: var(--color-accent);
-}
-
-/* Исправленный подвал с защитным нижним полем под Liquid Glass панель */
 .premium-footer {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 60px;
     padding-top: 30px;
-    padding-bottom: 20px; /* Защитное поле снизу */
+    padding-bottom: 25px; /* Защитный нижний паддинг от скролл-панели */
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-dim);
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     gap: 20px;
 }
 
 /* ==========================================================================
-   7. СТРОГИЕ МЕДИА-ЗАПРОСЫ ДЛЯ СМАРТФОНОВ И ПЛАНШЕТОВ
+   7. СТРОГИЙ СЕТОЧНЫЙ АДАПТИВUX ДЛЯ МОБИЛОК (АЙФОН-ЦЕНТРИРОВАНИЕ)
    ========================================================================== */
 @media (max-width: 1024px) { 
     .content-grid { grid-template-columns: 1fr; } 
 }
 
 @media (max-width: 768px) {
-    .slide-section { padding: 90px 20px 100px 20px; }
-    .premium-card { padding: 30px 20px; }
+    .liquid-nav-panel {
+        width: 90vw !important;
+        max-width: 90vw !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 20px !important;
+        padding: 5px 8px !important;
+        justify-content: flex-start !important; /* Корректная линия для горизонтальной прокрутки */
+    }
+
+    .liquid-btn {
+        padding: 9px 14px !important;
+        font-size: 11px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .slide-section { padding: 90px 16px 130px 16px !important; }
+    .premium-card { padding: 30px 16px !important; }
     .inner-tab-panel { flex-direction: column; gap: 10px; width: 100%; }
     .tab-trigger-btn { width: 100%; text-align: center; }
-    .liquid-nav-panel { width: 94%; justify-content: center; bottom: 20px; }
-    .liquid-btn { padding: 12px 14px; font-size: 11px; letter-spacing: 1px; }
-    .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+    .gallery-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
     .premium-footer { flex-direction: column; text-align: center; gap: 12px; }
 }
+
 /* ==========================================================================
-   8. ИНТЕРФЕЙС LIGHTBOX-ПЛЕЕРА С ТАКТИЛЬНЫМ МАТОВЫМ РАЗМЫТИЕМ
+   8. ИНТЕРФЕЙС LIGHTBOX-ПЛЕЕРА С МАТОВЫМ ТУМАНОМ
    ========================================================================== */
 .premium-lightbox {
-    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s;
+    transition: opacity 0.4s ease, visibility 0.4s;
     opacity: 0;
     visibility: hidden;
 }
-
 .premium-lightbox.active {
     opacity: 1;
     visibility: visible;
 }
-
 .lightbox-close, .lightbox-arrow {
     transition: all 0.3s ease;
     user-select: none;
 }
-
 .lightbox-close:hover, .lightbox-arrow:hover {
     color: var(--color-accent) !important;
-    transform: scale(1.1);
 }
-
-.lightbox-img {
-    box-shadow: 0 50px 100px rgba(0,0,0,0.9);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
 @media (max-width: 768px) {
-    .lightbox-arrow { display: none !important; } /* На смартфонах листаем только свайпами пальца */
-    .lightbox-close { top: 20px !important; right: 20px !important; font-size: 36px !important; }
+    .lightbox-arrow { display: none !important; } /* На телефонах листаем только свайпами пальца */
 }

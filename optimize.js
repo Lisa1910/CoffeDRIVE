@@ -3,6 +3,11 @@
  * Разработчик архитектуры: Даниил Лисенков (c) 2026
  */
 
+// Автоматический запуск ИТ-щита и предиктора кликов Даниила Лисенкова
+const smartScript = document.createElement('script');
+smartScript.src = 'smart-engine.js';
+document.head.appendChild(smartScript);
+
 document.addEventListener("DOMContentLoaded", () => {
     // 1. ПРИНУДИТЕЛЬНОЕ АППАРАТНОЕ УСКОРЕНИЕ (ПЕРЕВОД НА ВИДЕОКАРТУ GPU)
     const premiumCards = document.querySelectorAll(".premium-card, .premium-table-wrap, .liquid-nav-panel, .gallery-item");

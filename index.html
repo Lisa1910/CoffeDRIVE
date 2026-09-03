@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREVVO DRIVE COFFEE — Premium Presentation</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Палитра строго по референсу BREVVO */
+            --bg-deep: #080a09; /* Глубокий темный */
+            --color-dark-green: #13221a; /* Тёмно-зеленый фасадный */
+            --color-anthracite: #1c1d1f; /* Антрацит */
+            --color-crimson: #5c1313; /* Бордовый вместо оранжевого */
+            --color-brass: #b8975a; /* Латунь / Золото */
+            
+            --text-pure: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.5);
+            
+            /* Унифицированное скругление элементов */
+            --radius-main: 16px; 
+            --radius-inner: 8px;
+            
+            /* Золотое сечение для типографики (база 16px * 1.618) */
+            --fs-base: 16px;
+            --fs-md: 26px;
+            --fs-lg: 42px;
+            --fs-xl: 68px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-pure);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Фоновый контейнер с текстурой гофрированного металла */
+        .presentation-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                linear-gradient(180deg, rgba(8, 10, 9, 0.85) 0%, rgba(19, 34, 26, 0.9) 100%),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(28, 29, 31, 0.15) 40px, rgba(28, 29, 31, 0.15) 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+        }
+
+        /* Навигация слайдов */
+        .nav-timeline {
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-dot {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-inner);
+            cursor: pointer;
+            transition: background 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .nav-dot.active {
+            background: linear-gradient(90deg, var(--color-crimson), var(--color-brass));
+        }
+
+        /* Контейнер слайдов */
+        .slides-viewport {
+            position: relative;
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Эффект Slow-Mo переключения */
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                        visibility 1.2s;
+            transform: scale(0.96) translateY(10px);
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Премиальный массивный многослойный заголовок */
+        .title-wrap {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        /* Огромный полупрозрачный фоновый текст с затуханием снизу */
+        .giant-bg-text {
+            position: absolute;
+            top: -50px;
+            left: -10px;
+            font-family: 'Cinzel', serif;
+            font-size: var(--fs-xl);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            line-height: 0.8;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
+            z-index: 1;
+        }
+
+        .slide-title {
+            font-family: 'Cinzel', serif;
+            font-size: var(--fs-lg);
+            font-weight: 700;
+            color: var(--text-pure);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide-title span {
+            color: var(--color-brass);
+        }
+
+        /* Контентная сетка */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .premium-card {
+            background: rgba(28, 29, 31, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-main);
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: border-color 0.6s ease;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-crimson);
+            border-top-left-radius: var(--radius-main);
+            border-bottom-left-radius: var(--radius-main);
+        }
+
+        .premium-card.alt-accent::before {
+            background: var(--color-dark-green);
+        }
+
+        .card-label {
+            font-family: 'Cinzel', serif;
+            font-size: var(--fs-base);
+            color: var(--color-brass);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .card-value {
+            font-size: var(--fs-md);
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-text {
+            font-size: var(--fs-base);
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Специфичный контент для Слайда 10 (Финальная галерея рендеров) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            background: var(--color-anthracite);
+            border-radius: var(--radius-main);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Управление стрелками клавиатуры */
+        .controls-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-wrapper">
+
+    <!-- Таймлайн навигации сверху -->
+    <div class="nav-timeline" id="timeline"></div>
+
+    <!-- Вьюпорт для ленивого slow-mo переключения страниц -->
+    <div class="slides-viewport" id="viewport">
+        
+        <!-- СЛАЙД 1 -->
+        <div class="slide active">
+            <div class="title-wrap">
+                <div class="giant-bg-text">Brevvo Drive</div>
+                <h1 class="slide-title">BREVVO <span>DRIVE COFFEE</span></h1>
+            </div>
+            <div class="content-grid" style="grid-template-columns: 1fr;">
+                <div class="premium-card" style="padding: 50px;">
+                    <div class="card-label">Концепт премиального сегмента</div>
+                    <div class="card-value" style="font-size: var(--fs-lg); font-family: 'Cinzel', serif;">КОФЕ В ДВИЖЕНИИ</div>
+                    <p class="card-text" style="font-size: var(--fs-md); max-width: 700px;">Премиальная drive-through кофейня, интегрированная в модифицированный 20-футовый архитектурный контейнер. Экстерьер: глубокий антрацит, темное дерево, латунные акценты.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЛАЙД 2 -->
+        <div class="slide">
+            <div class="title-wrap">
+                <div class="giant-bg-text">Архитектура</div>
+                <h1 class="slide-title">Параметры <span>Объекта</span></h1>
+            </div>
+            <div class="content-grid">
+                <div class="premium-card">
+                    <div class="card-label">Габариты модуля</div>
+                    <div class="card-value">20 FT Контейнер</div>
+                    <p class="card-text">Общая площадь конструкции составляет 14,8 м² (6,06 × 2,44 м). Промышленный One-Trip стандарт.</p>
+                </div>
+                <div class="premium-card alt-accent">
+                    <div class="card-label">Зонирование пространства</div>
+                    <div class="card-value">9,6 м² + 4,8 м²</div>
+                    <p class="card-text">Эргономичное разделение площади на изолированную технологическую кухню и скрытый инженерный санузел.</p>

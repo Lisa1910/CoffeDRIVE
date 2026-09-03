@@ -15,27 +15,26 @@
 <div class="scroll-progress" id="progressBar"></div>
 
 <div class="presentation-wrapper">
-    <!-- Световые оверлеи холодного неонового голубого цвета -->
+    <!-- Световые оверлеи холодного неонового голубого цвета (DDX Style) -->
     <div class="bg-layer-glow"></div>
     <div class="bg-layer-foam"></div>
-    <div class="bg-layer-linen-texture"></div>
+    <div class="bg-layer-linen"></div>
 
-    <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ BASE -->
+    <!-- ОСНОВНОЙ КОНТЕНТ СТРАНИЦЫ BASE -->
     <main class="slide-container">
         
-        <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
+        <!-- ЗАГЛАВНЫЙ СЛАЙД С ТАРИФОМ -->
         <section class="slide-section" style="padding-top: 60px;">
             <div class="title-wrap">
                 <div class="giant-bg-text" style="color: rgba(0, 191, 255, 0.04);">Brevvo Base</div>
                 <h1 class="slide-title">Бюджетный Пакетированный <span>Старт Base</span></h1>
             </div>
 
-            <!-- Локальное подменю переключения контента (Вшито внутри страницы) -->
+            <!-- Внутренние кнопки переключения контента (Жидкое стекло внутри слайда) -->
             <div class="inner-tab-panel">
                 <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
                 <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
             </div>
-
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ BASE (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
@@ -50,10 +49,10 @@
                 <div class="gallery-container">
                     <h2 class="gallery-title">Варианты представления бюджетного павильона Base</h2>
                     <div class="gallery-grid">
-                        <div class="gallery-item"><img src="base1.png" alt="Вариант представления 1"></div>
-                        <div class="gallery-item"><img src="base2.png" alt="Вариант представления 2"></div>
-                        <div class="gallery-item"><img src="base3.png" alt="Вариант представления 3"></div>
-                        <div class="gallery-item"><img src="base4.png" alt="Вариант представления 4"></div>
+                        <div class="gallery-item"><img src="base1.png" alt="Вариант представления base1"></div>
+                        <div class="gallery-item"><img src="base2.png" alt="Вариант представления base2"></div>
+                        <div class="gallery-item"><img src="base3.png" alt="Вариант представления base3"></div>
+                        <div class="gallery-item"><img src="base4.png" alt="Вариант представления base4"></div>
                     </div>
                 </div>
             </div>
@@ -176,7 +175,6 @@
                 </div>
             </div>
         </section>
-
         <!-- КОНТАКТНЫЙ СЛАЙД BASE -->
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
             <div class="premium-card" style="border-left: 4px solid var(--color-accent);">
@@ -225,21 +223,26 @@
             btnFinance.classList.remove('active');
             btnConcept.classList.add('active');
             viewFinance.classList.remove('active');
-viewConcept.classList.add('active');
-});
-btnFinance.addEventListener('click', () => {
-btnConcept.classList.remove('active');
-btnFinance.classList.add('active');
-viewConcept.classList.remove('active');
-viewFinance.classList.add('active');
-});
-}
-// Ленивая валидация изображений
-const images = document.querySelectorAll('.gallery-item img');
-images.forEach(img => {
-img.addEventListener('error', function() {
-this.style.display = 'none';
-const filename = this.getAttribute('src');
-this.parentNode.innerHTML = <div style="display:flex; justify-content:center; align-items:center; height:100%; width:100%; color:rgba(255,255,255,0.25); font-size:13px; text-transform:uppercase; letter-spacing:1px;">${filename} не найден</div>;
-});
-});
+            viewConcept.classList.add('active');
+        });
+
+        btnFinance.addEventListener('click', () => {
+            btnConcept.classList.remove('active');
+            btnFinance.classList.add('active');
+            viewConcept.classList.remove('active');
+            viewFinance.classList.add('active');
+        });
+    }
+
+    // Ленивая валидация изображений
+    const images = document.querySelectorAll('.gallery-item img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const filename = this.getAttribute('src');
+            this.parentNode.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; height:100%; width:100%; color:rgba(255,255,255,0.25); font-size:13px; text-transform:uppercase; letter-spacing:1px;">${filename} не найден</div>`;
+        });
+    });
+</script>
+</body>
+</html>

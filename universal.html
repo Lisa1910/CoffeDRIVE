@@ -15,7 +15,7 @@
 <div class="scroll-progress" id="progressBar"></div>
 
 <div class="presentation-wrapper">
-    <!-- Световые оверлеи огненного оранжевого и глубокого бордового цвета -->
+    <!-- Световые оверлеи огненного оранжевого и глубокого бордового цвета (DDX Balance Style) -->
     <div class="bg-layer-glow"></div>
     <div class="bg-layer-foam"></div>
     <div class="bg-layer-linen"></div>
@@ -35,14 +35,13 @@
                 <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
                 <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
             </div>
-
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ UNIVERSAL (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
                     <div class="premium-card" style="border-left: 3px solid var(--color-accent);">
                         <div class="card-label">Оптимальное импортозамещение и комфорт</div>
                         <div class="card-value">СТАЦИОНАРНЫЙ ПАВИЛЬОН НТО С ЛОКАЛЬНОЙ ТЕРРАСОЙ</div>
-                        <p class="card-text">Идеальный баланс между капитальными затратами и премиальным восприятием бренда. Конфигурация Universal — это полноценное городское кафе в формате Некапитального Торгового Сооружения (НТО), ориентированное на смешанный трафик (пешеходный поток + летняя посадочная зона). Проект полностью автономен, но за счет оптимизации инженерных сетей лимит необходимой мощности снижен до 25–30 кВт, что позволяет подключаться по упрощенным договорам к городским или коммерческим сетям без выкупа дорогостоящих ТУ на 50 кВт. Вместо сложного в обработке морского контейнера используется кастомный стационарный павильон увеличенной площади с панорамным остеклением в пол. Технологический пак HoReCa полностью импортозамещен: европейские дефицитные позиции заменены на сверхнадежные фабричные бренды России, Белоруссии и Азии (оборудование Abat, Carboma, Hurakan), имеющие постоянные склады запчастей и развитую сеть сервисных инженеров в Красноярске. Аутсорсинг кондитерских изделий сохраняет эргономику кухни и сокращает расходы на персонал.</p>
+                        <p class="card-text">Идеальный баланс между капитальными затратами и премиальным восприятием бренда. Конфигурация Universal — это полноценное городское кафе в формате Некапитального Торгового Сооружения (НТО), ориентированное на смешанный трафик (пешеходный поток + летщая посадочная зона). Проект полностью автономен, но за счет оптимизации инженерных сетей лимит необходимой мощности снижен до 25–30 кВт, что позволяет подключаться по упрощенным договорам к городским или коммерческим сетям без выкупа дорогостоящих ТУ на 50 кВт. Вместо сложного в обработке морского контейнера используется кастомный стационарный павильон увеличенной площади с панорамным остеклением в пол. Технологический пак HoReCa полностью импортозамещен: европейские дефицитные позиции заменены на сверхнадежные фабричные бренды России, Белоруссии и Азии (оборудование Abat, Carboma, Hurakan), имеющие постоянные склады запчастей и развитую сеть сервисных инженеров в Красноярске. Аутсорсинг кондитерских изделий сохраняет эргономику кухни и сокращает расходы на персонал.</p>
                     </div>
                 </div>
 
@@ -57,119 +56,259 @@
                     </div>
                 </div>
             </div>
-            <!-- ВНУТРЕННЯЯ ВКЛАДКА 2: РЕАЛЬНАЯ РЫНОЧНАЯ СМЕТА И ФИНМОДЕЛЬ -->
+            <!-- ВНУТРЕННЯЯ ВКЛАДКА 2: ПОЛНАЯ ГОРИЗОНТАЛЬНАЯ СМЕТА CAPEX (АКТИВНА ПРИ КЛИКЕ) -->
             <div class="tab-content-view" id="viewLocalFinance">
-                <div class="content-grid">
+                <div class="content-grid" style="grid-template-columns: 1fr;">
                     
-                    <!-- ТАБЛИЦА СМЕТЫ CAPEX (UNIVERSAL) -->
                     <div class="premium-card">
-                        <div class="card-label" style="color: var(--color-accent);">Капитальные вложения Balance</div>
-                        <div class="card-value">Сводная смета пакета Universal</div>
+                        <div class="card-label">Финансовый план • Импортозамещенный CAPEX Balance</div>
+                        <div class="card-value">Детальная спецификация инвестиций стационарного павильона</div>
+                        
+                        <!-- Жестко зафиксированная горизонтальная таблица (Защищена от сплющивания шрифтов) -->
                         <div class="premium-table-wrap">
                             <table class="premium-table">
                                 <thead>
                                     <tr>
-                                        <th>Компонент спецификации</th>
-                                        <th>Российское и азиатское оборудование (РФ)</th>
+                                        <th>Наименование позиции / Модуля</th>
+                                        <th>Профессиональные спецификации HoReCa и бренда сетей</th>
+                                        <th>Кол-во</th>
                                         <th>Стоимость (₽)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- БЛОК 1: СТРОИТЕЛЬНЫЙ КОНСТРУКТИВ И ОТДЕЛКА -->
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Производственный блок</td>
-                                        <td>Кофемашина Gastoroma/Promac 3GR в лизинг, молки Fiorenzato F64 E (2 шт.)</td>
-                                        <td>442 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Фильтр и тепловой пак</td>
-                                        <td>Молка Fiorenzato Drogheria, фильтр Marco, конвектомат Abat ПР-6-1/1</td>
-                                        <td>333 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Холод и моечная зона</td>
-                                        <td>Стол Polair (базовый), шкафы Carboma, купольная ПММ МПУ-700, раковины</td>
-                                        <td>445 000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Конструктив и фасад НТО</td>
-                                        <td>Стационарный каркасный павильон увеличенной площади, панорамное остекление</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Стационарный павильон НТО</td>
+                                        <td>Усиленный металлокаркас, увеличенная площадь 20-25 м² под рабочую зону и внутреннюю стойку выдачи. Зимнее утепление минеральной плитой KNAUF 150 мм. Двухкамерное панорамное остекление фасада в пол.</td>
+                                        <td>1 шт</td>
                                         <td>1 200 000</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Сети, климат и ТУ 25 кВт</td>
-                                        <td>Прямое кабельное подключение субаренды, вентиляция Hurakan, баки, осмос</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Премиум-отделка СЭС и Терраса</td>
+                                        <td>Внутренняя облицовка нержавеющей сталью и матовым негорючим композитом. Полы: керамогранит с уклонами и сливными трапами. Обустройство внешней деревянной летней террасы (палубная доска лиственницы).</td>
+                                        <td>1 компл</td>
+                                        <td>480 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 2: ТЕХНОЛОГИЧЕСКИЙ КОФЕ-ПАК И ФИЛЬТР-СТАНЦИЯ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Кофейное оборудование (Лизинг)</td>
+                                        <td>Профессиональная итальянская трехгруппная кофемашина <strong>Promac Green ME 3GR</strong> (или Gastoroma Verona) — надежная белая поставка в РФ, оформленная в лизинг (первоначальный взнос учтен в резервах).</td>
+                                        <td>1 шт</td>
+                                        <td>200 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Профессиональные кофемолки</td>
+                                        <td>Сверхнадежные итальянские эспрессо-молки <strong>Fiorenzato F64 E</strong> с сенсорным дисплеем и прямым помолом (2 штуки под основной сорт и альтернативное зерно спешелти). Наличие ножей в РФ.</td>
+                                        <td>2 шт</td>
+                                        <td>242 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Промышленная фильтр-станция</td>
+                                        <td>Кофемолка под пакетный и магазинный помол <strong>Fiorenzato F71 Drogheria</strong> (Италия) + капельная фильтр-система <strong>Marco Bru F45</strong> (Ирландия / официальный импорт, термосы в комплекте).</td>
+                                        <td>1 пак</td>
+                                        <td>333 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 3: ГОРЯЧАЯ КУХНЯ И ХОЛОДИЛЬНЫЙ МОДУЛЬ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Тепловой блок горячей кухни</td>
+                                        <td>Профессиональный российский программируемый инжекторный пароконвектомат <strong>Abat ПР-6-1/1</strong> (Чувашторгтехника, на 6 уровней, ТЭНы и платы стоят копейки) + Прижимной гриль Hurakan.</td>
+                                        <td>1 пак</td>
+                                        <td>230 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Холодильный стол и шкафы</td>
+                                        <td>Среднетемпературный нержавеющий стол-холодильник <strong>Polair TM2-G</strong> (Россия, объем 270 л, 2 двери) + Вертикальный холодильный шкаф <strong>Carboma R560</strong> + Морозильный шкаф Carboma под выпечку.</td>
+                                        <td>1 пак</td>
+                                        <td>445 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 4: ГИГИЕНА И АВТОНОМНЫЕ СЕТИ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Профессиональная моечная зона</td>
+                                        <td>Российская фронтальная посудомоечная машина <strong>Abat МПК-500К</strong> (производительность до 500 тарелок/час) + Крупная 2-секционная нержавеющая ванна, жироуловитель ПЭ-0.5 под мойку.</td>
+                                        <td>1 пак</td>
+                                        <td>215 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Климат, ИТ и Автономность сетей</td>
+                                        <td>Водоподготовка BWT Bestmax (грубая очистка + умягчение) + Напорная станция, 2 пищевых бака по 1000 литров, проточный бойлер 6 кВт, приточная вентиляция Hurakan, мощный зимний кондиционер тепло/холод.</td>
+                                        <td>1 компл</td>
                                         <td>650 000</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Внешний декор и мебель</td>
-                                        <td>Светодиодный короб, композит, мебель из фанеры на заказ, обустройство террасы</td>
-                                        <td>480 000</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Кассовый узел и Наружный неон</td>
+                                        <td>Светодиодный фасадный световой короб, внешняя реклама. Сенсорный моноблок POS, лицензии кассовой программы iiko/r-keeper, ККТ ШТРИХ-М, фискальный накопитель, система видеонаблюдения (4 IP-камеры).</td>
+                                        <td>1 пак</td>
+                                        <td>303 000</td>
+                                    </tr>
+                                    
+                                    <!-- БЛОК 5: ТУ ПОДКЛЮЧЕНИЯ И РЕЗЕРВЫ -->
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Прокладка кабеля и Лимит 25 кВт</td>
+                                        <td>Прямой договор техприсоединения субаренды сетей от ТРЦ или коммерческого здания, сборка и монтаж распределительного щита ВРУ, прокладка бронированного силового кабеля.</td>
+                                        <td>1 дог</td>
+                                        <td>250 000</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: var(--color-accent); font-weight: 500;">Резервы и Оборот</td>
-                                        <td>Запуск рекламы, первый закуп заморозки, строительный резерв, 3 мес. ФОТ</td>
-                                        <td>1 950 000</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Фонды запуска и Оборотный капитал</td>
+                                        <td>Маркетинговая кампания открытия точки, первый крупный закуп брендированных стаканов, крафт-упаковки, кофе и партий замороженных круассанов. Строительный резерв +15% и 3 месяца подушки ФОТ.</td>
+                                        <td>1 ipak</td>
+                                        <td>995 000</td>
                                     </tr>
-                                    <tr class="row-total" style="border-top-color: var(--color-accent);">
-                                        <td>ИТОГО ПАКЕТ UNIVERSAL</td>
-                                        <td>Запуск сбалансированного городского павильона под ключ</td>
-                                        <td style="color: var(--color-accent);">5 500 000</td>
+                                    
+                                    <!-- ИТОГОВАЯ СТРОКА -->
+                                    <tr class="row-total">
+                                        <td colspan="3">ИТОГО ИНВЕСТИЦИОННЫЙ БЮДЖЕТ (ПАКЕТ UNIVERSAL)</td>
+                                        <td>5 500 000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        <!-- СЛАЙД 2: ОПЕРАЦИОННАЯ ЭКОНОМИКА И СЦЕНАРИИ ПРИБЫЛЬНОСТИ UNIVERSAL -->
+        <section class="slide-section" style="padding-top: 40px;">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text" style="color: rgba(255, 69, 0, 0.04);">Brevvo Balance</div>
+                    <h1 class="slide-title">Операционная <span>Эффективность Universal</span></h1>
+                </div>
+
+                <div class="content-grid">
+                    
+                    <!-- ТАБЛИЦА ЕЖЕМЕСЯЧНЫХ ОПЕРАЦИОННЫХ РАСХОДЯЩИХСЯ ЗАТРАТ (OPEX) -->
+                    <div class="premium-card">
+                        <div class="card-label" style="color: var(--color-accent);">Текущее содержание • Фиксированный OPEX</div>
+                        <div class="card-value">Постоянные затраты стационарного павильона (Balance)</div>
+                        
+                        <div class="premium-table-wrap">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Статья постоянных расходов</th>
+                                        <th>Детализация и штатное обоснование</th>
+                                        <th>Сумма (₽/мес)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">ФОТ и взносы персонала</td>
+                                        <td>3 линейных бариста (смена 2/2, 60к net каждому) + 1 управляющий на полставки (65к net). Включает НДФЛ и взносы в СФР.</td>
+                                        <td>380 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Аренда земельного участка</td>
+                                        <td>Коммерческая аренда площади до 25 м² под павильон НТО на первой линии в городской локации или зоне ТРЦ.</td>
+                                        <td>140 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Коммунальные ресурсы</td>
+                                        <td>Энергопотребление в рамках лимита 25 кВт по тарифу (работа ПММ, теплового блока Abat и зимнего климата контура).</td>
+                                        <td>65 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Обеспечение инженерии</td>
+                                        <td>Подвоз чистой воды водовозом в баки, вывоз стоков ЖБО ассенизаторами, официальный договор на утилизацию ТБО.</td>
+                                        <td>25 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Маркетинг и продвижение</td>
+                                        <td>Локальный таргетинг, продвижение террасы, акции в гео-сервисах (Яндекс, 2GIS), сезонные обновления меню.</td>
+                                        <td>20 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Администрирование и ИТ</td>
+                                        <td>Лицензии iiko/r-keeper, облачная фискализация, эквайринг банка, безлимитный интернет (LTE + резерв), бухгалтерия.</td>
+                                        <td>15 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">ТО и амортизация фонда</td>
+                                        <td>Замена картриджей умягчения BWT, чистка групп кофемашины Promac, ТО ледогенератора, закупка химии HoReCa.</td>
+                                        <td>15 000</td>
+                                    </tr>
+                                    <tr class="row-total">
+                                        <td>ИТОГО ФИКСИРОВАННЫЙ OPEX</td>
+                                        <td>Постоянные затраты павильона до учета себестоимости сырья (Foodcost)</td>
+                                        <td>640 000</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- ТАБЛИЦА ФИНМОДЕЛИ И OPEX -->
+                    <!-- ТАБЛИЦА ИНВЕСТИЦИОННЫХ СЦЕНАРИЕВ ДОХОДНОСТИ -->
                     <div class="premium-card">
-                        <div class="card-label" style="color: var(--color-accent);">Операционная эффективность</div>
-                        <div class="card-value">Экономические сценарии и OPEX</div>
+                        <div class="card-label" style="color: var(--color-accent);">Инвестиционный прогноз • Сценарии</div>
+                        <div class="card-value">Расчет чистой прибыли и маржинальности Universal</div>
+                        
                         <div class="premium-table-wrap">
                             <table class="premium-table">
                                 <thead>
                                     <tr>
-                                        <th>Показатель / Метрика</th>
+                                        <th>Финансовый показатель / Метрика</th>
                                         <th>Пессимистичный</th>
                                         <th>Базовый (Balance)</th>
-                                        <th>Целевой</th>
+                                        <th>Целевой (Пик)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Чеков в сутки (чек 450 ₽)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Количество чеков в сутки</td>
                                         <td>110 чеков</td>
                                         <td style="color: #ffffff; font-weight: 500;">210 чеков</td>
                                         <td>300 чеков</td>
                                     </tr>
                                     <tr>
-                                        <td>Выручка в месяц</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Средний чек (кофе + выпечка)</td>
+                                        <td>450 ₽</td>
+                                        <td style="color: #ffffff; font-weight: 500;">450 ₽</td>
+                                        <td>450 ₽</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Валовая выручка в месяц</td>
                                         <td>1 485 000 ₽</td>
                                         <td style="color: #ffffff; font-weight: 500;">2 835 000 ₽</td>
                                         <td>4 050 000 ₽</td>
                                     </tr>
                                     <tr>
-                                        <td>Foodcost (Переменные 35%)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Foodcost (Сырьё 35%)</td>
                                         <td>519 750 ₽</td>
                                         <td>992 250 ₽</td>
                                         <td>1 417 500 ₽</td>
                                     </tr>
                                     <tr>
-                                        <td>Фиксированный OPEX (мес.)</td>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Постоянные расходы (OPEX)</td>
                                         <td>640 000 ₽</td>
                                         <td>640 000 ₽</td>
                                         <td>640 000 ₽</td>
                                     </tr>
-                                    <tr class="row-total" style="border-top-color: var(--color-accent);">
-                                        <td>ЧИСТАЯ ПРИБЫЛЬ</td>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Налоги и эквайринг (~12.5%)</td>
+                                        <td>148 500 ₽</td>
+                                        <td>283 500 ₽</td>
+                                        <td>405 000 ₽</td>
+                                    </tr>
+                                    <tr class="row-total">
+                                        <td>ЧИСТАЯ ПРИБЫЛЬ В МЕСЯЦ</td>
                                         <td style="color: #cc7a7a;">176 750 ₽</td>
                                         <td style="color: #83cc83; font-weight: 600;">919 250 ₽</td>
-                                        <td style="color: #83cc83;">1 487 500 ₽</td>
+                                        <td style="color: #83cc83;">1 587 500 ₽</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Период возврата инвестиций</td>
+                                        <td>~31 месяц</td>
+                                        <td style="color: #ffffff;">10 – 13 месяцев</td>
+                                        <td>6 – 7 месяцев</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p style="margin-top: 15px; font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.5;">
-                            *Фиксированный OPEX в 640 000 ₽ включает ФОТ 3-х бариста (сменный график) и управляющего с начислениями (380 тыс.), прямую аренду площади НТО (140 тыс.), лимиты электричества 25 кВт и логистику. Расчетная точка безубыточности: <strong>90 заказов в день</strong>. Окупаемость: 10–13 месяцев.
+                        <p style="margin-top: 20px; font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.5;">
+                            *Критическая расчетная точка безубыточности проекта зафиксирована на уровне <strong>90 чеков в день</strong>. Благодаря полному импортозамещению (Abat, Carboma), точка застрахована от санкционных рисков и дефицита запчастей в Сибири.
                         </p>
                     </div>
 
@@ -198,7 +337,7 @@
 
 <!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS ДЛЯ СТРАНИЦЫ UNIVERSAL -->
 <nav class="liquid-nav-panel">
-    <a href="index.html" class="liquid-btn">📊 Главная</a>
+    <a href="index.html" class="liquid-btn">📊 Главная матрица</a>
     <a href="base.html" class="liquid-btn">⚡ Base (2-3 млн)</a>
     <a href="universal.html" class="liquid-btn active">🔥 Universal (5-7 млн)</a>
     <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
@@ -210,7 +349,10 @@
         const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        document.getElementById('progressBar').style.width = scrolled + '%';
+        const progressBar = document.getElementById('progressBar');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
     });
 
     // Логика локальных внутренних вкладок (Концепция / Смета)

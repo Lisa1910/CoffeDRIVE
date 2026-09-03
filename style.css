@@ -1,17 +1,31 @@
+@import url('https://googleapis.com');
+
+/* Интеграция акцентного премиального шрифта Perandory */
+@font-face {
+    font-family: 'Perandory';
+    src: url('https://jsdelivr.net') format('woff2'),
+         url('https://jsdelivr.net') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
-    --bg-deep: #111613; /* Сделали фон ощутимо ярче: дорогой темный графит с зеленым отливом */
-    --color-dark-green: #162c20; 
-    --color-anthracite: #1f2124; 
-    --color-brass: #d5b47a; /* Более яркая, благородная латунь */
-    --text-pure: #ffffff;
-    --text-muted: rgba(255, 255, 255, 0.65);
-    --radius-main: 16px; 
+    --bg-base: #080c09; 
+    --color-dark-green: #0f241a; 
+    --color-anthracite: #14171a; 
+    --color-crimson: #5c1111;
+    --color-brass-premium: #ccb083; /* Приглушенное матовое золото */
+    --text-white: #ffffff;
+    --text-sub: rgba(255, 255, 255, 0.72);
+    --radius-premium: 16px; 
+    --radius-inner: 8px;
     
-    /* Золотое сечение для шрифтов */
+    /* Золотое сечение типографики */
     --fs-base: 16px;
     --fs-md: 26px;
-    --fs-lg: 46px;
-    --fs-xl: 90px; 
+    --fs-lg: 54px;
+    --fs-xl: 130px; 
 }
 
 * {
@@ -21,48 +35,98 @@
 }
 
 body {
-    background-color: var(--bg-deep);
-    color: var(--text-pure);
+    background-color: var(--bg-base);
+    color: var(--text-white);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
-/* Реалистичный фон: крупная гофра контейнера + текстурный шум + рассеянный свет */
+/* Презентационнаяwrapper-оболочка: Крупная гофра контейнера + Мягкие кофейные волны */
 .presentation-wrapper {
     position: relative;
     width: 100%;
-    /* Крупный шаг гофры (300px) с мягкими тенями, имитирующий реальные ребра контейнера */
     background: 
-        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%),
-        repeating-linear-gradient(90deg, var(--bg-deep), var(--bg-deep) 150px, #161c19 150px, #161c19 300px);
-    background-size: 100% 100%, 300px 100%;
+        linear-gradient(90deg, rgba(8,12,9,0.5) 0%, transparent 20%, transparent 80%, rgba(8,12,9,0.5) 100%),
+        repeating-linear-gradient(90deg, #080c09, #080c09 200px, #0e1411 200px, #0e1411 400px);
+    background-size: 100% 100%, 400px 100%;
 }
 
-/* Световые оверлеи (как вспышки фар или неонового света на фото) */
-.bg-overlay-glow {
+/* Слой 2: Текстура кофейных разводов / пенки на фоне */
+.bg-layer-coffee-foam {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(22, 44, 32, 0.4) 0%, transparent 60%),
-                radial-gradient(circle at 10% 80%, rgba(213, 180, 122, 0.05) 0%, transparent 50%);
+    background-image: url('https://unsplash.com');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05; 
+    mix-blend-mode: color-dodge;
     pointer-events: none;
     z-index: 1;
 }
 
-/* Индикатор прогресса чтения сверху */
-.scroll-progress {
+/* Слой 3: Микрофактура льняной / хлопковой дизайнерской бумаги */
+.bg-layer-linen-texture {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--color-brass);
-    width: 0%;
-    z-index: 100;
-    transition: width 0.2s ease;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px), 
+                      linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px);
+    background-size: 5px 5px, 100% 4px;
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Секции-слайды теперь идут друг за другом (удобно листать колесом/пальцем) */
+/* Фиксированная премиум-панель переключения страниц */
+.premium-navbar {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 14, 12, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    padding: 6px;
+    display: flex;
+    gap: 5px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.nav-btn {
+    font-family: 'Cinzel', 'Perandory', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-sub);
+    padding: 10px 24px;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-btn.active, .nav-btn:hover {
+    color: var(--text-white);
+    background: rgba(212, 178, 122, 0.15);
+    box-shadow: inset 0 0 10px rgba(212, 178, 122, 0.1);
+    border: 1px solid rgba(212, 178, 122, 0.2);
+    padding: 9px 23px; /* Компенсация бордера */
+}
+
+/* Страницы презентации */
+.page-view {
+    display: none;
+    width: 100%;
+}
+
+.page-view.active {
+    display: block;
+}
+
 .slide-section {
     position: relative;
     width: 100%;
@@ -70,18 +134,18 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 40px;
+    padding: 120px 40px 80px 40px;
     z-index: 10;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .slide-container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Многослойные премиальные заголовки */
+/* Заголовки */
 .title-wrap {
     position: relative;
     margin-bottom: 60px;
@@ -89,60 +153,59 @@ body {
 
 .giant-bg-text {
     position: absolute;
-    top: -55px;
-    left: -10px;
-    font-family: 'Cinzel', serif;
+    top: -65px;
+    left: -15px;
+    font-family: 'Perandory', serif;
     font-size: var(--fs-xl);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.08); /* Крупный прозрачный белый текст */
+    color: rgba(255, 255, 255, 0.05); 
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 0.8;
     pointer-events: none;
     white-space: nowrap;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 80%);
     z-index: 1;
 }
 
 .slide-title {
-    font-family: 'Cinzel', serif;
+    font-family: 'Perandory', serif;
     font-size: var(--fs-lg);
-    font-weight: 700;
-    color: var(--text-pure);
+    color: var(--text-white);
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
     z-index: 2;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .slide-title span {
-    color: var(--color-brass);
+    color: var(--color-brass-premium);
 }
 
-/* Адаптивная сетка карточек */
+/* Сетка контента */
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 40px;
 }
 
+/* Матовый глубокий акрил Windows 11 Mica Alt Blur */
 .premium-card {
-    background: rgba(31, 33, 36, 0.65); /* Чуть плотнее, чтобы текст не сливался с фоном */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-main);
+    background: rgba(10, 14, 12, 0.76); 
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius-premium);
     padding: 45px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    backdrop-filter: blur(30px) saturate(140%);
+    -webkit-backdrop-filter: blur(30px) saturate(140%);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
 
 .card-label {
-    font-family: 'Cinzel', serif;
+    font-family: 'Perandory', serif;
     font-size: var(--fs-base);
-    color: var(--color-brass);
+    color: var(--color-brass-premium);
     letter-spacing: 2px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-transform: uppercase;
 }
 
@@ -150,16 +213,89 @@ body {
     font-size: var(--fs-md);
     font-weight: 600;
     margin-bottom: 15px;
+    letter-spacing: -0.5px;
 }
 
 .card-text {
     font-size: var(--fs-base);
-    color: var(--text-muted);
+    color: var(--text-sub);
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
-/* Секция 10 — Новая адаптивная галерея вариантов представления */
+/* Специфические списки внутри карт */
+.card-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.card-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--text-sub);
+    font-weight: 300;
+}
+
+.card-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--color-brass-premium);
+}
+
+/* Стили таблиц для Сметы */
+.premium-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: var(--radius-premium);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(10, 14, 12, 0.5);
+    backdrop-filter: blur(25px);
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.premium-table th, .premium-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 15px;
+}
+
+.premium-table th {
+    font-family: 'Perandory', serif;
+    color: var(--color-brass-premium);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(14, 20, 17, 0.8);
+}
+
+.premium-table td {
+    color: var(--text-sub);
+    font-weight: 300;
+}
+
+.premium-table tr:last-child td {
+    border-bottom: none;
+}
+
+.premium-table .row-total td {
+    font-family: 'Perandory', serif;
+    font-size: 18px;
+    color: var(--color-brass-premium);
+    font-weight: 600;
+    background: rgba(212, 178, 122, 0.05);
+    border-top: 1px solid rgba(212, 178, 122, 0.2);
+}
+
+/* Галерея */
 .gallery-container {
     display: flex;
     flex-direction: column;
@@ -168,71 +304,54 @@ body {
 }
 
 .gallery-title {
-    font-family: 'Cinzel', serif;
+    font-family: 'Perandory', serif;
     font-size: var(--fs-md);
-    color: var(--color-brass);
+    color: var(--color-brass-premium);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2х2 на средних и мобильных экранах */
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px;
     width: 100%;
 }
 
 .gallery-item {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10; /* Жестко держит пропорции, фотки больше не исчезнут */
-    background: var(--color-anthracite);
-    border-radius: var(--radius-main);
+    aspect-ratio: 16 / 10; 
+    background: #0d120f;
+    border-radius: var(--radius-premium);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Идеально растягивает картинку без искажений */
+    object-fit: cover; 
     display: block;
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .gallery-item:hover img {
     transform: scale(1.04);
 }
 
-/* МЕДИА-ЗАПРОСЫ ПОД ТЕЛЕФОНЫ И ПЛАНШЕТЫ (АДАПТИВНОСТЬ) */
+/* Адаптив под мобильные устройства */
 @media (max-width: 1024px) {
-    :root {
-        --fs-xl: 70px;
-        --fs-lg: 38px;
-    }
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    :root { --fs-xl: 85px; --fs-lg: 38px; }
+    .content-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    :root {
-        --fs-xl: 52px;
-        --fs-lg: 32px;
-        --fs-md: 22px;
-    }
-    .slide-section {
-        padding: 60px 20px;
-    }
-    .premium-card {
-        padding: 30px;
-    }
-    .content-grid {
-        grid-template-columns: 1fr; /* На мобилках карточки встают в одну колонку */
-        gap: 25px;
-    }
-    .gallery-grid {
-        grid-template-columns: 1fr; /* Фотографии на телефонах идут одна за другой крупно */
-    }
+    :root { --fs-xl: 54px; --fs-lg: 30px; --fs-md: 20px; }
+    .slide-section { padding: 90px 20px 50px 20px; }
+    .premium-card { padding: 30px; }
+    .premium-navbar { width: 90%; justify-content: center; }
+    .nav-btn { padding: 8px 14px; font-size: 11px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .premium-table th, .premium-table td { padding: 12px 14px; font-size: 13px; }
 }

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREVVO UNIVERSAL — Оптимальный баланс 5-7 млн ₽</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-universal">
+
+<!-- Индикатор прогресса скролла сверху страницы -->
+<div class="scroll-progress" id="progressBar"></div>
+
+<div class="presentation-wrapper">
+    <!-- Световые оверлеи огненного оранжевого и глубокого бордового цвета -->
+    <div class="bg-layer-glow"></div>
+    <div class="bg-layer-foam"></div>
+    <div class="bg-layer-linen-texture"></div>
+
+    <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ UNIVERSAL -->
+    <main class="slide-container">
+        
+        <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
+        <section class="slide-section" style="padding-top: 60px;">
+            <div class="title-wrap">
+                <div class="giant-bg-text" style="color: rgba(255, 69, 0, 0.04);">Brevvo Universal</div>
+                <h1 class="slide-title">Оптимальный Сбалансированный <span>Старт Universal</span></h1>
+            </div>
+
+            <!-- Локальное подменю переключения контента (Вшито внутри страницы) -->
+            <div class="inner-tab-panel">
+                <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
+                <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
+            </div>
+
+            <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ UNIVERSAL (АКТИВНА ПО ДЕФОЛТУ) -->
+            <div class="tab-content-view active" id="viewLocalConcept">
+                <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
+                    <div class="premium-card" style="border-left: 3px solid var(--color-accent);">
+                        <div class="card-label">Оптимальное импортозамещение и комфорт</div>
+                        <div class="card-value">СТАЦИОНАРНЫЙ ПАВИЛЬОН НТО С ЛОКАЛЬНОЙ ТЕРРАСОЙ</div>
+                        <p class="card-text">Идеальный баланс между капитальными затратами и премиальным восприятием бренда. Конфигурация Universal — это полноценное городское кафе в формате Некапитального Торгового Сооружения (НТО), ориентированное на смешанный трафик (пешеходный поток + летняя посадочная зона). Проект полностью автономен, но за счет оптимизации инженерных сетей лимит необходимой мощности снижен до 25–30 кВт, что позволяет подключаться по упрощенным договорам к городским или коммерческим сетям без выкупа дорогостоящих ТУ на 50 кВт. Вместо сложного в обработке морского контейнера используется кастомный стационарный павильон увеличенной площади с панорамным остеклением в пол. Технологический пак HoReCa полностью импортозамещен: европейские дефицитные позиции заменены на сверхнадежные фабричные бренды России, Белоруссии и Азии (оборудование Abat, Carboma, Hurakan), имеющие постоянные склады запчастей и развитую сеть сервисных инженеров в Красноярске. Аутсорсинг кондитерских изделий сохраняет эргономику кухни и сокращает расходы на персонал.</p>
+                    </div>
+                </div>
+
+                <!-- Фотогалерея Универсального варианта (universal1.png - universal4.png) -->
+                <div class="gallery-container">
+                    <h2 class="gallery-title">Варианты представления стационарного павильона Universal</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item"><img src="universal1.png" alt="Вариант представления Universal 1"></div>
+                        <div class="gallery-item"><img src="universal2.png" alt="Вариант представления Universal 2"></div>
+                        <div class="gallery-item"><img src="universal3.png" alt="Вариант представления Universal 3"></div>
+                        <div class="gallery-item"><img src="universal4.png" alt="Вариант представления Universal 4"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- ВНУТРЕННЯЯ ВКЛАДКА 2: РЕАЛЬНАЯ РЫНОЧНАЯ СМЕТА И ФИНМОДЕЛЬ -->
+            <div class="tab-content-view" id="viewLocalFinance">
+                <div class="content-grid">
+                    
+                    <!-- ТАБЛИЦА СМЕТЫ CAPEX (UNIVERSAL) -->
+                    <div class="premium-card">
+                        <div class="card-label" style="color: var(--color-accent);">Капитальные вложения Balance</div>
+                        <div class="card-value">Сводная смета пакета Universal</div>
+                        <div class="premium-table-wrap">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Компонент спецификации</th>
+                                        <th>Российское и азиатское оборудование (РФ)</th>
+                                        <th>Стоимость (₽)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Производственный блок</td>
+                                        <td>Кофемашина Gastoroma/Promac 3GR в лизинг, молки Fiorenzato F64 E (2 шт.)</td>
+                                        <td>442 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Фильтр и тепловой пак</td>
+                                        <td>Молка Fiorenzato Drogheria, фильтр Marco, конвектомат Abat ПР-6-1/1</td>
+                                        <td>333 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Холод и моечная зона</td>
+                                        <td>Стол Polair (базовый), шкафы Carboma, купольная ПММ МПУ-700, раковины</td>
+                                        <td>445 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Конструктив и фасад НТО</td>
+                                        <td>Стационарный каркасный павильон увеличенной площади, панорамное остекление</td>
+                                        <td>1 200 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Сети, климат и ТУ 25 кВт</td>
+                                        <td>Прямое кабельное подключение субаренды, вентиляция Hurakan, баки, осмос</td>
+                                        <td>650 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Внешний вид и мебель</td>
+                                        <td>Светодиодный короб, композит, мебель из фанеры на заказ, обустройство террасы</td>
+                                        <td>480 000</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--color-accent); font-weight: 500;">Резервы и Оборот</td>
+                                        <td>Запуск рекламы, первый закуп заморозки, строительный резерв, 3 мес. ФОТ</td>
+                                        <td>1 950 000</td>
+                                    </tr>
+                                    <tr class="row-total" style="border-top-color: var(--color-accent);">
+                                        <td>ИТОГО ПАКЕТ UNIVERSAL</td>
+                                        <td>Запуск сбалансированного городского павильона под ключ</td>
+                                        <td style="color: var(--color-accent);">5 500 000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ТАБЛИЦА ФИНМОДЕЛИ И OPEX -->
+                    <div class="premium-card">
+                        <div class="card-label" style="color: var(--color-accent);">Операционная эффективность</div>
+                        <div class="card-value">Экономические сценарии и OPEX</div>
+                        <div class="premium-table-wrap">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Показатель / Метрика</th>
+                                        <th>Пессимистичный</th>
+                                        <th>Базовый (Balance)</th>
+                                        <th>Целевой</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Чеков в сутки (чек 450 ₽)</td>
+                                        <td>110 чеков</td>
+                                        <td style="color: #ffffff; font-weight: 500;">210 чеков</td>
+                                        <td>300 чеков</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Выручка в месяц</td>
+                                        <td>1 485 000 ₽</td>
+                                        <td style="color: #ffffff; font-weight: 500;">2 835 000 ₽</td>
+                                        <td>4 050 000 ₽</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Foodcost (Переменные 35%)</td>
+                                        <td>519 750 ₽</td>
+                                        <td>992 250 ₽</td>
+                                        <td>1 417 500 ₽</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Фиксированный OPEX (мес.)</td>
+                                        <td>640 000 ₽</td>
+                                        <td>640 000 ₽</td>
+                                        <td>640 000 ₽</td>
+                                    </tr>
+                                    <tr class="row-total" style="border-top-color: var(--color-accent);">
+                                        <td>ЧИСТАЯ ПРИБЫЛЬ</td>
+                                        <td style="color: #cc7a7a;">176 750 ₽</td>
+                                        <td style="color: #83cc83; font-weight: 600;">919 250 ₽</td>
+                                        <td style="color: #83cc83;">1 487 500 ₽</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="margin-top: 15px; font-size: 14px; color: var(--text-dim); font-weight: 300; line-height: 1.5;">
+                            *Фиксированный OPEX в 640 000 ₽ включает ФОТ 3-х бариста (сменный график) и управляющего с начислениями (380 тыс.), прямую аренду площади НТО (140 тыс.), лимиты электричества 25 кВт и логистику. Расчетная точка безубыточности: <strong>90 заказов в день</strong>. Окупаемость: 10–13 месяцев.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- КОНТАКТНЫЙ СЛАЙД UNIVERSAL -->
+        <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
+            <div class="premium-card" style="border-left: 4px solid var(--color-accent);">
+                <div class="card-label">Автор ИС и разработки Balance</div>
+                <div class="card-value" style="font-family: 'Perandory', serif; font-size: 24px;">ОБСУДИТЬ ПАКЕТ UNIVERSAL</div>
+                <div class="contact-grid">
+                    <div class="contact-item"><span>Telegram</span><a href="https://t.me" target="_blank">@Architect_lis</a></div>
+                    <div class="contact-item"><span>Email</span><a href="mailto:Lisenkovdaniil1910@gmail.com">Lisenkovdaniil1910@gmail.com</a></div>
+                    <div class="contact-item"><span>Телефон</span><a href="tel:+79135121811">+7 (913) 512-18-11</a></div>
+                </div>
+            </div>
+            <footer class="premium-footer">
+                <div>© 2026 BREVVO UNIVERSAL. Все права защищены.</div>
+                <div>Автор архитектуры и сметы: Даниил Лисенков</div>
+            </footer>
+        </section>
+
+    </main>
+</div>
+
+<!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS ДЛЯ СТРАНИЦЫ UNIVERSAL -->
+<nav class="liquid-nav-panel">
+    <a href="index.html" class="liquid-btn">📊 Главная</a>
+    <a href="base.html" class="liquid-btn">⚡ Base (2-3 млн)</a>
+    <a href="universal.html" class="liquid-btn active">🔥 Universal (5-7 млн)</a>
+    <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
+</nav>
+
+<script>
+    // Скрипт линии прогресса
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Логика локальных внутренних вкладок (Концепция / Смета)
+    const btnConcept = document.getElementById('btnLocalConcept');
+    const btnFinance = document.getElementById('btnLocalFinance');
+const viewConcept = document.getElementById('viewLocalConcept');
+const viewFinance = document.getElementById('viewLocalFinance');
+if (btnConcept && btnFinance && viewConcept && viewFinance) {
+btnConcept.addEventListener('click', () => {
+btnFinance.classList.remove('active');
+btnConcept.classList.add('active');
+viewFinance.classList.remove('active');
+viewConcept.classList.add('active');
+});
+btnFinance.addEventListener('click', () => {
+btnConcept.classList.remove('active');
+btnFinance.classList.add('active');
+viewConcept.classList.remove('active');
+viewFinance.classList.add('active');
+});
+}
+// Ленивая валидация изображений
+const images = document.querySelectorAll('.gallery-item img');
+images.forEach(img => {
+img.addEventListener('error', function() {
+this.style.display = 'none';
+const filename = this.getAttribute('src');
+this.parentNode.innerHTML = <div style="display:flex; justify-content:center; align-items:center; height:100%; width:100%; color:rgba(255,255,255,0.25); font-size:13px; text-transform:uppercase; letter-spacing:1px;">${filename} не найден</div>;
+});
+});

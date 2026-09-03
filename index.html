@@ -6,7 +6,7 @@
     <title>BREVVO DRIVE COFFEE — Premium Presentation</title>
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,229 +14,385 @@
 <!-- Индикатор прогресса скролла сверху страницы -->
 <div class="scroll-progress" id="progressBar"></div>
 
+<!-- Фиксированная премиум-панель навигации -->
+<nav class="premium-navbar">
+    <button class="nav-btn active" id="btnConcept">Концепт объекта</button>
+    <button class="nav-btn" id="btnFinance">Финансовая модель</button>
+</nav>
+
 <div class="presentation-wrapper">
-    <!-- Световые премиальные оверлеи -->
-    <div class="bg-overlay-glow"></div>
+    <!-- Световые премиальные оверлеи и кофейные текстуры -->
+    <div class="bg-layer-coffee-foam"></div>
+    <div class="bg-layer-linen-texture"></div>
 
-    <!-- СЛАЙД 1 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Brevvo Drive</div>
-                <h1 class="slide-title">BREVVO <span>DRIVE COFFEE</span></h1>
-            </div>
-            <div class="content-grid" style="grid-template-columns: 1fr;">
-                <div class="premium-card" style="padding: 55px;">
-                    <div class="card-label">Концепт премиального сегмента</div>
-                    <div class="card-value" style="font-family: 'Cinzel', serif;">КОФЕ В ДВИЖЕНИИ</div>
-                    <p class="card-text" style="max-width: 800px;">Премиальная drive-through кофейня, интегрированная в модифицированный 20-футовый архитектурный контейнер. Экстерьер: глубокий антрацит, темное дерево, благородные латунные акценты.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ================= СТРАНИЦА 1: КОНЦЕПТ ОБЪЕКТА ================= -->
+    <main class="page-view active" id="pageConcept">
 
-    <!-- СЛАЙД 2 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Архитектура</div>
-                <h1 class="slide-title">Параметры <span>Объекта</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Конструктив</div>
-                    <div class="card-value">20 FT Контейнер</div>
-                    <p class="card-text">Общая площадь архитектурного модуля составляет 14,8 м² (6,06 × 2,44 м). Базовый промышленный стандарт One-Trip.</p>
+        <!-- СЛАЙД 1 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Brevvo Drive</div>
+                    <h1 class="slide-title">BREVVO <span>DRIVE COFFEE</span></h1>
                 </div>
-                <div class="premium-card">
-                    <div class="card-label">Эргономика</div>
-                    <div class="card-value">9,6 м² + 4,8 м²</div>
-                    <p class="card-text">Четкое функциональное разделение на изолированную технологическую кухню и скрытый технический блок с санузлом.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 3 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Технология</div>
-                <h1 class="slide-title">Технологические <span>Линии</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Линия №1</div>
-                    <div class="card-value">Кофейный модуль</div>
-                    <p class="card-text">Потоковая эргономика слева направо: 3-группный полуавтомат, две эспрессо-молки, фильтр-станция, встроенный ринзер и быстрая зона сборки.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Линия №2</div>
-                    <div class="card-value">Регенерация блюд</div>
-                    <p class="card-text">Вертикальное размещение оборудования для оптимизации пространства столешницы: холодильный стол, инжекторный пароконвектомат, контактный гриль.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 4 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Автономность</div>
-                <h1 class="slide-title">Инженерные <span>Решения</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Водоснабжение</div>
-                    <div class="card-value">Изолированные баки</div>
-                    <p class="card-text">Две раздельные емкости по 1000 литров (кухня/санузел). Многоступенчатая фильтрация воды и обратный осмос BWT.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Климатические условия</div>
-                    <div class="card-value">50 кВт • Красноярск</div>
-                    <p class="card-text">Выделенная мощность 50 кВт (3 фазы). Промышленное утепление мостиков холода, подогрев стоков и скоростная тепловая завеса.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 5 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Спецификация</div>
-                <h1 class="slide-title">Премиум <span>Комплектация</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Экстракция и Помол</div>
-                    <div class="card-value">Nuova Simonelli & Mahlkönig</div>
-                    <p class="card-text">Флагманская модель Appia Life 3GR, автоматический темпер Puqpress M2, измельчитель премиум-сегмента Mahlkönig EK43 под фильтр.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Кухонный инвентарь</div>
-                    <div class="card-value">Radax & Brema</div>
-                    <p class="card-text">Инжекторная шестиуровневая печь Radax Turgenev, ледогенератор Brema на 26 кг кубиков в сутки, купольная ПММ T-Lux с дренажной помпой.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-        <!-- СЛАЙД 6 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Операции</div>
-                <h1 class="slide-title">Модель <span>Процессов</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Продукция</div>
-                    <div class="card-value">Аутсорсинг выпечки</div>
-                    <p class="card-text">Полный отказ от кондитерского цеха на точке. Закупка готовой заморозки у крафтовых пекарен. Снижение энергозатрат и рисков СЭС.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Тайминг в пик</div>
-                    <div class="card-value">40–50 заказов / час</div>
-                    <p class="card-text">Синхронная работа трех бариста: Бариста 1 (кофейная группа), Бариста 2 (регенерация еды и сборка), Бариста 3 (касса и поддержка).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 7 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Бюджет</div>
-                <h1 class="slide-title">Капитальные <span>Затраты</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Производство</div>
-                    <div class="card-value">6,2 – 6,6 млн ₽</div>
-                    <p class="card-text">Включает приобретение технологического оборудования, модификацию контейнера, фасадную отделку деревом и металлом, интеграцию систем вентиляции.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Инженерия и Сети</div>
-                    <div class="card-value">2,0 – 2,2 млн ₽</div>
-                    <p class="card-text">Подготовка изолированных узлов водоснабжения, систем автоматики стоков, прокладка внутренних силовых линий электромонтажа.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 8 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Инвестиции</div>
-                <h1 class="slide-title">Сводный <span>Бюджет</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Физический объект</div>
-                    <div class="card-value">10,5 млн ₽</div>
-                    <p class="card-text">Готовый конструктив НТО с полным комплектом установленного оборудования и благоустройством прилегающих подъездных путей.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Запуск под ключ</div>
-                    <div class="card-value" style="color: var(--color-brass);">14,0 – 16,0 млн ₽</div>
-                    <p class="card-text">Включает строительный резерв (+15%), юридические согласования, первый товарный запас и 3 месяца оборотного капитала.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 9 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Экономика</div>
-                <h1 class="slide-title">Эффективность <span>OPEX</span></h1>
-            </div>
-            <div class="content-grid">
-                <div class="premium-card">
-                    <div class="card-label">Операционное удержание</div>
-                    <div class="card-value">1 100 000 ₽ / мес</div>
-                    <p class="card-text">Фиксированные затраты: ФОТ персонала с начислениями (560 тыс.), аренда земли (180 тыс.), лимиты электроэнергии (120 тыс.), логистика воды.</p>
-                </div>
-                <div class="premium-card">
-                    <div class="card-label">Точка окупаемости</div>
-                    <div class="card-value">160 – 190 зак / день</div>
-                    <p class="card-text">Порог безубыточности при среднем чеке в 600 ₽. Прогнозный период возврата инвестиционного капитала: 14–18 месяцев работы.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- СЛАЙД 10 -->
-    <section class="slide-section">
-        <div class="slide-container">
-            <div class="title-wrap">
-                <div class="giant-bg-text">Рендеры</div>
-                <h1 class="slide-title">Архитектурная <span>Визуализация</span></h1>
-            </div>
-            
-            <div class="gallery-container">
-                <h2 class="gallery-title">Варианты представления объекта</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="image1.png" alt="Вариант представления 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="image2.png" alt="Вариант представления 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="image3.png" alt="Вариант представления 3">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="image4.png" alt="Вариант представления 4">
+                <div class="content-grid" style="grid-template-columns: 1fr;">
+                    <div class="premium-card" style="padding: 55px;">
+                        <div class="card-label">Концепт премиального сегмента</div>
+                        <div class="card-value" style="font-family: 'Perandory', serif;">КОФЕ В ДВИЖЕНИИ</div>
+                        <p class="card-text">Новый стандарт качества в сегменте придорожного сервиса. BREVVO — это высокотехнологичный drive-through комплекс премиум-уровня, спроектированный на базе модифицированного 20-футового морского контейнера (стандарт One-Trip). Архитектурная концепция совмещает строгий индустриальный фасад в оттенках глубокого антрацита с мягкими, теплыми панелями из натурального дерева, латунными элементами и скрытой линейной подсветкой. Вся логистика объекта выстроена вокруг одной задачи: выдать бескомпромиссный продукт ресторанного класса за минимальное время, не заставляя водителя выходить из автомобиля.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- СЛАЙД 2 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Архитектура</div>
+                    <h1 class="slide-title">Параметры <span>Объекта</span></h1>
+                </div>
+                <div class="content-grid">
+                    <div class="premium-card">
+                        <div class="card-label">Конструктив</div>
+                        <div class="card-value">20 FT Контейнер</div>
+                        <p class="card-text">В основе здания лежит прочный стальной каркас морского контейнера с наружными габаритами 6,06 × 2,44 м и общей площадью 14,8 м². Конструкция полностью мобильна, что снижает риски при смене локации и позволяет разворачивать объект как Некапитальное Торговое Сооружение (НТО) без сложного капитального строительства.</p>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-label">Эргономика</div>
+                        <div class="card-value">9,6 м² + 4,8 м²</div>
+                        <p class="card-text">Каждый сантиметр площади распределен строго по правилам бережливого производства (Lean):
+                            <ul class="card-list">
+                                <li><strong>Рабочая кухня (9,6 м²):</strong> Габариты 4,0 × 2,4 м. Разработана под одновременную скоростную работу до 3-х бариста в пиковые часы.</li>
+                                <li><strong>Техническая зона (4,8 м²):</strong> Габариты 2,0 × 2,4 м. Изолированный блок под санузел персонала, узел водоподготовки и основной товарный склад.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 3 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Технология</div>
+                    <h1 class="slide-title">Технологические <span>Линии</span></h1>
+                </div>
+                <div class="content-grid">
+                    <div class="premium-card">
+                        <div class="card-label">Линия №1</div>
+                        <div class="card-value">Кофейный модуль</div>
+                        <p class="card-text">Линейная логистика сборки напитков организована строго слева направо: массивная трехгруппная автоматическая кофемашина → две независимые эспрессо-молки под разные сорта зерна → выделенная станция фильтр-кофе со своей кофемолкой → встроенный скоростной ринзер для мгновенного мытья питчеров → эргономичная рабочая зона сборки → теплое окно выдачи заказа в автомобиль.</p>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-label">Линия №2</div>
+                        <div class="card-value">Регенерация блюд</div>
+                        <p class="card-text">Параллельная линия горячей кухни спроектирована по вертикальному принципу для жесткой экономии площади столешницы. Нижний ярус занимает нержавеющий холодильный стол с гастроемкостями GN. На нем установлены прижимной контактный гриль и индукционная плита, а верхний технологический ярус отведен под компактный пароконвектомат, СВЧ и профессиональный аэрогриль.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 4 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Автономность</div>
+                    <h1 class="slide-title">Инженерные <span>Решения</span></h1>
+                </div>
+                <div class="content-grid">
+                    <div class="premium-card">
+                        <div class="card-label">Водоснабжение</div>
+                        <div class="card-value">Изолированные баки</div>
+                        <p class="card-text">Система полностью независима от городских сетей. В техзоне смонтированы две отдельные пищевые емкости по 1000 литров. Первый контур питает исключительно кухню и кофемашину, проходя через узел грубой фильтрации, систему обратного осмоса BWT HoReCa и блок минерализации. Второй изолированный контур снабжает исключительно санузел персонала.</p>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-label">Климат и Энергетика</div>
+                        <div class="card-value">50 кВт • Красноярск</div>
+                        <p class="card-text">Для стабильной работы всего теплового оборудования заложена проектная мощность 50 кВт (3 фазы, 380В). Конструкция адаптирована под суровые зимние условия Красноярска: выполнено напыление пенополиуретана по всему контуру, устранены мостики холода, установлены греющие кабели на сливах и мощная скоростная тепловая завеса над сервисным окном.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 5 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Спецификация</div>
+                    <h1 class="slide-title">Премиум <span>Комплектация</span></h1>
+                </div>
+                <div class="content-grid">
+                    <div class="premium-card">
+                        <div class="card-label">Кофейная группа</div>
+                        <div class="card-value">Nuova Simonelli & Mahlkönig</div>
+                        <p class="card-text">В основе кофейного пака лежит автоматическая кофемашина <strong>Nuova Simonelli Appia Life 3GR V</strong> с высокими группами и экономайзером, работающая в паре с молками MDJ и MDXS. Автоматический темпер <strong>Puqpress M2</strong> обеспечивает стабильность трамбовки и исключает человеческий фактор. Фильтр-станция укомплектована промышленной кофемолкой <strong>Mahlkönig EK43</strong> и капельной пивоварней Bravilor.</p>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-label">Кухонный пак</div>
+                        <div class="card-value">Radax & Polair & T-Lux</div>
+                        <p class="card-text">Термическая обработка выполняется в компактном инжекторном пароконвектомате <strong>Radax Turgenev на 6 уровней GN 1/1</strong>. За холод отвечает стол-холодильник Polair TM2-G, за лед — генератор кубиков Brema CB 246A HC (26 кг/сутки). Скоростное мытье инвентаря и чашек обеспечивает профессиональная посудомоечная машина <strong>T-Lux DWM-50 с дренажной помпой</strong> (до 30 корзин/час).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+          <!-- СЛАЙД 6 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Операции</div>
+                    <h1 class="slide-title">Модель <span>Процессов</span></h1>
+                </div>
+                <div class="content-grid">
+                    <div class="premium-card">
+                        <div class="card-label">Продукция</div>
+                        <div class="card-value">Аутсорсинг выпечки</div>
+                        <p class="card-text">Полный отказ от организации сырьевого кондитерского цеха на территории объекта. Вся линейка свежей выпечки, десертов, сэндвичей и круассанов закупается у крупных крафтовых пекарен-партнеров в формате заморозки или ежедневной утренней доставки. Это радикально экономит бюджет на дорогостоящее расстоечное и тестомесильное оборудование, сокращает лимиты энергопотребления, освобождает драгоценные квадратные метров рабочей зоны и полностью нивелирует жесткие риски и штрафы со стороны Роспотребнадзора.</p>
+                    </div>
+                    <div class="premium-card">
+                        <div class="card-label">Скоростной регламент</div>
+                        <div class="card-value">40–50 заказов / час</div>
+                        <p class="card-text">В пиковые часы нагрузка распределяется между 3 бариста по жесткому регламенту:
+                            <ul class="card-list">
+                                <li><strong>Бариста №1:</strong> Бесперебойное производство эспрессо и классических молочных напитков на кофейной группе.</li>
+                                <li><strong>Бариста №2:</strong> Работа на кухонной линии: регенерация панини, сэндвичей и выпечки в пароконвектомате/гриле, финальная сборка и упаковка заказа.</li>
+                                <li><strong>Бариста №3:</strong> Кассовые операции, фиксация заказов, работа с автомобильной очередью через окно выдачи.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 7 -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Рендеры</div>
+                    <h1 class="slide-title">Архитектурная <span>Визуализация</span></h1>
+                </div>
+                
+                <div class="gallery-container">
+                    <h2 class="gallery-title">Варианты представления объекта</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="image1.png" alt="Вариант представления 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image2.png" alt="Вариант представления 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image3.png" alt="Вариант представления 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image4.png" alt="Вариант представления 4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ================= СТРАНИЦА 2: ФИНАНСОВАЯ МОДЕЛЬ ================= -->
+    <main class="page-view" id="pageFinance">
+
+        <!-- СЛАЙД 8: КАПИТАЛЬНЫЕ ВЛОЖЕНИЯ -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Капвложения</div>
+                    <h1 class="slide-title">Инвестиционный <span>Бюджет (CAPEX)</span></h1>
+                </div>
+                
+                <div class="premium-table-wrap">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Категория затрат</th>
+                                <th>Детализация / Описание статей расходов</th>
+                                <th>Бюджет (₽)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Производственный блок</td>
+                                <td>Флагманский кофейный пак (Simonelli, Mahlkönig, Puqpress, Bravilor), тепловое и холодильное кухонное оборудование (Radax, Brema, Polair), посудомоечная станция.</td>
+                                <td>3 300 000 – 3 600 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Конструктив и Стройка</td>
+                                <td>Приобретение контейнера 20 ft (One-Trip standard), слесарные работы, врезка оконных блоков, комплексное бесшовное утепление пенополиуретаном под климат Красноярска, гигиеническая облицовка стен.</td>
+                                <td>1 410 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Премиальный Фасад</td>
+                                <td>Наружная облицовка металлом и панелями из натурального темного дерева, изготовление защитного козырька-навеса над окном выдачи, брендинг и световая вывеска с объемными буквами.</td>
+                                <td>780 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Электрика и Вентиляция</td>
+                                <td>Сборка силового ВРУ, щитовое автоматическое оборудование, прокладка внутренних кабельных трасс, монтаж приточно-вытяжной вентиляции с жироуловителями и зимней защитой.</td>
+                                <td>530 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Автономная Инженерия</td>
+                                <td>Накопительные баки ГВС/ХВС (2 × 1000 литров), герметичный резервуар для приема стоков на 2000 литров с датчиками контроля, насосные станции, узел многоступенчатого осмоса BWT.</td>
+                                <td>680 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">ИТ, Окружение и Лицензии</td>
+                                <td>Благоустройство подъездных путей drive-through (асфальтирование, разметка), POS-терминалы, ККТ, кассовый софт, система кругового видеонаблюдения, согласование схемы НТО города.</td>
+                                <td>1 640 000 – 1 670 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Резервы и Оборот</td>
+                                <td>Первоначальный товарный запас (кофе, молоко, упаковка), строительный резерв на непредвиденные работы (+15%), стартовый оборотный капитал на ФОТ и аренду на первые 3 месяца.</td>
+                                <td>4 140 000 – 5 140 000</td>
+                            </tr>
+                            <tr class="row-total">
+                                <td>ИТОГОВЫЙ БЮДЖЕТ</td>
+                                <td>Полный объем инвестиций для запуска проекта под ключ до выхода на самоокупаемость</td>
+                                <td>14 000 000 – 16 000 000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 9: ЕЖЕМЕСЯЧНЫЕ РАСХОДЫ -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Расходы</div>
+                    <h1 class="slide-title">Операционные <span>Затраты (OPEX)</span></h1>
+                </div>
+                
+                <div class="premium-table-wrap">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Постоянная статья расходов</th>
+                                <th>Детализация затрат / Операционное обоснование</th>
+                                <th>Сумма в месяц (₽)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">ФОТ (Персонал)</td>
+                                <td>Оплата труда команды из 4-х профессиональных бариста (сменный график) + 1 управляющий точкой + хозработы/клининг на аутсорсинге. Сумма включает все обязательные налоговые отчисления и взносы.</td>
+                                <td>560 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Аренда земли</td>
+                                <td>Ежемесячная стоимость аренды коммерческого участка под размещение некапитального объекта.</td>
+                                <td>180 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Энергоресурсы</td>
+                                <td>Коммунальные платежи за электроэнергию (активная работа приборов мощностью 50 кВт в климатических условиях Сибири).</td>
+                                <td>120 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Обеспечение систем</td>
+                                <td>Регулярный подвоз чистой питьевой воды водовозом, вывоз жидких бытовых стоков ассенизатором, сбор и утилизация твердых бытовых отходов (ТБО).</td>
+                                <td>50 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Маркетинг и Трафик</td>
+                                <td>Локальное продвижение точки, удержание автомобильного трафика, таргетированная реклама, сезонное оформление и обновление наружного меню.</td>
+                                <td>80 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">ИТ и Администрация</td>
+                                <td>Лицензии кассового ПО, выделенный беспроводной интернет (основной + резервный каналы), банковский эквайринг, услуги удаленной бухгалтерии, кассовое обслуживание.</td>
+                                <td>40 000</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Сервис и Амортизация</td>
+                                <td>Резервный фонд на техническое обслуживание кофемашины, замену картриджей фильтр-систем BWT, закупку профессиональной химии и мелкого барного инвентаря.</td>
+                                <td>70 000</td>
+                            </tr>
+                            <tr class="row-total">
+                                <td>ИТОГО ФИКСИРОВАННЫЙ OPEX</td>
+                                <td>Ежемесячное финансовое бремя точки до учета переменной себестоимости продуктов (Foodcost 35%)</td>
+                                <td>1 100 000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+                <!-- СЛАЙД 10: СЦЕНАРИИ ДОХОДНОСТИ -->
+        <section class="slide-section">
+            <div class="slide-container">
+                <div class="title-wrap">
+                    <div class="giant-bg-text">Экономика</div>
+                    <h1 class="slide-title">Прогноз <span>Эффективности</span></h1>
+                </div>
+                
+                <div class="premium-table-wrap">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Финансовый показатель</th>
+                                <th>Пессимистичный сценарий</th>
+                                <th>Базовый сценарий</th>
+                                <th>Целевой сценарий</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Заказы в сутки (чек 600 ₽)</td>
+                                <td>150 чеков</td>
+                                <td style="color: #ffffff; font-weight: 500;">250 чеков</td>
+                                <td>350 чеков</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Выручка в месяц</td>
+                                <td>2 700 000 ₽</td>
+                                <td style="color: #ffffff; font-weight: 500;">4 500 000 ₽</td>
+                                <td>6 300 000 ₽</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Foodcost (Себестоимость 35%)</td>
+                                <td>945 000 ₽</td>
+                                <td>1 575 000 ₽</td>
+                                <td>2 205 000 ₽</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Постоянные расходы (OPEX)</td>
+                                <td>1 100 000 ₽</td>
+                                <td>1 100 000 ₽</td>
+                                <td>1 100 000 ₽</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Налоги и Эквайринг (~12.5%)</td>
+                                <td>337 500 ₽</td>
+                                <td>562 500 ₽</td>
+                                <td>787 500 ₽</td>
+                            </tr>
+                            <tr class="row-total">
+                                <td>ЧИСТАЯ ПРИБЫЛЬ В МЕСЯЦ</td>
+                                <td style="color: #cc7a7a;">317 500 ₽</td>
+                                <td style="color: #ffffff; font-weight: 600;">1 262 500 ₽</td>
+                                <td style="color: #83cc83;">2 207 500 ₽</td>
+                            </tr>
+                            <tr>
+                                <td style="color: var(--color-brass-premium); font-weight: 500;">Операционный статус</td>
+                                <td style="color: #cc7a7a;">Ниже точки окупаемости</td>
+                                <td style="color: #ffffff;">Стабильный бизнес</td>
+                                <td style="color: #83cc83;">Максимальный трафик</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 25px; font-size: 14px; color: var(--text-sub); font-weight: 300; text-align: center;">
+                    *Расчетная критическая точка безубыточности проекта составляет <strong style="color: var(--color-brass-premium);">160–190 заказов в день</strong>. Средний период возврата инвестиций: 14–18 месяцев.
+                </p>
+            </div>
+        </section>
+    </main>
 
 </div>
 
@@ -249,7 +405,7 @@
         document.getElementById('progressBar').style.width = scrolled + '%';
     });
 
-    // Безопасная валидация изображений: если файл отсутствует в директории, блок не схлопнется
+    // Валидация изображений галереи: если картинки нет, блок сохраняет геометрию и выводит текст
     const images = document.querySelectorAll('.gallery-item img');
     images.forEach(img => {
         img.addEventListener('error', function() {
@@ -258,7 +414,28 @@
             this.parentNode.innerHTML = `<div style="display:flex; justify-content:center; align-items:center; height:100%; width:100%; color:rgba(255,255,255,0.25); font-size:13px; text-transform:uppercase; letter-spacing:1px; min-height:inherit;">${filename} не найден</div>`;
         });
     });
+
+    // Логика переключения между вкладками
+    const btnConcept = document.getElementById('btnConcept');
+    const btnFinance = document.getElementById('btnFinance');
+    const pageConcept = document.getElementById('pageConcept');
+    const pageFinance = document.getElementById('pageFinance');
+
+    btnConcept.addEventListener('click', () => {
+        btnFinance.classList.remove('active');
+        btnConcept.classList.add('active');
+        pageFinance.classList.remove('active');
+        pageConcept.classList.add('active');
+        window.scrollTo(0, 0); 
+    });
+
+    btnFinance.addEventListener('click', () => {
+        btnConcept.classList.remove('active');
+        btnFinance.classList.add('active');
+        pageConcept.classList.remove('active');
+        pageFinance.classList.add('active');
+        window.scrollTo(0, 0);
+    });
 </script>
 </body>
 </html>
-

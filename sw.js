@@ -1,12 +1,11 @@
 /**
  * BREVVO ECOSYSTEM — Ультимативный тотальный Precaching движок
- * Полностью ликвидирует TLS-рукопожатия и кэширует весь сайт целиком
+ * Версия v3-ultimate — Принудительный сброс кэша для центрирования Liquid Glass
  * Разработчик архитектуры: Даниил Лисенков (c) 2026
  */
 
-const CACHE_NAME = 'brevvo-total-cache-v2';
+const CACHE_NAME = 'brevvo-total-cache-v3-ultimate';
 
-// Жесткий список всех ресурсов, которые скачиваются в память в первую же секунду
 const IMMUTABLE_ASSETS = [
     './',
     'index.html',
@@ -15,6 +14,7 @@ const IMMUTABLE_ASSETS = [
     'pro.html',
     'style.css',
     'optimize.js',
+    'smart-engine.js',
     'base1.png',
     'base2.png',
     'base3.png',
@@ -30,18 +30,15 @@ const IMMUTABLE_ASSETS = [
     'https://unsplash.com'
 ];
 
-// Установка воркера: ПРИНУДИТЕЛЬНО скачиваем весь сайт сразу
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log('BREVVO ENGINE: Запущено тотальное кэширование всех страниц...');
-            // addAll гарантирует, что пока все файлы из списка не скачаются, воркер не активируется
+            console.log('BREVVO ENGINE: Запущено тотальное обновление кэша...');
             return cache.addAll(IMMUTABLE_ASSETS);
         }).then(() => self.skipWaiting())
     );
 });
 
-// Активация: мгновенно берем управление сетью на себя и чистим старый кэш
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -57,16 +54,12 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Перехват запросов: СТРОГО ИЗ ПАМЯТИ УСТРОЙСТВА БЕЗ ВЫХОДА В СЕТЬ
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
-            // Если файл есть в тотальном кэше — отдаем его со скоростью 0 миллисекунд
             if (cachedResponse) {
                 return cachedResponse;
             }
-            
-            // На всякий случай: если запрашивается файл не из списка, берем из сети
             return fetch(event.request);
         })
     );

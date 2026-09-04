@@ -1,10 +1,10 @@
 /**
- * BREVVO ECOSYSTEM — Интеллектуальный Сетевой Кэш-Гибрид (Stale-While-Revalidate)
- * Мгновенный взлет сайта + Принудительное автообновление локального ПО на лету
+ * BREVVO ECOSYSTEM — Интеллектуальный Сетевой Кэш-Гибрид (Auto-Reload Edition)
+ * Мгновенный взлет сайта + Автоматическая принудительная перезагрузка страницы при обновлении ПО
  * Разработчик архитектуры: Даниил Лисенков (c) 2026
  */
 
-const CACHE_NAME = 'brevvo-smart-app-v5';
+const CACHE_NAME = 'brevvo-smart-app-v6';
 
 const ASSETS_TO_CACHE = [
     './',
@@ -22,16 +22,16 @@ const ASSETS_TO_CACHE = [
     'image1.png', 'image2.png', 'image3.png', 'image4.png'
 ];
 
-// Установка воркера: мгновенно забираем файлы в память
+// Установка воркера: забираем файлы в память устройства
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(ASSETS_TO_CACHE);
-        }).then(() => self.skipWaiting())
+        }).then(() => self.skipWaiting()) // Силой активируем новый воркер сразу
     );
 });
 
-// Активация: чистим старый мусор и берем контроль над сетью
+// Активация: уничтожаем старые версии кэша
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) => {
@@ -46,26 +46,27 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// ГЛАВНЫЙ ИСТРЕБИТЕЛЬ ЛАГОВ И ЗАВИСАНИЙ ОБНОВЛЕНИЙ (ТЕХНОЛОГИЯ ULTRA-SPEED)
+// Перехват запросов: выдаем из кэша за 0 мс, но параллельно обновляем из сети
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
-            // МГНОВЕННЫЙ ЗАПУСК: Если файл есть в памяти устройства — отдаем его за 0 миллисекунд
             const fetchPromise = fetch(event.request).then((networkResponse) => {
                 if (networkResponse && networkResponse.status === 200) {
                     caches.open(CACHE_NAME).then((cache) => {
-                        // ФОНОВОЕ ОБНОВЛЕНИЕ: В эту же секунду проверяем изменения на GitHub.
-                        // Если код обновился — тихо перезаписываем память на новое ПО.
                         cache.put(event.request, networkResponse.clone());
                     });
                 }
                 return networkResponse;
-            }).catch(() => {
-                // Анти-сбой: если интернет пропал в подвале, сайт работает на 100% автономно
-            });
+            }).catch(() => {});
 
-            // Возвращаем локальный файл ради бешеной скорости, а сеть сама обновит его в фоне
             return cachedResponse || fetchPromise;
         })
     );
+});
+
+// ИТ-КОМАНДА СИЛОВОЙ АКТИВАЦИИ ПО СИГНАЛУ ИЗ КЛИЕНТА
+self.addEventListener('message', (event) => {
+    if (event.data === 'skipWaiting') {
+        self.skipWaiting();
+    }
 });

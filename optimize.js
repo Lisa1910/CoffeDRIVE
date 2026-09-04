@@ -5,9 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // ==========================================================================
     // 1. АВТОМАТИЧЕСКИЙ ИНЖЕКТОР КНОПКИ РЕЖИМОВ (LIGHT / DARK)
-    // ==========================================================================
     if (!document.querySelector('.theme-toggle-container')) {
         const toggleContainer = document.createElement('div');
         toggleContainer.className = 'theme-toggle-container';
@@ -34,15 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 theme = 'light';
                 toggleBtn.textContent = 'Mode: Light';
             } else {
+                theme = 'dark';
                 toggleBtn.textContent = 'Mode: Dark';
             }
             localStorage.setItem('brevvo-theme', theme);
         });
     }
 
-    // ==========================================================================
-    // 2. ИНЖЕКТОР СТРОГОЙ ПРЯМОУГОЛЬНОЙ КНОПКИ PDF-ЭКСПОРТА (BUGATTI STYLE)
-    // ==========================================================================
+    // 2. ИНЖЕКТОР СТРОГОЙ КНОПКИ PDF-ЭКСПОРТА (BUGATTI STYLE)
     const currentFile = window.location.pathname.split("/").pop();
     const isMainPage = (currentFile === 'index.html' || currentFile === '');
     const titleWrap = document.querySelector('.title-wrap');
@@ -55,17 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
         exportBtn.className = 'pdf-export-btn';
         exportBtn.textContent = '[ Export Executive Summary PDF ]';
 
-        exportBtn.addEventListener('click', () => {
-            window.print(); // Запуск А4-принтера устройства
-        });
+        exportBtn.addEventListener('click', () => { window.print(); });
 
         exportContainer.appendChild(exportBtn);
         titleWrap.appendChild(exportContainer);
     }
-
-    // ==========================================================================
     // 3. ЖИВОЙ МАТЕМАТИЧЕСКИЙ КАЛЬКУЛЯТОР ОКУПАЕМОСТИ ДЛЯ ИНВЕСТОРОВ
-    // ==========================================================================
     const tables = document.querySelectorAll('.premium-table');
     let targetTable = null;
     const isProPage = document.body.classList.contains('page-pro');
@@ -100,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
             calcContainer.innerHTML = `
                 <div class="card-label">[ Interactive ROI Simulator ]</div>
                 <div class="card-value" style="font-size: 1.3rem; margin-bottom: 2rem;">Смоделируйте доходность под Ваши показатели</div>
-                
                 <div style="margin-bottom: 1.8rem;">
                     <div style="display:flex; justify-content:space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
                         <span style="color: var(--text-dim);">Продажи в сутки:</span>
@@ -108,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <input type="range" id="sliderVolume" min="${minVolume}" max="${maxVolume}" value="${defaultVolume}" style="width:100%; accent-color: var(--color-accent); background: rgba(255,255,255,0.05); height: 4px; cursor:pointer;">
                 </div>
-
                 <div style="margin-bottom: 0.5rem;">
                     <div style="display:flex; justify-content:space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
                         <span style="color: var(--text-dim);">Средний чек (кофе + выпечка):</span>
@@ -118,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            // Безопасно инжектируем блок калькулятора строго перед сметной таблицей эффективности
             targetTable.parentNode.parentNode.insertBefore(calcContainer, targetTable.parentNode);
 
             const sliderVolume = document.getElementById('sliderVolume');
@@ -130,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
             function updateFinancialModel() {
                 const vol = parseInt(sliderVolume.value);
                 const price = parseInt(sliderPrice.value);
-
                 calcVolVal.textContent = `${vol} чеков`;
                 calcPriceVal.textContent = `${price} ₽`;
 
@@ -140,13 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const netProfit = monthlyRevenue - foodcost - fixedOpex - taxes;
 
                 let roiPeriod = "";
-                if (netProfit <= 0) {
-                    roiPeriod = "Вне зоны окупаемости";
-                } else {
+                if (netProfit <= 0) { roiPeriod = "Вне зоны окупаемости"; } else {
                     const months = Math.ceil(totalInvestment / netProfit);
-                    if (months < 12) {
-                        roiPeriod = `${months} месяцев`;
-                    } else {
+                    if (months < 12) { roiPeriod = `${months} месяцев`; } else {
                         const years = (months / 12).toFixed(1);
                         roiPeriod = `~ ${years} г. (${months} мес.)`;
                     }
@@ -154,7 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 rows.forEach(row => {
                     const label = row.cells[0].textContent.trim();
-                    let cellIndex = 2; // Перезаписываем базовый центральный план на глазах у инвестора
+                    let cellIndex = 2;
+                    if (isBasePage) cellIndex = 2;
                     
                     if (label.includes('Количество чеков в сутки')) {
                         row.cells[cellIndex].innerHTML = `<strong>${vol} чеков</strong>`;
@@ -167,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else if (label.includes('Налоги и эквайринг')) {
                         row.cells[cellIndex].innerHTML = `${taxes.toLocaleString()} ₽`;
                     } else if (row.classList.contains('row-total')) {
-                        const profitCell = row.cells[1];
+                        const profitCell = row.cells[row.cells.length - 1];
                         if (netProfit <= 0) {
                             profitCell.style.setProperty('color', '#cc7a7a', 'important');
                             profitCell.innerHTML = `<strong>${netProfit.toLocaleString()} ₽</strong>`;
@@ -180,64 +165,59 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             }
+            sliderVolume.addEventListener('input', updateFinancialModel);
+            sliderPrice.addEventListener('input', updateFinancialModel);
+        }
+    }
+    // 4. АППАРАТНОЕ УСКОРЕНИЕ (GPU RENDERING) И МЯГКОЕ ПРОЯВЛЕНИЕ ФОТОГРАФИЙ
+    const premiumCards = document.querySelectorAll(".premium-card, .premium-table-wrap, .liquid-nav-panel");
+    premiumCards.forEach(card => {
+        card.style.willChange = "transform, opacity";
+        card.style.transform = "translateZ(0)"; 
+    });
 
-sliderVolume.addEventListener('input', updateFinancialModel);
-sliderPrice.addEventListener('input', updateFinancialModel);
-}
-}
-// ==========================================================================
-// 4. АППАРАТНОЕ УСКОРЕНИЕ (GPU RENDERING) И МЯГКОЕ ПРОЯВЛЕНИЕ ФОТОГРАФИЙ
-// ==========================================================================
-const premiumCards = document.querySelectorAll(".premium-card, .premium-table-wrap, .liquid-nav-panel");
-premiumCards.forEach(card => {
-card.style.willChange = "transform, opacity";
-card.style.transform = "translateZ(0)";
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    galleryImages.forEach(img => {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+        function handleImageLoad() { img.style.opacity = '1'; }
+        if (img.complete) handleImageLoad(); else img.addEventListener('load', handleImageLoad);
+    });
+
+    // 5. ОПТИМИЗАЦИЯ СКРОЛЛА И ЛЕЗИ-РЕНДЕР ВКЛАДОК СМЕТ
+    const progressBar = document.getElementById('progressBar');
+    let isScrolling = false;
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (winScroll / height) * 100;
+                    progressBar.style.width = scrolled + '%';
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }, { passive: true });
+    }
+
+    const tabTriggers = document.querySelectorAll(".tab-trigger-btn");
+    tabTriggers.forEach(btn => {
+        btn.addEventListener("click", () => {
+            setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 35);
+        });
+    });
 });
-const galleryItems = document.querySelectorAll('.gallery-item');
-galleryItems.forEach(item => {
-const img = item.querySelector('img');
-if (!img) return;
-img.style.opacity = '0';
-img.style.transition = 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
-function handleImageLoad() { img.style.opacity = '1'; }
-if (img.complete) handleImageLoad(); else img.addEventListener('load', handleImageLoad);
-});
-// ==========================================================================
-// 5. ОПТИМИЗАЦИЯ СКРОЛЛА И ЛЕЗИ-РЕНДЕР ВКЛАДОК СМЕТ
-// ==========================================================================
-const progressBar = document.getElementById('progressBar');
-let isScrolling = false;
-if (progressBar) {
-window.addEventListener('scroll', () => {
-if (!isScrolling) {
-window.requestAnimationFrame(() => {
-const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-const scrolled = (winScroll / height) * 100;
-progressBar.style.width = scrolled + '%';
-isScrolling = false;
-});
-isScrolling = true;
-}
-}, { passive: true });
-}
-const tabTriggers = document.querySelectorAll(".tab-trigger-btn");
-tabTriggers.forEach(btn => {
-btn.addEventListener("click", () => {
-setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 35);
-});
-});
-});
-// ==========================================================================
+
 // 6. СКВОЗНОЙ АВТОМАТИЧЕСКИЙ ЗАПУСК КИБЕР-ЩИТА И ПРЕДИКТОРОВ КЛИКОВ
-// ==========================================================================
 if (!document.querySelector('script[src="app-shield.js"]')) {
-const shieldScript = document.createElement('script');
-shieldScript.src = 'app-shield.js';
-document.head.appendChild(shieldScript);
+    const shieldScript = document.createElement('script');
+    shieldScript.src = 'app-shield.js';
+    document.head.appendChild(shieldScript);
 }
 if (!document.querySelector('script[src="smart-engine.js"]')) {
-const smartScript = document.createElement('script');
-smartScript.src = 'smart-engine.js';
-document.head.appendChild(smartScript);
+    const smartScript = document.createElement('script');
+    smartScript.src = 'smart-engine.js';
+    document.head.appendChild(smartScript);
 }

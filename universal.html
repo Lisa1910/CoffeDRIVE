@@ -10,13 +10,8 @@
     <meta http-equiv="Expires" content="604800">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- ИТ-директива упреждающего пререндеринга Даниила Лисенкова -->
-<link rel="prerender" href="index.html">
-<link rel="prerender" href="base.html">
-<link rel="prerender" href="universal.html">
-<link rel="prerender" href="pro.html">
 </head>
 <body class="page-universal">
 
@@ -24,10 +19,8 @@
 <div class="scroll-progress" id="progressBar"></div>
 
 <div class="presentation-wrapper">
-    <!-- Световые оверлеи приглушенного бордово-оранжевого цвета (DDX Style) -->
+    <!-- Глобальный матовый оверлей виньетирования -->
     <div class="bg-layer-glow"></div>
-    <div class="bg-layer-foam"></div>
-    <div class="bg-layer-linen"></div>
 
     <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ UNIVERSAL -->
     <main class="slide-container">
@@ -35,27 +28,27 @@
         <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
         <section class="slide-section" style="padding-top: 60px;">
             <div class="title-wrap">
-                <div class="giant-bg-text" style="color: rgba(200, 50, 0, 0.015);">Brevvo Universal</div>
+                <div class="giant-bg-text">Brevvo Universal</div>
                 <h1 class="slide-title">Оптимальный Сбалансированный <span>Старт Universal</span></h1>
             </div>
 
             <!-- Внутренние кнопки управления контентом -->
             <div class="inner-tab-panel">
-                <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
-                <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
+                <button class="tab-trigger-btn active" id="btnLocalConcept">Концепция и Фото</button>
+                <button class="tab-trigger-btn" id="btnLocalFinance">Смета и Финмодель</button>
             </div>
 
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ UNIVERSAL (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
-                    <div class="premium-card" style="border-left: 3px solid var(--color-accent);">
+                    <div class="premium-card" style="border-left: 2px solid var(--color-accent);">
                         <div class="card-label">Оптимальное импортозамещение и комфорт</div>
                         <div class="card-value">СТАЦИОНАРНЫЙ ПАВИЛЬОН НТО С ЛОКАЛЬНОЙ ТЕРРАСОЙ</div>
                         <p class="card-text">Идеальный баланс между капитальными затратами и премиальным восприятием бренда. Конфигурация Universal — это полноценное городское кафе в формате Некапитального Торгового Сооружения (НТО), ориентированное на смешанный трафик (пешеходный поток + летняя посадочная зона). Проект полностью автономен, но за счет оптимизации инженерных сетей лимит необходимой мощности снижен до 25–30 кВт, что позволяет подключаться по упрощенным договорам к городским или коммерческим сетям без выкупа дорогостоящих ТУ на 50 кВт. Вместо сложного в обработке морского контейнера используется кастомный стационарный павильон увеличенной площади с панорамным остеклением в пол. Технологический пак HoReCa полностью импортозамещен: европейские дефицитные позиции заменены на сверхнадежные фабричные бренды России, Белоруссии и Азии (оборудование Abat, Carboma, Hurakan), имеющие постоянные склады запчастей и развитую сеть сервисных инженеров в Красноярске. Аутсорсинг кондитерских изделий сохраняет эргономику кухни и сокращает расходы на персонал.</p>
                     </div>
                 </div>
 
-                <!-- Фотогалерея Универсального варианта (Исправленные отступы, пропорции и скругления) -->
+                <!-- Фотогалерея Универсального варианта (Прямые углы, резиновые отступы и зазоры) -->
                 <div class="gallery-container">
                     <h2 class="gallery-title">Варианты представления стационарного павильона Universal</h2>
                     <div class="gallery-grid">
@@ -123,7 +116,7 @@
                                     <!-- БЛОК 3: ГОРЯЧАЯ КУХНЯ И ХОЛОДИЛЬНЫЙ МОДУЛЬ -->
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">Тепловой блок горячей кухни</td>
-                                        <td>Профессиональный российский программируемый инжекторный пароконвектомат <strong>Abat ПР-6-1/1</strong> (Чувашторгтехника, на 6 уровней, ТЭНы и платы стоят копейки) + Прижимной гриль Hurakan.</td>
+                                        <td>Профессиональный рабочий программируемый инжекторный пароконвектомат <strong>Abat ПР-6-1/1</strong> (Чувашторгтехника, на 6 уровней, ТЭНы и платы стоят копейки) + Прижимной гриль Hurakan.</td>
                                         <td>1 пак</td>
                                         <td>230 000</td>
                                     </tr>
@@ -149,7 +142,7 @@
                                     </tr>
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">Кассовый узел и Наружный неон</td>
-                                        <td>Светодиодный фасадный световой короб, внешняя реклама. Сенсорный моноблок POS, лицензии кассовой программы iiko/r-keeper, ККТ ШТРИХ-М, фискальный накопитель, система видеонаблюдения (4 IP-камеры).</td>
+                                        <td>Светодиодный фасадный неон и световой короб, внешняя реклама. Сенсорный моноблок POS, лицензии кассовой программы iiko/r-keeper, ККТ ШТРИХ-М, фискальный накопитель, видеонаблюдение.</td>
                                         <td>1 пак</td>
                                         <td>303 000</td>
                                     </tr>
@@ -194,7 +187,7 @@
                                 <tbody>
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">ФОТ и взносы персонала</td>
-                                        <td>Штат: 3 линейных бариста со сменным графиком 2/2 (ставка 60 000 ₽ net на руки каждому) + 1 управляющий точки на полставки (65 000 ₽ net). Сумма включает НДФЛ 13% и полные страховые взноны работодателя.</td>
+                                        <td>Штат: 3 линейных бариста со сменным графиком 2/2 (ставка 60 000 ₽ net на руки каждому) + 1 управляющий точки на полставки (65 000 ₽ net). Сумма включает НДФЛ 13% и полные страховые взносы работодателя.</td>
                                         <td>380 000</td>
                                     </tr>
                                     <tr>
@@ -236,7 +229,7 @@
                         </div>
                     </div>
 
-                    <!-- ТАБЛИЦА ИНВЕСТИЦИОННЫХ СЦЕНАРИЕВ ДОХОДНОСТЬ -->
+                    <!-- ТАБЛИЦА ИНВЕСТИЦИОННЫХ СЦЕНАРИЕВ ДОХОДНОСТИ -->
                     <div class="premium-card" style="margin-top: 40px;">
                         <div class="card-label" style="color: var(--color-accent);">Инвестиционный прогноз • Сценарии</div>
                         <div class="card-value">Расчет чистой прибыли и маржинальности Universal</div>
@@ -310,11 +303,11 @@
                 </div>
             </div>
         </section>
-        <!-- КОНТАКТНЫЙ СЛАЙД UNIVERSAL -->
+        <!-- КОНТАКТНЫЙ СЛАЙД UNIVERSAL (ВЫНЕСЕН СНАРУЖИ НАВЕРХ НАД МЕНЮ) -->
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
-            <div class="premium-card" style="border-left: 4px solid var(--color-accent);">
+            <div class="premium-card" style="border-left: 2px solid var(--color-accent);">
                 <div class="card-label">Автор ИС и разработки Balance</div>
-                <div class="card-value" style="font-family: 'Perandory', serif; font-size: 24px;">ОБСУДИТЬ ПАКЕТ UNIVERSAL</div>
+                <div class="card-value">ОБСУДИТЬ ПАКЕТ UNIVERSAL</div>
                 <div class="contact-grid">
                     <div class="contact-item"><span>Telegram</span><a href="https://t.me" target="_blank">@Architect_lis</a></div>
                     <div class="contact-item"><span>Email</span><a href="mailto:Lisenkovdaniil1910@gmail.com">Lisenkovdaniil1910@gmail.com</a></div>
@@ -330,15 +323,15 @@
     </main>
 </div>
 
-<!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS ДЛЯ СТРАНИЦЫ UNIVERSAL -->
+<!-- УКРОЩЕННЫЙ, КОМПАКТНЫЙ ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ QUIET LUXURY STYLE -->
 <nav class="liquid-nav-panel">
-    <a href="index.html" class="liquid-btn">📊 Главная матрица</a>
-    <a href="base.html" class="liquid-btn">⚡ Base (2-3 млн)</a>
-    <a href="universal.html" class="liquid-btn active">🔥 Universal (5-7 млн)</a>
-    <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
+    <a href="index.html" class="liquid-btn">Home</a>
+    <a href="base.html" class="liquid-btn">Base</a>
+    <a href="universal.html" class="liquid-btn active">Universal</a>
+    <a href="pro.html" class="liquid-btn">Pro</a>
 </nav>
 
-<!-- Принудительное сквозное подключение файла оптимизации Даниила Лисенкова -->
+<!-- Принудительное сквозное подключение файла резиновой оптимизации -->
 <script src="optimize.js"></script>
 
 <script>

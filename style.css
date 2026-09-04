@@ -1,50 +1,56 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. РЕЗИНОВАЯ ДИЗАЙН-СИСТЕМА QUIET LUXURY — КОНЦЕПЦИЯ ПОЛНОЙ ПРОЗРАЧНОСТИ
+   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — КОНЦЕПЦИЯ ЖЕСТКОГО ЧИСТОГО КОНТРАСТА
    ========================================================================== */
 :root {
     font-size: clamp(12px, 0.9vw, 16px);
-    --radius-premium: 0px; /* Исключительно строгая люксовая геометрия */
+    --radius-premium: 0px; 
     --radius-inner: 0px;
     --fs-xl: clamp(45px, 8vw, 95px);
     --font-premium: 'Garamond', 'Georgia', serif;
     
-    /* ТЕМНЫЙ РЕЖИМ (DARK): ИСКЛЮЧИТЕЛЬНО ТЕМНО-ПРОЗРАЧНЫЕ ПЛАШКИ */
+    /* ==========================================================================
+       УЛЬТИМАТИВНЫЙ ТЕМНЫЙ РЕЖИМ (DARK) — ПОЛНЫЙ МОНОЛИТНЫЙ БЕЛЫЙ ТЕКСТ С КЭШЕМ
+       ========================================================================== */
     --bg-main: #060707;
-    --card-bg: rgba(10, 12, 12, 0.75); /* Дорогая прозрачная темная хлопковая плашка */
+    --card-bg: rgba(10, 12, 12, 0.75); /* Полупрозрачный матовый акрил хлопка */
     --card-border: rgba(255, 255, 255, 0.04);
-    --text-main: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.5);
-    --table-header-bg: rgba(255, 255, 255, 0.02); /* Абсолютно прозрачные шапки */
     
+    /* СИЛОВОЙ ЧИСТЫЙ БЕЛЫЙ ЦВЕТ ДЛЯ ВСЕХ ТЕКСТОВ НА ТЕМНОМ ФОНЕ */
+    --text-main: #ffffff !important;
+    --text-dim: rgba(255, 255, 255, 0.65) !important;
+    --table-header-bg: rgba(255, 255, 255, 0.02);
+    
+    /* Оставляем цветной благородный маркер только для главных меток тарифов */
     --color-accent: #d4cfc7;
-    --badge-color: #e2ded5;
 }
 
-/* Принудительная адаптация светлых пастельных тонов на темном для страниц */
-body.page-base { --color-accent: #7fb5ff; --badge-color: #a3cfff; }
-body.page-universal { --color-accent: #ff8b8b; --badge-color: #ffbaba; }
-body.page-pro { --color-accent: #68d89b; --badge-color: #9effca; }
+/* Принудительная приглушенная пастельная окраска только для заголовков пакетов */
+body.page-base { --color-accent: #7fb5ff; }
+body.page-universal { --color-accent: #ff8b8b; }
+body.page-pro { --color-accent: #68d89b; }
 
 /* ==========================================================================
-   СВЕТЛЫЙ РЕЖИМ (LIGHT): ИСКЛЮЧИТЕЛЬНО БЕЛО-ПРОЗРАЧНЫЕ ПЛАШКИ И ЧЕРНЫЙ ТЕКСТ
+   УЛЬТИМАТИВНЫЙ СВЕТЛЫЙ РЕЖИМ (LIGHT) — ПОЛНЫЙ СТРОГИЙ ЧЕРНЫЙ ТЕКСТ БЕЗ ЦВЕТОВ
    ========================================================================== */
 body.light-theme {
-    --card-bg: rgba(255, 255, 255, 0.75); /* Дорогая прозрачная белая хлопковая плашка */
+    --card-bg: rgba(255, 255, 255, 0.82); /* Бело-прозрачный шёлк на бумаге */
     --card-border: rgba(0, 0, 0, 0.05);
-    --text-main: #0c0d0d; /* Угольно-черный контрастный текст */
-    --text-dim: rgba(12, 13, 13, 0.6);
-    --table-header-bg: rgba(0, 0, 0, 0.03); /* Прозрачные светлые шапки */
     
-    --color-accent: #222222;
-    --badge-color: #111111;
+    /* СИЛОВОЙ ЧИСТЫЙ ЧЕРНЫЙ ЦВЕТ ДЛЯ АБСОЛЮТНО ВСЕХ ТЕКСТОВ НА СВЕТЛОМ ФОНЕ */
+    --text-main: #000000 !important;
+    --text-dim: rgba(0, 0, 0, 0.7) !important;
+    --table-header-bg: rgba(0, 0, 0, 0.02);
+    
+    /* Строгая глубокая контрастная рамка-маркер для светлой темы */
+    --color-accent: #111111;
 }
-body.light-theme.page-base { --color-accent: #1e3a5f; --badge-color: #0e2440; }
-body.light-theme.page-universal { --color-accent: #6b141d; --badge-color: #470810; }
-body.light-theme.page-pro { --color-accent: #0f3d26; --badge-color: #072617; }
+body.light-theme.page-base { --color-accent: #1e3a5f; }
+body.light-theme.page-universal { --color-accent: #6b141d; }
+body.light-theme.page-pro { --color-accent: #0f3d26; }
 
-/* Блокировка зума на смартфонах */
+/* Блокировка резинового болтания и зума смартфона */
 html, body {
     touch-action: pan-x pan-y;
     -webkit-text-size-adjust: 100%;
@@ -65,7 +71,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     padding-bottom: 12rem;
 }
 
-/* Центральный резиновый каркас сайта без внешних теней по бокам */
+/* Центральный контейнер сайта без уродливых внешних теней по бокам */
 .slide-container {
     width: 100%;
     max-width: 72rem;
@@ -84,7 +90,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
 }
 
 /* ==========================================================================
-   2. МИНИАТЮРНЫЙ, СТРОГИЙ ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ В СТИЛЕ САЙТА
+   2. ЛЮКС-ИНТЕРФЕЙС ПЕРЕКЛЮЧАТЕЛЯ РЕЖИМОВ (ПРОЗРАЧНАЯ РАМКА В СТИЛЕ BUGATTI)
    ========================================================================== */
 .theme-toggle-container {
     position: fixed;
@@ -98,9 +104,9 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text-main);
-    background: var(--card-bg); /* Полностью прозрачная подложка кнопки в тон сайту */
-    border: 1px solid var(--card-border);
+    color: var(--text-main) !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
     border-radius: 0px;
     padding: 0.6rem 1.4rem;
     cursor: pointer;
@@ -109,7 +115,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .theme-toggle-btn:hover {
-    border-color: var(--color-accent);
+    border-color: var(--color-accent) !important;
 }
 /* Линия прогресса чтения сверху экрана */
 .scroll-progress {
@@ -131,7 +137,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%) translateZ(0);
-    background: var(--card-bg) !important; /* Намертво прозрачная подложка в цвет карточек */
+    background: var(--card-bg) !important; /* Прозрачная подложка меню в тон карточек */
     border: 1px solid var(--card-border) !important;
     border-radius: 0px;
     padding: 0.4rem;
@@ -151,7 +157,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     font-family: var(--font-premium) !important;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: var(--text-dim);
+    color: var(--text-dim) !important; /* Приглушенный чистый белый или черный */
     padding: 0.8rem 1.6rem;
     background: transparent;
     border: none;
@@ -165,9 +171,9 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .liquid-btn.active, .liquid-btn:hover {
-    color: var(--text-main);
+    color: var(--text-main) !important; /* Полный 100% белый или черный */
     background: rgba(255, 255, 255, 0.03);
-    box-shadow: inset 0 -2px 0 0 var(--color-accent); /* Деликатный люксовый маркер активности */
+    box-shadow: inset 0 -2px 0 0 var(--color-accent) !important;
 }
 body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
 
@@ -177,18 +183,18 @@ body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
     gap: 0.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
-    background: var(--table-header-bg) !important; /* Убрана глухая чернота/белота подложки */
+    background: var(--table-header-bg) !important; /* Убрана глухая непрозрачность подложки */
     border: 1px solid var(--card-border) !important;
     padding: 0.3rem;
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    -webkit-webkit-filter: blur(15px);
 }
 
 .tab-trigger-btn {
     font-family: var(--font-premium) !important;
     font-size: 0.85rem;
     letter-spacing: 1.5px;
-    color: var(--text-dim);
+    color: var(--text-dim) !important;
     background: transparent;
     border: none;
     padding: 0.9rem 1.5rem;
@@ -199,7 +205,7 @@ body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
     transition: all 0.3s ease;
 }
 .tab-trigger-btn.active, .tab-trigger-btn:hover { 
-    color: var(--text-main); 
+    color: var(--text-main) !important; 
     background: rgba(255, 255, 255, 0.04); 
 }
 body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.04); }
@@ -227,8 +233,8 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.04); }
     z-index: 1;
 }
 
-.slide-title { font-family: var(--font-premium) !important; font-size: clamp(24px, 4vw, 42px); color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; font-weight: 400; position: relative; z-index: 2; }
-.slide-title span { color: var(--color-accent); }
+.slide-title { font-family: var(--font-premium) !important; font-size: clamp(24px, 4vw, 42px); color: var(--text-main) !important; text-transform: uppercase; letter-spacing: 3px; font-weight: 400; position: relative; z-index: 2; }
+.slide-title span { color: var(--color-accent) !important; }
 
 /* Силовое сквозное выравнивание: в тарифе Pro элементы встанут строго друг под другом */
 body.page-pro .content-grid {
@@ -259,34 +265,37 @@ body:not(.page-pro) .content-grid {
     transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-.card-label { font-family: var(--font-premium) !important; font-size: 0.8rem; color: var(--color-accent); letter-spacing: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
-.card-value { font-family: var(--font-premium) !important; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main); }
-.card-text { font-size: 0.95rem; color: var(--text-dim); font-weight: 300; line-height: 1.8; }
+/* Единственное люкс-исключение: цветной маркер тарифа сверху */
+.card-label { font-family: var(--font-premium) !important; font-size: 0.8rem; color: var(--color-accent) !important; letter-spacing: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
+.card-value { font-family: var(--font-premium) !important; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main) !important; }
+.card-text { font-size: 0.95rem; color: var(--text-dim) !important; font-weight: 300; line-height: 1.8; }
 /* ==========================================================================
-   4. СЛИТНЫЕ ПРОЗРАЧНЫЕ ТАБЛИЦЫ (БЕЗ ГЛУХОЙ НЕПРОЗРАЧНОСТИ В ШАПКАХ)
+   4. СЛИТНЫЕ ПРОЗРАЧНЫЕ ТАБЛИЦЫ (ЖЕСТКИЙ ЦВЕТОВОЙ КОНТРАСТ ТЕКСТА)
    ========================================================================== */
-.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.02); }
+.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.01); }
 .premium-table { width: 100%; min-width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; }
 
-/* Пропорции резиновой сетки столбцов */
+/* Резиновое распределение колонок */
 .premium-table th:nth-child(1), .premium-table td:nth-child(1) { width: 45%; }
 .premium-table th:nth-child(2), .premium-table td:nth-child(2) { width: 30%; }
 .premium-table th:nth-child(3), .premium-table td:nth-child(3) { width: 10%; text-align: center; }
 .premium-table th:nth-child(4), .premium-table td:nth-child(4) { width: 15%; text-align: right; }
 
-.premium-table th, .premium-table td {
-    padding: 1rem 0.8rem;
-    border-bottom: 1px solid var(--card-border);
+/* ПРИНУДИТЕЛЬНОЕ СТИРАНИЕ ВСЕХ СТАРЫХ СЛЕПЫХ ЦВЕТОВ В СЛОВАХ И ЦИФРАХ */
+.premium-table th, 
+.premium-table td,
+.premium-table td span,
+.premium-table td strong {
     font-size: 0.85rem;
     vertical-align: middle;
     white-space: normal !important;
     word-break: break-word;
+    color: var(--text-main) !important; /* Силой переводит весь текст в чистый белый / матовый черный */
 }
 
-/* ПОЛНОСТЬЮ ИСПРАВЛЕННЫЙ ПРОЗРАЧНЫЙ СТИЛЬ ЗАГОЛОВКОВ ДЛЯ ВСЕХ СТРАНИЦ */
+/* Полностью прозрачная шапка таблицы без темной непрозрачной полосы */
 .premium-table th {
     font-family: var(--font-premium) !important;
-    color: var(--badge-color) !important; /* Чёткий светлый пастельный или тёмный люкс-цвет */
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -295,17 +304,25 @@ body:not(.page-pro) .content-grid {
     -webkit-backdrop-filter: blur(10px);
 }
 
-.premium-table td { color: var(--text-dim); font-weight: 300; line-height: 1.5; }
+.premium-table td { font-weight: 300; line-height: 1.5; }
 .premium-table tr:last-child td { border-bottom: none; }
-.premium-table .row-total td { font-family: var(--font-premium) !important; font-size: 1rem; color: var(--color-accent); font-weight: 500; border-top: 1px solid var(--color-accent); }
 
-.saas-highlight { background: rgba(255, 255, 255, 0.002); }
-body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.003); }
+/* Итоговые строки смет подчиняются общему контрасту */
+.premium-table .row-total td { 
+    font-family: var(--font-premium) !important; 
+    font-size: 1rem; 
+    font-weight: 500; 
+    border-top: 1px solid var(--card-border);
+    color: var(--text-main) !important; 
+}
+
+.saas-highlight { background: rgba(255, 255, 255, 0.001); }
+body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.002); }
 /* ==========================================================================
    5. ЭФФЕКТ ПЕЧАТИ НА БУМАГЕ ДЛЯ ФОТОГАЛЕРЕИ И СИСТЕМНЫЙ АДАПТИВ
    ========================================================================== */
 .gallery-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; margin-top: 2.5rem; }
-.gallery-title { font-family: var(--font-premium) !important; font-size: 1.1rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; }
+.gallery-title { font-family: var(--font-premium) !important; font-size: 1.1rem; color: var(--color-accent) !important; text-transform: uppercase; letter-spacing: 2px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; width: 100%; }
 .gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #050606; overflow: hidden; border: 1px solid var(--card-border); }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -316,16 +333,16 @@ body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.003); }
     mix-blend-mode: multiply; opacity: 0.85; pointer-events: none; z-index: 5;
 }
 
-/* Личные контакты автора и сквозной подвал */
+/* Личные контакты автора и сквозной подвал (Чистый белый или черный) */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; margin-top: 2rem; width: 100%; }
 .contact-item { background: rgba(255, 255, 255, 0.001); border: 1px solid var(--card-border); padding: 1.6rem; }
 body.light-theme .contact-item { background: rgba(0, 0, 0, 0.002); }
-.contact-item span { display: block; font-size: 0.7rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
-.contact-item a { font-size: 1rem; color: var(--text-main); text-decoration: none; font-family: var(--font-premium); }
+.contact-item span { display: block; font-size: 0.7rem; color: var(--color-accent) !important; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
+.contact-item a { font-size: 1rem; color: var(--text-main) !important; text-decoration: none; font-family: var(--font-premium); }
 
-.premium-footer { width: 100%; margin-top: 4rem; padding-top: 2rem; padding-bottom: 2.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; gap: 1.5rem; }
+.premium-footer { width: 100%; margin-top: 4rem; padding-top: 2rem; padding-bottom: 2.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim) !important; letter-spacing: 2px; text-transform: uppercase; gap: 1.5rem; }
 
-/* УЛЬТИМАТИВНЫЙ РЕЗИНОВЫЙ МОБИЛЬНЫЙ UX */
+/* СИСТЕМНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД ТЕЛЕФОНЫ */
 @media (max-width: 768px) {
     :root { font-size: 10.5px !important; }
     .theme-toggle-container { top: 15px !important; right: 15px !important; }

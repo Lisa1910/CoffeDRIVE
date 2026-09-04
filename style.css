@@ -10,63 +10,68 @@
     --fs-xl: clamp(45px, 8vw, 95px);
     --font-premium: 'Garamond', 'Georgia', serif;
     
-    /* ТЕМНЫЙ РЕЖИМ (DARK) */
+    /* ==========================================================================
+       УЛЬТИМАТИВНЫЙ ТЕМНЫЙ РЕЖИМ (DARK) — ПОЛНЫЙ МОНОЛИТНЫЙ БЕЛЫЙ ТЕКСТ С КЭШЕМ
+       ========================================================================== */
     --bg-main: #060707;
-    --card-bg: rgba(10, 12, 12, 0.75); 
+    --card-bg: rgba(10, 12, 12, 0.75); /* Полупрозрачный матовый акрил хлопка */
     --card-border: rgba(255, 255, 255, 0.04);
+    
+    /* СИЛОВОЙ ЧИСТЫЙ БЕЛЫЙ ЦВЕТ ДЛЯ ВСЕХ ТЕКСТОВ НА ТЕМНОМ ФОНЕ */
     --text-main: #ffffff !important;
     --text-dim: rgba(255, 255, 255, 0.65) !important;
     --table-header-bg: rgba(255, 255, 255, 0.02);
+    
+    /* Оставляем цветной благородный маркер только для заголовков пакетов */
     --color-accent: #d4cfc7;
+    --badge-color: #e2ded5;
     
     /* ЛЮКСОВОЕ ВЫДЕЛЕНИЕ ТЕКСТА ПОЛУПРОЗРАЧНЫМ ХЛОПКОМ (ВМЕСТО УРОДЛИВОГО СИНЕГО) */
     --selection-bg: rgba(212, 207, 199, 0.15);
     --selection-color: #ffffff;
 }
 
-/* Принудительная адаптация светлых пастельных тонов на темном для страниц */
-body.page-base { --color-accent: #7fb5ff; }
-body.page-universal { --color-accent: #ff8b8b; }
-body.page-pro { --color-accent: #68d89b; }
+/* Принудительная приглушенная пастельная окраска только для заголовков пакетов */
+body.page-base { --color-accent: #7fb5ff; --badge-color: #a3cfff; }
+body.page-universal { --color-accent: #ff8b8b; --badge-color: #ffbaba; }
+body.page-pro { --color-accent: #68d89b; --badge-color: #9effca; }
 
-/* СВЕТЛЫЙ РЕЖИМ (LIGHT) */
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ СВЕТЛЫЙ РЕЖИМ (LIGHT) — ПОЛНЫЙ СТРОГИЙ ЧЕРНЫЙ ТЕКСТ БЕЗ ЦВЕТОВ
+   ========================================================================== */
 body.light-theme {
-    --card-bg: rgba(255, 255, 255, 0.82); 
+    --card-bg: rgba(255, 255, 255, 0.82); /* Бело-прозрачный шёлк на бумаге */
     --card-border: rgba(0, 0, 0, 0.05);
+    
+    /* СИЛОВОЙ ЧИСТЫЙ ЧЕРНЫЙ ЦВЕТ ДЛЯ АБСОЛЮТНО ВСЕХ ТЕКСТОВ НА СВЕТЛОМ ФОНЕ */
     --text-main: #000000 !important;
     --text-dim: rgba(0, 0, 0, 0.7) !important;
     --table-header-bg: rgba(0, 0, 0, 0.02);
+    
     --color-accent: #111111;
+    --badge-color: #111111;
     
     /* Выделение текста в светлой теме матовым графитом */
     --selection-bg: rgba(0, 0, 0, 0.08);
     --selection-color: #000000;
 }
-body.light-theme.page-base { --color-accent: #1e3a5f; }
-body.light-theme.page-universal { --color-accent: #6b141d; }
-body.light-theme.page-pro { --color-accent: #0f3d26; }
+body.light-theme.page-base { --color-accent: #1e3a5f; --badge-color: #0e2440; }
+body.light-theme.page-universal { --color-accent: #6b141d; --badge-color: #470810; }
+body.light-theme.page-pro { --color-accent: #0f3d26; --badge-color: #072617; }
 
-/* ==========================================================================
-   ПРАВИЛА КАССОВОЙ ЗАЩИТЫ ОТ КОПИРОВАНИЯ И СЛУЧАЙНЫХ СИНЕЙ ВЫДЕЛЕНИЙ В БРАУЗЕРЕ
-   ========================================================================== */
-*::selection {
-    background: var(--selection-bg) !important;
-    color: var(--selection-color) !important;
-}
-*::-moz-selection {
-    background: var(--selection-bg) !important;
-    color: var(--selection-color) !important;
-}
+/* ПРАВИЛА КАССОВОЙ ЗАЗАЩИТЫ ОТ КОПИРОВАНИЯ И СЛУЧАЙНЫХ СИНЕЙ ВЫДЕЛЕНИЙ */
+*::selection { background: var(--selection-bg) !important; color: var(--selection-color) !important; }
+*::-moz-selection { background: var(--selection-bg) !important; color: var(--selection-color) !important; }
 
-/* Полный запрет на синее системное выделение контента при свайпах пальцем */
+/* Полный запрет на синее системное выделение контента при свайпах */
 html, body, main, table, tr, td, th, p, h1, h2, span, .premium-card {
-    -webkit-user-select: none !important;  /* Safari */
-    -moz-user-select: none !important;     /* Firefox */
-    -ms-user-select: none !important;      /* IE10+ */
-    user-select: none !important;          /* Нативное подавление выделения */
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
 }
 
-/* Разрешаем изящное выделение только внутри текстовых описаний и ячеек смет */
+/* Разрешаем изящное выделение внутри текстовых описаний и ячеек смет */
 .card-text, .premium-table td, .contact-item a {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
@@ -83,7 +88,19 @@ html, body {
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
+/* Линия прогресса чтения сверху экрана */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-accent);
+    width: 0%;
+    z-index: 3000;
+    transition: width 0.1s ease;
+}
 
+/* Текстурный бумажный холст */
 .presentation-wrapper {
     position: relative;
     width: 100%;
@@ -94,6 +111,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     padding-bottom: 12rem;
 }
 
+/* Центральный контейнер сайта без уродливых внешних теней по бокам */
 .slide-container {
     width: 100%;
     max-width: 72rem;
@@ -111,23 +129,31 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     z-index: 1;
 }
 
-.theme-toggle-container { position: fixed; top: 25px; right: 40px; z-index: 4000; }
-.theme-toggle-btn {
-    font-family: var(--font-premium) !important; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--text-main) !important; background: var(--card-bg) !important; border: 1px solid var(--card-border) !important;
-    border-radius: 0px; padding: 0.6rem 1.4rem; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.theme-toggle-btn:hover { border-color: var(--color-accent) !important; }
-/* Линия прогресса чтения сверху экрана */
-.scroll-progress {
+/* ЛЮКС-ИНТЕРФЕЙС ПЕРЕКЛЮЧАТЕЛЯ РЕЖИМОВ (ПРОЗРАЧНАЯ РАМКА В СТИЛЕ BUGATTI) */
+.theme-toggle-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--color-accent);
-    width: 0%;
-    z-index: 3000;
-    transition: width 0.1s ease;
+    top: 25px;
+    right: 40px;
+    z-index: 4000;
+}
+
+.theme-toggle-btn {
+    font-family: var(--font-premium) !important;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-main) !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 0px;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.theme-toggle-btn:hover {
+    border-color: var(--color-accent) !important;
 }
 
 /* ==========================================================================
@@ -177,7 +203,6 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     box-shadow: inset 0 -2px 0 0 var(--color-accent) !important;
 }
 body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
-
 /* Полностью прозрачные переключатели внутренних вкладок (Концепция / Смета) */
 .inner-tab-panel {
     display: flex;
@@ -213,6 +238,7 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.04); }
 
 .tab-content-view { display: none; width: 100%; }
 .tab-content-view.active { display: block; }
+
 /* ==========================================================================
    3. ГЕОМЕТРИЯ СЕКЦИЙ И ЧИСТЫЕ ПОЛУПРОЗРАЧНЫЕ ПЛАШКИ QUIET LUXURY
    ========================================================================== */
@@ -273,7 +299,7 @@ body:not(.page-pro) .content-grid {
    ========================================================================== */
 .premium-table-wrap { 
     width: 100%; 
-    overflow-x: auto; /* Включает аккуратный резиновый скролл только при критическом сжатии */
+    overflow-x: auto; 
     margin-top: 2rem; 
     border: 1px solid var(--card-border); 
     background: rgba(5, 6, 7, 0.01); 
@@ -284,16 +310,18 @@ body:not(.page-pro) .content-grid {
     min-width: 100%; 
     border-collapse: collapse; 
     text-align: left; 
-    table-layout: auto !important; /* УНИЧТОЖИЛИ FIXED КОЛЛАПС. Столбцы теперь дышат свободно! */
+    table-layout: auto !important; /* УНИЧТОЖИЛИ FIXED КОЛЛАПС. Столбцы дышат свободно! */
 }
 
-/* Настройка адаптивного зазора ячеек без сплющивания UNIVERSAL и PRO */
+/* Настройка адаптивного зазора ячеек без сплющивания */
 .premium-table th, 
-.premium-table td {
-    padding: 1.3rem 1.5rem !important; /* Увеличили внутренние отступы для свободного рендера */
+.premium-table td,
+.premium-table td span,
+.premium-table td strong {
+    padding: 1.3rem 1.5rem !important; 
     border-bottom: 1px solid var(--card-border);
     font-size: 0.9rem !important;
-    vertical-align: top; /* Ровное выравнивание по верхнему краю строки */
+    vertical-align: top; 
     white-space: normal !important;
     word-break: break-word;
     
@@ -302,7 +330,7 @@ body:not(.page-pro) .content-grid {
     color: var(--text-main) !important; 
 }
 
-/* Ограничиваем только первый столбец описания, чтобы тарифные столбцы получили максимум ширины */
+/* Ограничиваем первый столбец описания, чтобы тарифные столбцы получили максимум ширины */
 .premium-table th:first-child, 
 .premium-table td:first-child {
     max-width: 25rem;
@@ -356,12 +384,41 @@ body.light-theme .contact-item { background: rgba(0, 0, 0, 0.002); }
 
 .premium-footer { width: 100%; margin-top: 4rem; padding-top: 2rem; padding-bottom: 2.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim) !important; letter-spacing: 2px; text-transform: uppercase; gap: 1.5rem; }
 
-/* СИСТЕМНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД ТЕЛЕФОНЫ (СВЕРХКОМПАКТНЫЙ СТРОГИЙ ШАГ) */
+/* ==========================================================================
+   9. ОФИЦИАЛЬНЫЕ ЛЮКС-СТИЛИ ДЛЯ КНОПКИ PDF-ЭКСПОРТА (BUGATTI EDITION)
+   ========================================================================== */
+.pdf-export-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 2000; /* Поднимаем над всеми слоями для гарантированной видимости */
+}
+
+.pdf-export-btn {
+    font-family: var(--font-premium, 'Garamond', serif) !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase;
+    color: var(--text-main) !important;
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    border-radius: 0px !important; 
+    padding: 0.8rem 1.6rem !important;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.pdf-export-btn:hover { border-color: var(--color-accent) !important; background: rgba(255, 255, 255, 0.03) !important; }
+body.light-theme .pdf-export-btn:hover { background: rgba(0, 0, 0, 0.02) !important; }
+
+/* СИСТЕМНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД ТЕЛЕФОНЫ */
 @media (max-width: 768px) {
     :root { font-size: 10.5px !important; }
     .theme-toggle-container { top: 15px !important; right: 15px !important; }
     
-    /* Разрешаем табличной сетке на мобилках уходить в горизонтальный адаптивный скролл, чтобы буквы не накладывались */
     .premium-table-wrap { overflow-x: auto !important; }
     .premium-table { min-width: 58rem !important; }
     
@@ -377,6 +434,17 @@ body.light-theme .contact-item { background: rgba(0, 0, 0, 0.002); }
     .tab-trigger-btn { font-size: 0.8rem !important; padding: 0.7rem 0.2rem !important; }
     .gallery-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .premium-footer { flex-direction: column; text-align: center; gap: 10px; }
+}
+
+/* Печатные правила А4 для PDF */
+@media print {
+    .liquid-nav-panel, .theme-toggle-container, .inner-tab-panel, .pdf-export-container, .scroll-progress { display: none !important; }
+    .tab-content-view { display: block !important; opacity: 1 !important; }
+    body, .presentation-wrapper, .premium-card { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+    .slide-section { padding: 15mm 0 !important; page-break-after: always; }
+    .premium-table-wrap { border: 1px solid #000000 !important; background: #ffffff !important; overflow: visible !important; }
+    .premium-table th, .premium-table td { color: #000000 !important; border-bottom: 1px solid #e5e5e5 !important; padding: 8px !important; }
+    .premium-table th { background: #f5f5f7 !important; font-weight: bold !important; }
 }
 
 .premium-lightbox { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }

@@ -95,6 +95,11 @@ if (!document.querySelector('script[src="smart-engine.js"]')) {
     smartScript.src = 'smart-engine.js';
     document.head.appendChild(smartScript);
 }
+if (!document.querySelector('script[src="pdf-export.js"]')) {
+    const pdfScript = document.createElement('script');
+    pdfScript.src = 'pdf-export.js';
+    document.head.appendChild(pdfScript);
+}
 
 // 7. ИНТЕЛЛЕКТУАЛЬНЫЙ ДАТЧИК ЖИВОГО АВТООБНОВЛЕНИЯ СТРАНИЦЫ (БЕЗ РУЧНЫХ ПЕРЕЗАГРУЗОК)
 if ('serviceWorker' in navigator) {

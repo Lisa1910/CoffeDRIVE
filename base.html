@@ -10,13 +10,8 @@
     <meta http-equiv="Expires" content="604800">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- ИТ-директива упреждающего пререндеринга Даниила Лисенкова -->
-<link rel="prerender" href="index.html">
-<link rel="prerender" href="base.html">
-<link rel="prerender" href="universal.html">
-<link rel="prerender" href="pro.html">
 </head>
 <body class="page-base">
 
@@ -24,10 +19,8 @@
 <div class="scroll-progress" id="progressBar"></div>
 
 <div class="presentation-wrapper">
-    <!-- Световые оверлеи сдержанного глубокого синего цвета (DDX Style) -->
+    <!-- Глобальный матовый оверлей виньетирования -->
     <div class="bg-layer-glow"></div>
-    <div class="bg-layer-foam"></div>
-    <div class="bg-layer-linen"></div>
 
     <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ BASE -->
     <main class="slide-container">
@@ -35,27 +28,27 @@
         <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
         <section class="slide-section" style="padding-top: 60px;">
             <div class="title-wrap">
-                <div class="giant-bg-text" style="color: rgba(0, 140, 200, 0.015);">Brevvo Base</div>
+                <div class="giant-bg-text">Brevvo Base</div>
                 <h1 class="slide-title">Бюджетный Пакетированный <span>Старт Base</span></h1>
             </div>
 
             <!-- Внутренние кнопки управления контентом -->
             <div class="inner-tab-panel">
-                <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
-                <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
+                <button class="tab-trigger-btn active" id="btnLocalConcept">Концепция и Фото</button>
+                <button class="tab-trigger-btn" id="btnLocalFinance">Смета и Финмодель</button>
             </div>
 
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ BASE (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
-                    <div class="premium-card" style="border-left: 3px solid var(--color-accent);">
+                    <div class="premium-card" style="border-left: 2px solid var(--color-accent);">
                         <div class="card-label">Антикризисная оптимизация рисков</div>
                         <div class="card-value">СТРИТ-ФУД ПАВИЛЬОН WALK-THROUGH (ПЕШЕХОДНЫЙ ТРАФИК)</div>
                         <p class="card-text">Экстремальное сокращение инвестиционного порога без критической потери качества базового продукта. Конфигурация Base полностью отказывается от дорогостоящих элементов Drive-Through инфраструктуры (асфальтирование зон заезда, разметка радиусов, дорожные знаки) и дефицитных европейских брендов HoReCa, завязанных на параллельный импорт. Мы полностью перестраиваем формат под walk-through обслуживание — пешеходный трафик на парковках крупных ТРЦ или оживленных улицах Красноярска. Модифицированный морской контейнер заменяется на готовый каркасный зимний деревянный павильон 4 × 2.4 м с панорамным остеклением. Из меню полностью исключаются позиции фритюра (наггетсы, картофель фри), что позволяет убрать сверхдорогую вытяжную вентиляцию с жироуловителями. Все оборудование переводится на официальные российские и фабричные азиатские аналоги с локальными сервисными центрами на территории Сибири.</p>
                     </div>
                 </div>
 
-                <!-- Фотогалерея Бюджетного варианта (Фиксированные отступы, пропорции и скругления) -->
+                <!-- Фотогалерея Бюджетного варианта (Фиксированные отступы, пропорции и прямые углы) -->
                 <div class="gallery-container">
                     <h2 class="gallery-title">Варианты представления бюджетного павильона Base</h2>
                     <div class="gallery-grid">
@@ -226,7 +219,7 @@
                                     </tr>
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">ТО и амортизационный фонд</td>
-                                        <td>Регламентное обслуживание фильтра Moccamaster, чистка групп кофемашины, замену фильтрующих картриджей, закупка профессиональной химии для промывки оборудования.</td>
+                                        <td>Регламентное обслуживание фильтра Moccamaster, чистка групп кофемашины, замена фильтрующих картриджей, закупка профессиональной химии для промывки оборудования.</td>
                                         <td>10 000</td>
                                     </tr>
                                     <tr class="row-total">
@@ -312,11 +305,11 @@
                 </div>
             </div>
         </section>
-                        <!-- КОНТАКТНЫЙ СЛАЙД BASE -->
+        <!-- КОНТАКТНЫЙ СЛАЙД BASE (ВЫНЕСЕН НАВЕРХНАД МЕНЮ) -->
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
-            <div class="premium-card" style="border-left: 4px solid var(--color-accent);">
+            <div class="premium-card" style="border-left: 2px solid var(--color-accent);">
                 <div class="card-label">Автор ИС и разработки MVP</div>
-                <div class="card-value" style="font-family: 'Perandory', serif; font-size: 24px;">ОБСУДИТЬ ПАКЕТ BASE</div>
+                <div class="card-value">ОБСУДИТЬ ПАКЕТ BASE</div>
                 <div class="contact-grid">
                     <div class="contact-item"><span>Telegram</span><a href="https://t.me" target="_blank">@Architect_lis</a></div>
                     <div class="contact-item"><span>Email</span><a href="mailto:Lisenkovdaniil1910@gmail.com">Lisenkovdaniil1910@gmail.com</a></div>
@@ -334,13 +327,13 @@
 
 <!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ ДЛЯ СТРАНИЦЫ BASE -->
 <nav class="liquid-nav-panel">
-    <a href="index.html" class="liquid-btn">📊 Главная матрица</a>
-    <a href="base.html" class="liquid-btn active">⚡ Base (2-3 млн)</a>
-    <a href="universal.html" class="liquid-btn">🔥 Universal (5-7 млн)</a>
-    <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
+    <a href="index.html" class="liquid-btn">Home</a>
+    <a href="base.html" class="liquid-btn active">Base</a>
+    <a href="universal.html" class="liquid-btn">Universal</a>
+    <a href="pro.html" class="liquid-btn">Pro</a>
 </nav>
 
-<!-- Принудительное сквозное подключение файла оптимизации Даниила Лисенкова -->
+<!-- Принудительное сквозное подключение файла резиновой оптимизации -->
 <script src="optimize.js"></script>
 
 <script>

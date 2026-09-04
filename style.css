@@ -1,51 +1,54 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. ДИЗАЙН-СИСТЕМА BREVVO NEO-NOIR (УЛЬТИМАТИВНЫЙ ТЕМНЫЙ ДОРОГОЙ СТИЛЬ)
+   1. РЕЗИНОВАЯ ДИЗАЙН-СИСТЕМА BREVVO (ПРОПОРЦИОНАЛЬНОЕ СЖАТИЕ ПОД ЭКРАН)
    ========================================================================== */
 :root {
-    --bg-main: #020303; /* Глубокий угольно-чёрный премиальный фон */
-    --text-white: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.5); /* Приглушенный, не выжигающий глаза текст */
-    --radius-premium: 24px;
-    --radius-inner: 14px;
-    --fs-xl: clamp(50px, 7.5vw, 115px);
+    /* Базовая точка отсчета размеров — адаптируется под ширину дисплея */
+    font-size: clamp(12px, 0.9vw, 16px);
     
-    /* Дорогие, ультра-рассеянные благородные неоновые туманы */
-    --accent-glow: radial-gradient(circle at 50% 40%, rgba(204, 176, 131, 0.05) 0%, transparent 65%);
+    --bg-main: #020303;
+    --text-white: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.5);
+    
+    /* Резиновые адаптивные радиусы скруглений */
+    --radius-premium: clamp(16px, 2vw, 24px);
+    --radius-inner: clamp(10px, 1.2vw, 14px);
+    --fs-xl: clamp(45px, 7vw, 105px);
+    
+    /* Приглушенные, дорогие DDX неоновые туманы */
+    --accent-glow: radial-gradient(circle at 50% 40%, rgba(204, 176, 131, 0.04) 0%, transparent 65%);
     --color-accent: #a38b69;
     --font-premium: 'Garamond', 'Georgia', 'Times New Roman', serif;
 }
 
-/* Автоматическая смена сдержанных темных палитр DDX под классы body страниц */
+/* Приглушенные резиновые палитры DDX */
 body.page-main {
     --accent-glow: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.015) 0%, transparent 50%);
     --color-accent: #e0e5e3;
 }
 body.page-base {
-    --bg-main: #010406; /* Иссиня-чёрная роскошная ночь */
+    --bg-main: #010406;
     --accent-glow: radial-gradient(circle at 50% 30%, rgba(0, 110, 220, 0.04) 0%, transparent 65%);
-    --color-accent: #007ecc; /* Сдержанный, глубокий неоново-голубой */
+    --color-accent: #007ecc;
 }
 body.page-universal {
-    --bg-main: #040201; /* Тёмный терракотовый графит */
+    --bg-main: #040201;
     --accent-glow: radial-gradient(circle at 50% 30%, rgba(180, 40, 0, 0.035) 0%, transparent 65%);
-    --color-accent: #b33000; /* Приглушенный благородный оранжево-бордовый */
+    --color-accent: #b33000;
 }
 body.page-pro {
-    --bg-main: #010201; /* Тёмно-изумрудный глубокий бархат */
+    --bg-main: #010201;
     --accent-glow: radial-gradient(circle at 70% 25%, rgba(8, 100, 60, 0.035) 0%, transparent 55%), 
                   radial-gradient(circle at 30% 75%, rgba(80, 25, 150, 0.035) 0%, transparent 55%);
-    --color-accent: #097a49; /* Фасадный спокойный тёмно-зелёный */
+    --color-accent: #097a49;
 }
 
-/* Жесткие сбросы и оптимизация рендеринга шрифтов Apple/Google */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -55,16 +58,15 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    transition: background-color 0.6s ease;
+    transition: background-color 0.4s ease;
 }
 
-/* Физика интерактивной обертки презентации */
+/* Резиновая оболочка презентации */
 .presentation-wrapper {
     position: relative;
     width: 100%;
-    /* Дорогая дизайнерская сетка на фоне */
-    background: repeating-linear-gradient(90deg, transparent, transparent 250px, rgba(255,255,255,0.0015) 250px, rgba(255,255,255,0.0015) 500px);
-    padding-bottom: 180px; /* Защитный буфер, чтобы контент не уходил под нижнее меню */
+    background: repeating-linear-gradient(90deg, transparent, transparent 15rem, rgba(255,255,255,0.0015) 15rem, rgba(255,255,255,0.0015) 30rem);
+    padding-bottom: 12rem; /* Адаптивный нижний буфер под скролл-панель */
 }
 
 .bg-layer-glow {
@@ -81,7 +83,7 @@ body {
     background-image: url('https://unsplash.com');
     background-size: cover;
     background-position: center;
-    opacity: 0.012; /* Сверхлегкая, благородная текстура кофейной пены */
+    opacity: 0.01;
     mix-blend-mode: color-dodge;
     pointer-events: none;
     z-index: 2;
@@ -91,7 +93,7 @@ body {
     position: fixed;
     inset: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-    background-size: 8px 8px;
+    background-size: 0.5rem 0.5rem;
     pointer-events: none;
     z-index: 3;
 }
@@ -108,19 +110,19 @@ body {
 }
 
 /* ==========================================================================
-   2. СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS С АЙФОН-СКРОЛЛОМ (БЕЗ ОБРЕЗАНИЙ)
+   2. СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS С АЙФОН-СКРОЛЛОМ (РЕЗИНОВЫЙ КОМПАКТ)
    ========================================================================== */
 .liquid-nav-panel {
     position: fixed;
-    bottom: 25px;
+    bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(6, 8, 7, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 40px;
-    padding: 5px;
+    padding: 0.3rem;
     display: flex;
-    gap: 6px;
+    gap: 0.4rem;
     backdrop-filter: blur(40px) saturate(140%);
     -webkit-backdrop-filter: blur(40px) saturate(140%);
     z-index: 2500;
@@ -146,10 +148,10 @@ body {
 
 .liquid-btn {
     font-family: var(--font-premium) !important;
-    font-size: 11px; /* Миниатюрный изящный размер шрифта */
+    font-size: 0.75rem; /* Миниатюрный изящный размер шрифта */
     letter-spacing: 1.5px;
     color: var(--text-dim);
-    padding: 10px 18px; /* Уменьшенные отступы для компактности кнопок */
+    padding: 0.6rem 1.1rem; /* Уменьшенные отступы для компактности кнопок */
     background: transparent;
     border: 1px solid transparent;
     border-radius: 30px;
@@ -174,19 +176,19 @@ body {
 /* Локальные горизонтальные вкладки внутри самих слайдов */
 .inner-tab-panel {
     display: flex;
-    gap: 12px;
-    margin-bottom: 40px;
-    margin-top: 15px;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
 }
 
 .tab-trigger-btn {
     font-family: var(--font-premium) !important;
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 1px;
     color: var(--text-dim);
     background: rgba(255, 255, 255, 0.01);
     border: 1px solid rgba(255, 255, 255, 0.04);
-    padding: 11px 26px;
+    padding: 0.7rem 1.6rem;
     border-radius: 30px;
     cursor: pointer;
     text-transform: uppercase;
@@ -214,7 +216,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 /* ==========================================================================
-   3. ГЕОМЕТРИЯ СЕКЦИЙ И СЕТКА КАРТОЧЕК ДЛЯ ЗАЩИТЫ КОНТЕЙНЕРОВ
+   3. ГЕОМЕТРИЯ СЕКЦИЙ И РЕЗИНОВАЯ СЕТКА КАРТОЧЕК
    ========================================================================== */
 .slide-section {
     position: relative;
@@ -223,25 +225,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 110px 40px 110px 40px; /* Большие вертикальные отступы-буферы */
+    padding: 6.5rem 2.5rem 6.5rem 2.5rem; /* Большие вертикальные отступы-буферы */
     z-index: 10;
 }
 
 .slide-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
 }
 
 .title-wrap {
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 3rem;
 }
 
 .giant-bg-text {
     position: absolute;
-    top: -65px;
-    left: -12px;
+    top: -4rem;
+    left: -0.7rem;
     font-family: var(--font-premium) !important;
     font-size: var(--fs-xl);
     color: rgba(255, 255, 255, 0.012); /* Ультра-рассеянные скрытые титры */
@@ -257,7 +259,7 @@ body {
 
 .slide-title {
     font-family: var(--font-premium) !important;
-    font-size: clamp(28px, 4.5vw, 48px);
+    font-size: clamp(26px, 4.5vw, 48px);
     color: var(--text-white);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -269,8 +271,8 @@ body {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 2.5rem;
     width: 100%;
 }
 
@@ -279,7 +281,7 @@ body {
     background: rgba(3, 5, 4, 0.88);
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: var(--radius-premium);
-    padding: 45px;
+    padding: 2.8rem;
     backdrop-filter: blur(40px) saturate(110%);
     -webkit-backdrop-filter: blur(40px) saturate(110%);
     box-shadow: 0 40px 80px rgba(0,0,0,0.85);
@@ -289,23 +291,23 @@ body {
 
 .card-label {
     font-family: var(--font-premium) !important;
-    font-size: 14px;
+    font-size: 0.85rem;
     color: var(--color-accent);
     letter-spacing: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 1.2rem;
     text-transform: uppercase;
 }
 
 .card-value {
     font-family: var(--font-premium) !important;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     letter-spacing: 0.5px;
 }
 
 .card-text {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--text-dim);
     font-weight: 300;
     line-height: 1.7;
@@ -316,7 +318,7 @@ body {
 .premium-table-wrap {
     width: 100%;
     overflow-x: auto; /* Включает идеальный горизонтальный скролл таблиц на телефонах */
-    margin-top: 25px;
+    margin-top: 1.5rem;
     border-radius: var(--radius-inner);
     border: 1px solid rgba(255, 255, 255, 0.03);
     background: rgba(2, 4, 3, 0.6);
@@ -326,15 +328,15 @@ body {
 
 .premium-table {
     width: 100%;
-    min-width: 900px; /* Принудительно держит таблицу горизонтально. Буквы не сжаты! */
+    min-width: 56rem; /* Принудительно держит таблицу горизонтально. Буквы не сжаты! */
     border-collapse: collapse;
     text-align: left;
 }
 
 .premium-table th, .premium-table td {
-    padding: 20px 24px;
+    padding: 1.2rem 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    font-size: 15px;
+    font-size: 0.9rem;
     vertical-align: middle;
     white-space: normal;
 }
@@ -358,7 +360,7 @@ body {
 
 .premium-table .row-total td {
     font-family: var(--font-premium) !important;
-    font-size: 18px;
+    font-size: 1.1rem;
     color: var(--color-accent);
     font-weight: 600;
     background: rgba(255, 255, 255, 0.01);
@@ -372,19 +374,19 @@ body {
 }
 
 /* ==========================================================================
-   5. МОДУЛЬ ГАЛЕРЕИ (ОТСТУПЫ 24PX, СКРУГЛЕНИЯ 14PX, ПРОПОРЦИИ 16:10)
+   5. МОДУЛЬ ГАЛЕРЕИ (РЕЗИНОВЫЕ ОТСТУПЫ, СКРУГЛЕНИЯ, ПРОПОРЦИИ)
    ========================================================================== */
 .gallery-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 1.8rem;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 2.5rem;
 }
 
 .gallery-title {
     font-family: var(--font-premium) !important;
-    font-size: 20px;
+    font-size: 1.2rem;
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -393,7 +395,7 @@ body {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px; /* Сочные зазоры между картинками, чтобы они не слипались */
+    gap: 1.5rem; /* Зазоры между картинками */
     width: 100%;
 }
 
@@ -414,52 +416,52 @@ body {
     display: block;
 }
 /* ==========================================================================
-   6. ИСПРАВЛЕННЫЙ ПУНКТ РАЗРАБОТЧИКА И ПРЕМИАЛЬНЫЙ ПОДВАЛ (БЕЗ НАЛОЖЕНИЙ)
+   6. ПУНКТ РАЗРАБОТЧИКА И РЕЗИНОВЫЙ ПОДВАЛ (БЕЗ НАЛОЖЕНИЙ)
    ========================================================================== */
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.8rem;
     width: 100%;
 }
 
 .contact-item {
     background: rgba(255, 255, 255, 0.008);
     border: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 24px;
+    padding: 1.5rem;
     border-radius: var(--radius-inner);
 }
 
 .contact-item span {
     display: block;
-    font-size: 11px;
+    font-size: 0.7rem;
     color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .contact-item a { 
-    font-size: 16px; 
+    font-size: 1rem; 
     color: var(--text-white); 
     text-decoration: none;
 }
 
 .premium-footer {
     width: 100%;
-    margin-top: 60px;
-    padding-top: 30px;
-    padding-bottom: 25px; /* Защитный нижний паддинг от скролл-панели */
+    margin-top: 3.5rem;
+    padding-top: 1.8rem;
+    padding-bottom: 1.5rem; /* Защитный нижний паддинг от скролл-панели */
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11px;
+    font-size: 0.7rem;
     color: var(--text-dim);
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    gap: 20px;
+    gap: 1.2rem;
 }
 
 /* ==========================================================================
@@ -470,6 +472,9 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Автоматическое уменьшение базового шрифта на мобилках для идеальной усадки */
+    :root { font-size: 11px !important; }
+
     .liquid-nav-panel {
         width: 90vw !important;
         max-width: 90vw !important;
@@ -477,21 +482,15 @@ body {
         transform: translateX(-50%) !important;
         bottom: 20px !important;
         padding: 5px 8px !important;
-        justify-content: flex-start !important; /* Корректная линия для горизонтальной прокрутки */
+        justify-content: flex-start !important; /* Линия для горизонтальной прокрутки */
     }
 
-    .liquid-btn {
-        padding: 9px 14px !important;
-        font-size: 11px !important;
-        letter-spacing: 1px !important;
-    }
-
-    .slide-section { padding: 90px 16px 130px 16px !important; }
-    .premium-card { padding: 30px 16px !important; }
-    .inner-tab-panel { flex-direction: column; gap: 10px; width: 100%; }
+    .slide-section { padding: 5rem 1rem 8rem 1rem !important; }
+    .premium-card { padding: 1.8rem 1rem !important; }
+    .inner-tab-panel { flex-direction: column; gap: 0.6rem; width: 100%; }
     .tab-trigger-btn { width: 100%; text-align: center; }
-    .gallery-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-    .premium-footer { flex-direction: column; text-align: center; gap: 12px; }
+    .gallery-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    .premium-footer { flex-direction: column; text-align: center; gap: 10px; }
 }
 
 /* ==========================================================================
@@ -514,5 +513,5 @@ body {
     color: var(--color-accent) !important;
 }
 @media (max-width: 768px) {
-    .lightbox-arrow { display: none !important; } /* На телефонах листаем только свайпами пальца */
+    .lightbox-arrow { display: none !important; }
 }

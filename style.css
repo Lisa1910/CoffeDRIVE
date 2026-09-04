@@ -1,126 +1,58 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — LUXURY APP EDITION (ЗАПРЕТ ЗУМА)
+   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — ТЕХНОЛОГИЯ РЕЗИНОВОГО МАСШТАБИРОВАНИЯ
    ========================================================================== */
 :root {
-    /* Резиновая база подстраивается под ширину дисплея */
     font-size: clamp(12px, 0.9vw, 16px);
-    
-    --bg-main: #070808;
-    --text-white: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.5);
-    
-    --radius-premium: 0px; /* Строгая прямоугольная геометрия Bugatti */
+    --radius-premium: 0px; 
     --radius-inner: 0px;
-    --fs-xl: clamp(40px, 8vw, 95px);
+    --fs-xl: clamp(45px, 8vw, 95px);
+    --font-premium: 'Garamond', 'Georgia', serif;
+    
+    /* ДЕФОЛТНЫЙ ТЕМНЫЙ РЕЖИМ (DARK MODE) — МОНОЛИТНЫЙ, ДОРОГОЙ, ЧИТАЕМЫЙ */
+    --bg-main: #060707;
+    --card-bg: #0d0f0f; /* Чистая темная плашка без прозрачной каши */
+    --card-border: rgba(255, 255, 255, 0.03);
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.5);
+    --table-header-bg: rgba(255, 255, 255, 0.02); /* Кристально прозрачная шапка */
     
     --color-accent: #d4cfc7;
-    --card-border: rgba(255, 255, 255, 0.04);
-    --font-premium: 'Garamond', 'Georgia', serif;
+    --badge-color: #e2ded5;
 }
 
-/* Приглушенные цветовые схемы DDX в виде тонких рамок */
-body.page-main { --color-accent: #e5e5e5; }
-body.page-base {
-    --bg-main: #04070a;
-    --color-accent: #2c4257; /* Приглушенная синяя бумага */
-    --card-border: rgba(44, 66, 87, 0.25);
-}
-body.page-universal {
-    --bg-main: #060404;
-    --color-accent: #5c1d24; /* Глубокий бордовый Шато Марго */
-    --card-border: rgba(92, 29, 36, 0.25);
-}
-body.page-pro {
-    --bg-main: #030504;
-    --color-accent: #1b3b2b; /* Бутылочный темно-зеленый люкс */
-    --card-border: rgba(27, 59, 43, 0.3);
-}
+/* Принудительная адаптация светлых пастельных тонов на темном для страниц */
+body.page-base { --color-accent: #7fb5ff; --badge-color: #a3cfff; }
+body.page-universal { --color-accent: #ff8b8b; --badge-color: #ffbaba; }
+body.page-pro { --color-accent: #68d89b; --badge-color: #9effca; }
 
-/* ИТ-БЛОКИРОВКА ЗУМА: Сайт ведет себя строго как мобильное приложение */
+/* ==========================================================================
+   РЕАКТИВНЫЙ СВЕТЛЫЙ РЕЖИМ (LIGHT MODE) — БЕЛО-ПРОЗРАЧНЫЙ ХЛОПОК С ЧЕРНЫМ ТЕКСТОМ
+   ========================================================================== */
+body.light-theme {
+    --card-bg: rgba(255, 255, 255, 0.75); /* Бело-прозрачные дорогие плашки */
+    --card-border: rgba(0, 0, 0, 0.06);
+    --text-main: #0c0d0d; /* Угольно-черный строгий читаемый текст */
+    --text-dim: rgba(12, 13, 13, 0.6);
+    --table-header-bg: rgba(0, 0, 0, 0.03);
+    
+    --color-accent: #222222;
+    --badge-color: #111111;
+}
+body.light-theme.page-base { --color-accent: #1e3a5f; --badge-color: #0e2440; }
+body.light-theme.page-universal { --color-accent: #6b141d; --badge-color: #470810; }
+body.light-theme.page-pro { --color-accent: #0f3d26; --badge-color: #072617; }
+
+/* Блокировка зума на смартфонах */
 html, body {
-    touch-action: pan-x pan-y; /* Разрешает обычный скролл, но запрещает щипок-зум */
-    -webkit-text-size-adjust: 100%; /* Запрещает автоизменение шрифтов при повороте */
+    touch-action: pan-x pan-y;
+    -webkit-text-size-adjust: 100%;
     max-width: 100%;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    background-color: var(--bg-main);
-    color: var(--text-white);
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-/* Обертка с главной фоновой бумагой */
-.presentation-wrapper {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-image: url('wallpaper.png');
-    background-size: repeat;
-    background-position: center;
-    padding-bottom: 12rem;
-}
-
-/* Мягкая люксовая тень вокруг всего сайта (Сохранили твой любимый объем) */
-.slide-container {
-    width: 100%;
-    max-width: 72rem;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.6); /* Глубокая тень по контуру макета */
-}
-
-.bg-layer-glow {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(2,3,3,0.7) 100%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* ==========================================================================
-   2. ТЕКСТУРНОЕ НАЛОЖЕНИЕ НА ФОТО (ЭФФЕКТ ПЕЧАТИ НА БУМАГЕ)
-   ========================================================================== */
-.gallery-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: #050606;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    overflow: hidden;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Создаем скрытый бумажный оверлей поверх каждой фотографии */
-.gallery-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('wallpaper.png'); /* Накладываем бумагу на фото */
-    background-size: repeat;
-    mix-blend-mode: multiply; /* Эффект проявления текстуры сквозь краску */
-    opacity: 0.85; /* Оптимальная прозрачность наложения */
-    pointer-events: none;
-    z-index: 5;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
 /* Линия прогресса чтения сверху экрана */
 .scroll-progress {
     position: fixed;
@@ -133,25 +65,81 @@ body {
     transition: width 0.1s ease;
 }
 
+/* Текстурный бумажный холст */
+.presentation-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('wallpaper.png');
+    background-size: repeat;
+    background-position: center;
+    padding-bottom: 12rem;
+}
+
+/* Люксовая глубокая тень вокруг центрального контейнера сайта */
+.slide-container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.65);
+}
+
+.bg-layer-glow {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(2,3,3,0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
 /* ==========================================================================
-   2. ОТЦЕНТРИРОВАННАЯ И УКРУПНЕННАЯ НАВИГАЦИЯ С АЙФОН-ФИЗИКОЙ
+   2. СВЕРХСКОРОСТНАЯ ИНТЕРАКТИВНАЯ КНОПКА ПЕРЕКЛЮЧЕНИЯ РЕЖИМОВ (СВЕРХУ)
+   ========================================================================== */
+.theme-toggle-container {
+    position: fixed;
+    top: 25px;
+    right: 40px;
+    z-index: 4000;
+}
+
+.theme-toggle-btn {
+    font-family: var(--font-premium) !important;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 0.7rem 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover { border-color: var(--color-accent); }
+
+/* ==========================================================================
+   3. ОТЦЕНТРИРОВАННАЯ И УКРУПНЕННАЯ НАВИГАЦИЯ LIQUID GLASS (БЕЗ ВЫЛЕТОВ)
    ========================================================================== */
 .liquid-nav-panel {
     position: fixed;
     bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%) translateZ(0); /* Жесткое центрирование на видеокарте */
-    background: rgba(10, 11, 11, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform: translateX(-50%) translateZ(0);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 0px;
     padding: 0.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
     z-index: 2500;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.95);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
     width: auto;
     min-width: max-content;
     max-width: 92vw;
@@ -159,10 +147,10 @@ body {
 
 .liquid-btn {
     font-family: var(--font-premium) !important;
-    font-size: 0.85rem; /* Пропорционально укрупнили размер для читаемости */
+    font-size: 0.85rem;
     letter-spacing: 2px;
     color: var(--text-dim);
-    padding: 0.8rem 1.6rem; /* Увеличенные кликабельные отступы Apple-Style */
+    padding: 0.8rem 1.6rem;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -174,26 +162,24 @@ body {
     flex-shrink: 0;
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .liquid-btn.active, .liquid-btn:hover {
-    color: var(--text-white);
-    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.02);
     box-shadow: inset 0 -2px 0 0 var(--color-accent);
 }
+body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
 
-/* ==========================================================================
-   3. ПОДЛОЖКИ ДЛЯ ВНУТРЕННИХ КНОПОК (КОНЦЕПЦИЯ / СМЕТА) — ЧЕТКАЯ ВИДИМОСТЬ
-   ========================================================================== */
+/* Переключатели вкладок Концепция / Смета с хлопковой подложкой */
 .inner-tab-panel {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
-    background: rgba(255, 255, 255, 0.02); /* Видимая полупрозрачная хлопковая база */
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: var(--table-header-bg);
+    border: 1px solid var(--card-border);
     padding: 0.3rem;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .tab-trigger-btn {
@@ -206,32 +192,19 @@ body {
     padding: 0.8rem 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
-    flex: 1; /* Кнопки равномерно распределяют ширину панели */
+    flex: 1;
     text-align: center;
     transition: all 0.3s ease;
 }
-
-.tab-trigger-btn.active, .tab-trigger-btn:hover {
-    color: var(--text-white);
-    background: rgba(255, 255, 255, 0.04); /* Контрастное выделение активной вкладки */
-}
+.tab-trigger-btn.active, .tab-trigger-btn:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.04); }
+body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
 
 .tab-content-view { display: none; width: 100%; }
 .tab-content-view.active { display: block; }
 /* ==========================================================================
-   4. ПОЛУПРОЗРАЧНЫЙ MICA-АКРИЛ С ТЕКСТУРОЙ И ТЕНЯМИ
+   4. СТРОГИЕ КАРТОЧКИ И ВЕРСТКА РЕЗИНОВЫХ СМЕТ (БЕЗ ПОЛОСОК СБОКУ)
    ========================================================================== */
-.slide-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6rem 2rem 6rem 2rem;
-    z-index: 10;
-}
-
+.slide-section { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2rem 6rem 2rem; z-index: 10; }
 .title-wrap { position: relative; margin-bottom: 3.5rem; }
 
 .giant-bg-text {
@@ -240,7 +213,7 @@ body {
     left: -0.5rem;
     font-family: var(--font-premium) !important;
     font-size: var(--fs-xl);
-    color: rgba(255, 255, 255, 0.005);
+    color: rgba(255, 255, 255, 0.004);
     text-transform: uppercase;
     letter-spacing: 6px;
     line-height: 0.8;
@@ -249,242 +222,103 @@ body {
     z-index: 1;
 }
 
-.slide-title {
-    font-family: var(--font-premium) !important;
-    font-size: clamp(24px, 4vw, 42px);
-    color: var(--text-white);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 400;
-    position: relative;
-    z-index: 2;
-}
-
+.slide-title { font-family: var(--font-premium) !important; font-size: clamp(24px, 4vw, 42px); color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; font-weight: 400; position: relative; z-index: 2; }
 .slide-title span { color: var(--color-accent); }
+.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 3rem; width: 100%; }
 
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-    gap: 3rem;
-    width: 100%;
-}
-
-/* Изящная полупрозрачная плашка с наложением фоновой бумаги сквозь неё */
 .premium-card {
     position: relative;
-    background: rgba(10, 12, 12, 0.75); /* Сделали более прозрачной, виден бэкграунд */
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 0px;
     padding: 3.5rem;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7); /* Сохранили твой объем и тень вокруг сайта */
     width: 100%;
     overflow: hidden;
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-/* Эффект наложения текстуры бумаги на саму плашку */
-.premium-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('wallpaper.png');
-    background-size: repeat;
-    mix-blend-mode: overlay; /* Мягко проявляет бумажное зерно на карточке */
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
-}
+.card-label { font-family: var(--font-premium) !important; font-size: 0.8rem; color: var(--color-accent); letter-spacing: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
+.card-value { font-family: var(--font-premium) !important; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main); }
+.card-text { font-size: 0.95rem; color: var(--text-dim); font-weight: 300; line-height: 1.8; }
 
-.card-label {
-    font-family: var(--font-premium) !important;
-    font-size: 0.8rem;
-    color: var(--color-accent);
-    letter-spacing: 3px;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-}
+/* Умные сметные таблицы без горизонтального скролла */
+.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.1); }
+.premium-table { width: 100%; min-width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; }
 
-.card-value {
-    font-family: var(--font-premium) !important;
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 1.2rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 2;
-}
-
-.card-text {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-    font-weight: 300;
-    line-height: 1.8;
-    position: relative;
-    z-index: 2;
-}
-/* ==========================================================================
-   5. РЕЗИНОВАЯ УСАДКА ТАБЛИЦ ПОД ЭКРАН ТЕЛЕФОНА (БЕЗ СКРОЛЛА)
-   ========================================================================== */
-.premium-table-wrap {
-    width: 100%;
-    overflow-x: hidden; /* ПОЛНОСТЬЮ УБРАЛИ ЛИШНИЕ ТЕЛОДВИЖЕНИЯ И СКРОЛЛ */
-    margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.02);
-    background: rgba(5, 6, 7, 0.3);
-}
-
-.premium-table {
-    width: 100%;
-    min-width: 100%; /* Таблица намертво зажата в ширину экрана устройства */
-    border-collapse: collapse;
-    text-align: left;
-    table-layout: fixed; /* Принудительный фиксированный шаг распределения колонок */
-}
-
-/* Настраиваем резиновые пропорции колонок */
-.premium-table th:nth-child(1), 
-.premium-table td:nth-child(1) { width: 45%; } /* Первому столбику отдаем максимум места */
-.premium-table th:nth-child(2), 
-.premium-table td:nth-child(2) { width: 30%; } /* Описание характеристик */
-.premium-table th:nth-child(3), 
-.premium-table td:nth-child(3) { width: 10%; text-align: center; } /* Кол-во */
-.premium-table th:nth-child(4), 
-.premium-table td:nth-child(4) { width: 15%; text-align: right; } /* Стоимость */
+.premium-table th:nth-child(1), .premium-table td:nth-child(1) { width: 45%; }
+.premium-table th:nth-child(2), .premium-table td:nth-child(2) { width: 30%; }
+.premium-table th:nth-child(3), .premium-table td:nth-child(3) { width: 10%; text-align: center; }
+.premium-table th:nth-child(4), .premium-table td:nth-child(4) { width: 15%; text-align: right; }
 
 .premium-table th, .premium-table td {
     padding: 1rem 0.8rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--card-border);
     font-size: 0.85rem;
     vertical-align: middle;
-    
-    /* УМНОЕ ПЕРЕНЕСЕНИЕ СТРОК И СОКРАЩЕНИЕ ТЕКСТА */
-    white-space: normal !important; /* Разрешает автоперенос слов на новые строки */
-    word-break: break-word; /* Безопасно разрывает длинные технические термины */
+    white-space: normal !important;
+    word-break: break-word;
 }
 
+/* Прозрачные шапки столбцов в стиле карточки */
 .premium-table th {
     font-family: var(--font-premium) !important;
-    color: var(--color-accent);
+    color: var(--badge-color) !important;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: rgba(10, 11, 12, 0.9);
+    background: var(--table-header-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-.premium-table td { 
-    color: var(--text-dim); 
-    font-weight: 300;
-    line-height: 1.5;
-}
-
+.premium-table td { color: var(--text-dim); font-weight: 300; line-height: 1.5; }
 .premium-table tr:last-child td { border-bottom: none; }
+.premium-table .row-total td { font-family: var(--font-premium) !important; font-size: 1rem; color: var(--color-accent); font-weight: 500; border-top: 1px solid var(--color-accent); }
 
-.premium-table .row-total td {
-    font-family: var(--font-premium) !important;
-    font-size: 1rem;
-    color: var(--color-accent);
-    font-weight: 500;
-    background: rgba(255, 255, 255, 0.01);
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.saas-highlight {
-    background: rgba(255, 255, 255, 0.003);
-    box-shadow: inset 1px 0 0 rgba(255,255,255,0.03), inset -1px 0 0 rgba(255,255,255,0.03);
-}
-
-.gallery-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; margin-top: 3rem; }
+.saas-highlight { background: rgba(255, 255, 255, 0.003); }
+body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.005); }
+/* ==========================================================================
+   5. ПЕЧАТЬ НА БУМАГЕ (ОБЪЕДИНЕННАЯ ГАЛЕРЕЯ И АДАПТИВUX)
+   ========================================================================== */
+.gallery-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; margin-top: 2.5rem; }
 .gallery-title { font-family: var(--font-premium) !important; font-size: 1.1rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; }
 .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; width: 100%; }
-/* ==========================================================================
-   6. КОНТАКТЫ И АВТОРСКИЙ ПОДВАЛ БЕЗ СБОЕВ РАЗМЕТКИ
-   ========================================================================== */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-    width: 100%;
+.gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #050606; overflow: hidden; border: 1px solid var(--card-border); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Текстура бумаги накладывается прямо поверх картинок */
+.gallery-item::after {
+    content: ''; position: absolute; inset: 0; background-image: url('wallpaper.png'); background-size: repeat;
+    mix-blend-mode: multiply; opacity: 0.85; pointer-events: none; z-index: 5;
 }
 
-.contact-item {
-    background: rgba(255, 255, 255, 0.005);
-    border: 1px solid rgba(255, 255, 255, 0.02);
-    padding: 1.6rem;
-}
+/* Личные контакты автора и подвал */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; margin-top: 2rem; width: 100%; }
+.contact-item { background: rgba(255, 255, 255, 0.002); border: 1px solid var(--card-border); padding: 1.6rem; }
+body.light-theme .contact-item { background: rgba(0, 0, 0, 0.005); }
+.contact-item span { display: block; font-size: 0.7rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
+.contact-item a { font-size: 1rem; color: var(--text-main); text-decoration: none; font-family: var(--font-premium); }
 
-.contact-item span {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.6rem;
-}
+.premium-footer { width: 100%; margin-top: 4rem; padding-top: 2rem; padding-bottom: 2.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; gap: 1.5rem; }
 
-.contact-item a { font-size: 1rem; color: var(--text-white); text-decoration: none; font-family: var(--font-premium); }
-
-.premium-footer {
-    width: 100%;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    padding-bottom: 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.02);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    gap: 1.5rem;
-}
-
-/* ==========================================================================
-   7. СИСТЕМНАЯ МОБИЛЬНАЯ УСАДКА LUXURY APP UX
-   ========================================================================== */
-@media (max-width: 1024px) { 
-    .content-grid { grid-template-columns: 1fr; } 
-}
-
+/* СИСТЕМНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД ТЕЛЕФОНЫ */
 @media (max-width: 768px) {
-    /* Силовое резиновое сжатие шрифтов на смартфонах для укладки таблиц */
     :root { font-size: 10.5px !important; }
-
-    /* Отцентрованная укрупненная панель свайпов */
-    .liquid-nav-panel {
-        width: 90vw !important;
-        max-width: 90vw !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        bottom: 20px !important;
-        padding: 4px 6px !important;
-        justify-content: center !important; /* Центрируем кнопки внутри панели */
-        border-radius: 0px !important;
-    }
-
-    .liquid-btn {
-        padding: 0.9rem 1.4rem !important; /* Идеальный размер под палец инвестора */
-        font-size: 0.85rem !important;
-        letter-spacing: 1px !important;
-    }
-
-    /* Сметная усадка на телефонах: ужимаем паддинги ячеек, чтобы всё влезло */
-    .premium-table th, .premium-table td {
-        padding: 0.8rem 0.4rem !important;
-        font-size: 0.8rem !important;
-    }
-
-    .slide-section { padding: 4.5rem 1rem 8.5rem 1rem !important; }
+    .theme-toggle-container { top: 15px !important; right: 15px !important; }
+    .theme-toggle-btn { padding: 0.5rem 1rem !important; font-size: 0.75rem !important; }
+    
+    .liquid-nav-panel { width: 90vw !important; max-width: 90vw !important; left: 50% !important; transform: translateX(-50%) !important; bottom: 20px !important; padding: 4px 6px !important; justify-content: center !important; border-radius: 0px !important; }
+    .liquid-btn { padding: 0.9rem 1.4rem !important; font-size: 0.85rem !important; }
+    
+    .premium-table th, .premium-table td { padding: 0.8rem 0.4rem !important; font-size: 0.8rem !important; }
+    .slide-section { padding: 5rem 1rem 8.5rem 1rem !important; }
     .premium-card { padding: 2rem 1rem !important; }
-    .inner-tab-panel { flex-direction: row; gap: 0.3rem; width: 100%; } /* Табы концепции стоят в ряд */
+    .inner-tab-panel { flex-direction: row; gap: 0.3rem; width: 100%; }
     .tab-trigger-btn { font-size: 0.8rem !important; padding: 0.7rem 0.2rem !important; }
     .gallery-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .premium-footer { flex-direction: column; text-align: center; gap: 10px; }
 }
 
-/* Lightbox-плеер */
 .premium-lightbox { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }
 .premium-lightbox.active { opacity: 1; visibility: visible; }
 .lightbox-close, .lightbox-arrow { transition: all 0.3s ease; user-select: none; }

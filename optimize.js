@@ -3,6 +3,23 @@
  * Разработчик архитектуры: Даниил Лисенков (c) 2026
  */
 
+// 0. ПРИНУДИТЕЛЬНЫЙ КОРНЕВОЙ ИНЖЕКТ КИБЕР-ЩИТОВ И ЭКСПОРТЕРОВ
+if (!document.querySelector('script[src="app-shield.js"]')) {
+    const shieldScript = document.createElement('script');
+    shieldScript.src = 'app-shield.js';
+    document.head.appendChild(shieldScript);
+}
+if (!document.querySelector('script[src="smart-engine.js"]')) {
+    const smartScript = document.createElement('script');
+    smartScript.src = 'smart-engine.js';
+    document.head.appendChild(smartScript);
+}
+if (!document.querySelector('script[src="pdf-export.js"]')) {
+    const pdfScript = document.createElement('script');
+    pdfScript.src = 'pdf-export.js';
+    document.head.appendChild(pdfScript);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // 1. АВТОМАТИЧЕСКИЙ ИНЖЕКТОР КНОПКИ РЕЖИМОВ С СОХРАНЕНИЕМ СОСТОЯНИЯ
     if (!document.querySelector('.theme-toggle-container')) {
@@ -83,38 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// 6. СКВОЗНОЙ АВТОМАТИЧЕСКИЙ ЗАПУСК КИБЕР-ЩИТА И ПРЕДИКТОРОВ КЛИКОВ
-if (!document.querySelector('script[src="app-shield.js"]')) {
-    const shieldScript = document.createElement('script');
-    shieldScript.src = 'app-shield.js';
-    document.head.appendChild(shieldScript);
-}
-
-if (!document.querySelector('script[src="smart-engine.js"]')) {
-    const smartScript = document.createElement('script');
-    smartScript.src = 'smart-engine.js';
-    document.head.appendChild(smartScript);
-}
-if (!document.querySelector('script[src="pdf-export.js"]')) {
-    const pdfScript = document.createElement('script');
-    pdfScript.src = 'pdf-export.js';
-    document.head.appendChild(pdfScript);
-}
-
-// 7. ИНТЕЛЛЕКТУАЛЬНЫЙ ДАТЧИК ЖИВОГО АВТООБНОВЛЕНИЯ СТРАНИЦЫ (БЕЗ РУЧНЫХ ПЕРЕЗАГРУЗОК)
+// 6. СИСТЕМНАЯ РЕГИСТРАЦИЯ ИНТЕЛЛЕКТУАЛЬНОГО СВЕТОФОРА КЭША С АВТООБНОВЛЕНИЕМ
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').then((reg) => {
             console.log('BREVVO SMART CORE: Движок автообновлений активен.');
 
-            // Если воркер нашел обновление контента при фоновом запросе к GitHub Pages
             reg.addEventListener('updatefound', () => {
                 const newWorker = reg.installing;
                 newWorker.addEventListener('statechange', () => {
-                    // Как только новое ПО полностью скачалось в память смартфона
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                         console.log('BREVVO SMART CORE: Новое ПО обнаружено. Запуск автообновления...');
-                        // Посылаем сигнал воркеру немедленно занять место старого
                         newWorker.postMessage('skipWaiting');
                     }
                 });
@@ -122,13 +118,12 @@ if ('serviceWorker' in navigator) {
         }).catch((err) => console.log('BREVVO SMART CORE: Ошибка ядра:', err));
     });
 
-    // Перехватываем смену управляющего воркера и силой плавно перезапускаем экран инвестора
     let refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (!refreshing) {
             refreshing = true;
             console.log('BREVVO SMART CORE: Страница перезапускается на новую версию ПО...');
-            window.location.reload(); // САМА ПЕРЕЗАГРУЖАЕТ ЭКРАН ПРИ ОБНОВЛЕНИИ!
+            window.location.reload();
         }
     });
 }

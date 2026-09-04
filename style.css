@@ -1,7 +1,7 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — ТЕХНОЛОГИЯ РЕЗИНОВОГО МАСШТАБИРОВАНИЯ
+   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — LUXURY APP UX (БЕЗ ТЕНЕЙ И БОКОВЫХ ВЫЛЕТОВ)
    ========================================================================== */
 :root {
     font-size: clamp(12px, 0.9vw, 16px);
@@ -10,13 +10,13 @@
     --fs-xl: clamp(45px, 8vw, 95px);
     --font-premium: 'Garamond', 'Georgia', serif;
     
-    /* ДЕФОЛТНЫЙ ТЕМНЫЙ РЕЖИМ (DARK MODE) — МОНОЛИТНЫЙ, ДОРОГОЙ, ЧИТАЕМЫЙ */
+    /* ИСПРАВЛЕННЫЙ ТЕМНЫЙ РЕЖИМ: ДОРОГАЯ МАТОВАЯ ПОЛУПРОЗРАЧНОСТЬ ХЛОПКА */
     --bg-main: #060707;
-    --card-bg: #0d0f0f; /* Чистая темная плашка без прозрачной каши */
-    --card-border: rgba(255, 255, 255, 0.03);
+    --card-bg: rgba(13, 15, 15, 0.82); /* Вернули дорогую прозрачность плашек */
+    --card-border: rgba(255, 255, 255, 0.04);
     --text-main: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.5);
-    --table-header-bg: rgba(255, 255, 255, 0.02); /* Кристально прозрачная шапка */
+    --text-dim: rgba(255, 255, 255, 0.52);
+    --table-header-bg: rgba(255, 255, 255, 0.03);
     
     --color-accent: #d4cfc7;
     --badge-color: #e2ded5;
@@ -28,13 +28,13 @@ body.page-universal { --color-accent: #ff8b8b; --badge-color: #ffbaba; }
 body.page-pro { --color-accent: #68d89b; --badge-color: #9effca; }
 
 /* ==========================================================================
-   РЕАКТИВНЫЙ СВЕТЛЫЙ РЕЖИМ (LIGHT MODE) — БЕЛО-ПРОЗРАЧНЫЙ ХЛОПОК С ЧЕРНЫМ ТЕКСТОМ
+   РЕАКТИВНЫЙ СВЕТЛЫЙ РЕЖИМ — СОВЕРШЕННЫЙ БЕЛО-ПРОЗРАЧНЫЙ КРИСТАЛЛ
    ========================================================================== */
 body.light-theme {
-    --card-bg: rgba(255, 255, 255, 0.75); /* Бело-прозрачные дорогие плашки */
-    --card-border: rgba(0, 0, 0, 0.06);
-    --text-main: #0c0d0d; /* Угольно-черный строгий читаемый текст */
-    --text-dim: rgba(12, 13, 13, 0.6);
+    --card-bg: rgba(255, 255, 255, 0.82); /* Идеальный бело-прозрачный шёлк */
+    --card-border: rgba(0, 0, 0, 0.05);
+    --text-main: #0c0d0d;
+    --text-dim: rgba(12, 13, 13, 0.65);
     --table-header-bg: rgba(0, 0, 0, 0.03);
     
     --color-accent: #222222;
@@ -76,14 +76,14 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     padding-bottom: 12rem;
 }
 
-/* Люксовая глубокая тень вокруг центрального контейнера сайта */
+/* Центральный контейнер сайта БЕЗ ВНЕШНИХ ТЕНЕЙ ПО БОКАМ */
 .slide-container {
     width: 100%;
     max-width: 72rem;
     margin: 0 auto;
     position: relative;
     z-index: 10;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.65);
+    box-shadow: none !important; /* ПОЛНОСТЬЮ УБРАЛИ ТЕНЬ ПО БОКАМ САЙТА */
 }
 
 .bg-layer-glow {
@@ -95,7 +95,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
 }
 
 /* ==========================================================================
-   2. СВЕРХСКОРОСТНАЯ ИНТЕРАКТИВНАЯ КНОПКА ПЕРЕКЛЮЧЕНИЯ РЕЖИМОВ (СВЕРХУ)
+   2. МИНИАТЮРНЫЙ ПЕРЕКАТЫВАЮЩИЙСЯ iOS-ТУМБЛЕР (СОЛНЦЕ / ЛУНА)
    ========================================================================== */
 .theme-toggle-container {
     position: fixed;
@@ -104,23 +104,58 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     z-index: 4000;
 }
 
-.theme-toggle-btn {
-    font-family: var(--font-premium) !important;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-main);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    padding: 0.7rem 1.4rem;
+/* Оболочка тумблера в стиле Apple Switch */
+.ios-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+    background: #1c1e1f;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.theme-toggle-btn:hover { border-color: var(--color-accent); }
 
+body.light-theme .ios-switch {
+    background: #e5e5e5;
+    border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Перекатывающийся внутренний круг-ползунок */
+.ios-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+}
+
+body.light-theme .ios-thumb {
+    transform: translateX(20px);
+    background: #111111;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Встроенные иконки Солнца и Луны внутри ползунка */
+.ios-icon {
+    font-size: 14px;
+    user-select: none;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    display: block;
+    position: absolute;
+}
+
+.icon-sun { opacity: 0; transform: rotate(-45deg); color: #ffb703; }
+.icon-moon { opacity: 1; transform: rotate(0deg); color: #9bb1ff; }
+
+body.light-theme .icon-sun { opacity: 1; transform: rotate(0deg); }
+body.light-theme .icon-moon { opacity: 0; transform: rotate(45deg); }
 /* ==========================================================================
    3. ОТЦЕНТРИРОВАННАЯ И УКРУПНЕННАЯ НАВИГАЦИЯ LIQUID GLASS (БЕЗ ВЫЛЕТОВ)
    ========================================================================== */
@@ -136,10 +171,10 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(35px);
-    -webkit-backdrop-filter: blur(35px);
+    backdrop-filter: blur(35px) saturate(110%);
+    -webkit-backdrop-filter: blur(35px) saturate(110%);
     z-index: 2500;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.85);
     width: auto;
     min-width: max-content;
     max-width: 92vw;
@@ -169,17 +204,22 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
 }
 body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
 
-/* Переключатели вкладок Концепция / Смета с хлопковой подложкой */
+/* Плотные контрастные подложки вкладок Концепция / Смета */
 .inner-tab-panel {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
-    background: var(--table-header-bg);
-    border: 1px solid var(--card-border);
-    padding: 0.3rem;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(10, 12, 12, 0.95); /* МАКСИМАЛЬНО ПЛОТНАЯ КОНТРАСТНАЯ ПОДЛОЖКА */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.4rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+body.light-theme .inner-tab-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.06);
 }
 
 .tab-trigger-btn {
@@ -189,20 +229,23 @@ body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
     color: var(--text-dim);
     background: transparent;
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
     flex: 1;
     text-align: center;
     transition: all 0.3s ease;
 }
-.tab-trigger-btn.active, .tab-trigger-btn:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.04); }
-body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
+.tab-trigger-btn.active, .tab-trigger-btn:hover { 
+    color: var(--text-main); 
+    background: rgba(255, 255, 255, 0.05); 
+}
+body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.06); }
 
 .tab-content-view { display: none; width: 100%; }
 .tab-content-view.active { display: block; }
 /* ==========================================================================
-   4. СТРОГИЕ КАРТОЧКИ И ВЕРСТКА РЕЗИНОВЫХ СМЕТ (БЕЗ ПОЛОСОК СБОКУ)
+   4. СТРОГИЕ ПОЛУПРОЗРАЧНЫЕ КАРТОЧКИ И ВЕРСТКА РЕЗИНОВЫХ СМЕТ
    ========================================================================== */
 .slide-section { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2rem 6rem 2rem; z-index: 10; }
 .title-wrap { position: relative; margin-bottom: 3.5rem; }
@@ -213,7 +256,7 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
     left: -0.5rem;
     font-family: var(--font-premium) !important;
     font-size: var(--fs-xl);
-    color: rgba(255, 255, 255, 0.004);
+    color: rgba(255, 255, 255, 0.003);
     text-transform: uppercase;
     letter-spacing: 6px;
     line-height: 0.8;
@@ -224,16 +267,33 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
 
 .slide-title { font-family: var(--font-premium) !important; font-size: clamp(24px, 4vw, 42px); color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; font-weight: 400; position: relative; z-index: 2; }
 .slide-title span { color: var(--color-accent); }
-.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); gap: 3rem; width: 100%; }
 
+/* Полное выравнивание сеток: в тарифе Pro элементы встанут строго друг под другом */
+body.page-pro .content-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4rem !important;
+    width: 100% !important;
+}
+
+body:not(.page-pro) .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 3rem;
+    width: 100%;
+}
+
+/* ДОРОГАЯ ХЛОПКОВАЯ ПОЛУПРОЗРАЧНОСТЬ — БЕЗ ПОЛОСОК И БЕЗ ГЛУХОЙ ТЕМНОТЫ */
 .premium-card {
     position: relative;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
     border-radius: 0px;
     padding: 3.5rem;
     width: 100%;
     overflow: hidden;
+    backdrop-filter: blur(30px) saturate(110%);
+    -webkit-backdrop-filter: blur(30px) saturate(110%);
     transition: background 0.4s ease, border-color 0.4s ease;
 }
 
@@ -242,7 +302,7 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
 .card-text { font-size: 0.95rem; color: var(--text-dim); font-weight: 300; line-height: 1.8; }
 
 /* Умные сметные таблицы без горизонтального скролла */
-.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.1); }
+.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.05); }
 .premium-table { width: 100%; min-width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; }
 
 .premium-table th:nth-child(1), .premium-table td:nth-child(1) { width: 45%; }
@@ -274,9 +334,6 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.05); }
 .premium-table td { color: var(--text-dim); font-weight: 300; line-height: 1.5; }
 .premium-table tr:last-child td { border-bottom: none; }
 .premium-table .row-total td { font-family: var(--font-premium) !important; font-size: 1rem; color: var(--color-accent); font-weight: 500; border-top: 1px solid var(--color-accent); }
-
-.saas-highlight { background: rgba(255, 255, 255, 0.003); }
-body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.005); }
 /* ==========================================================================
    5. ПЕЧАТЬ НА БУМАГЕ (ОБЪЕДИНЕННАЯ ГАЛЕРЕЯ И АДАПТИВUX)
    ========================================================================== */
@@ -286,7 +343,6 @@ body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.005); }
 .gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #050606; overflow: hidden; border: 1px solid var(--card-border); }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Текстура бумаги накладывается прямо поверх картинок */
 .gallery-item::after {
     content: ''; position: absolute; inset: 0; background-image: url('wallpaper.png'); background-size: repeat;
     mix-blend-mode: multiply; opacity: 0.85; pointer-events: none; z-index: 5;
@@ -305,10 +361,11 @@ body.light-theme .contact-item { background: rgba(0, 0, 0, 0.005); }
 @media (max-width: 768px) {
     :root { font-size: 10.5px !important; }
     .theme-toggle-container { top: 15px !important; right: 15px !important; }
-    .theme-toggle-btn { padding: 0.5rem 1rem !important; font-size: 0.75rem !important; }
     
     .liquid-nav-panel { width: 90vw !important; max-width: 90vw !important; left: 50% !important; transform: translateX(-50%) !important; bottom: 20px !important; padding: 4px 6px !important; justify-content: center !important; border-radius: 0px !important; }
     .liquid-btn { padding: 0.9rem 1.4rem !important; font-size: 0.85rem !important; }
+    
+    body.page-pro .content-grid { display: flex !important; flex-direction: column !important; }
     
     .premium-table th, .premium-table td { padding: 0.8rem 0.4rem !important; font-size: 0.8rem !important; }
     .slide-section { padding: 5rem 1rem 8.5rem 1rem !important; }

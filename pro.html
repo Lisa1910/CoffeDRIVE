@@ -10,7 +10,7 @@
     <meta http-equiv="Expires" content="604800">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-pro">
@@ -19,10 +19,8 @@
 <div class="scroll-progress" id="progressBar"></div>
 
 <div class="presentation-wrapper">
-    <!-- Световые оверлеи тёмно-зелёного, ультрафиолетового и тёмно-бордового цвета по канону DDX -->
+    <!-- Глобальный матовый оверлей виньетирования -->
     <div class="bg-layer-glow"></div>
-    <div class="bg-layer-foam"></div>
-    <div class="bg-layer-linen"></div>
 
     <!-- GLOBAL КОНТЕНТ СТРАНИЦЫ PRO -->
     <main class="slide-container">
@@ -30,27 +28,27 @@
         <!-- СЛАЙД 1: ЗАГЛАВНЫЙ ИНФО-БЛОК -->
         <section class="slide-section" style="padding-top: 60px;">
             <div class="title-wrap">
-                <div class="giant-bg-text" style="color: rgba(147, 51, 234, 0.012); font-family: var(--font-premium, serif) !important;">Brevvo Pro</div>
+                <div class="giant-bg-text">Brevvo Pro</div>
                 <h1 class="slide-title">Флагманский Роботизированный <span>Комплекс Pro</span></h1>
             </div>
 
             <!-- Внутренние кнопки управления контентом -->
             <div class="inner-tab-panel">
-                <button class="tab-trigger-btn active" id="btnLocalConcept">💡 Концепция и Фото</button>
-                <button class="tab-trigger-btn" id="btnLocalFinance">📊 Смета и Финмодель</button>
+                <button class="tab-trigger-btn active" id="btnLocalConcept">Концепция и Фото</button>
+                <button class="tab-trigger-btn" id="btnLocalFinance">Смета и Финмодель</button>
             </div>
 
             <!-- ВНУТРЕННЯЯ ВКЛАДКА 1: ТЕКСТОВАЯ КОНЦЕПЦИЯ И ГАЛЕРЕЯ PRO (АКТИВНА ПО ДЕФОЛТУ) -->
             <div class="tab-content-view active" id="viewLocalConcept">
                 <div class="content-grid" style="grid-template-columns: 1fr; margin-bottom: 50px; margin-top: 40px;">
-                    <div class="premium-card" style="border-left: 3px solid var(--color-accent); background: rgba(4, 6, 5, 0.85);">
+                    <div class="premium-card">
                         <div class="card-label">Бескомпромиссная HoReCa-автоматизация</div>
                         <div class="card-value">МОДИФИЦИРОВАННЫЙ 20 FT КОНТЕЙНЕР DRIVE-THROUGH</div>
-                        <p class="card-text">Абсолютный флагман экосистемы BREVVO, разработанный для локаций с экстремально высоким автомобильным трафиком. Конфигурация Pro — это тяжелое infraestructura-решение на базе нового One-Trip морского контейнера площадью 14,8 м². Здание полностью адаптировано под экстремальные морозы Красноярска: выполнено бесшовное напыление пенополиуретана (ППУ) по всему контуру, ликвидированы мостики холода, установлены греющие кабели на сливах и высокоскоростная тепловая завеса над окном выдачи. Архитектура кухни построена по принципу Lean (бережливое производство) для одновременной работы 3-х бариста в пиковые часы с пропускной способностью 40–50 заказов в час. На борту развернута флагманская кофейная группа ресторанного класса: трехгруппная автоматическая Nuova Simonelli Appia Life, автоматический темпер Puqpress M2, эспрессо-молки MDJ/MDXS и промышленная Mahlkönig EK43 для фильтр-станций BWT обратного осмоса. Кухня укомплектована инжекторным пароконвектоматом Radax Turgenev на 6 уровней GN 1/1 для регенерации замороженной выпечки от крафтовых пекарен-партнеров. Для бесперебойного снабжения теплового пака выкуплены официальные ТУ и силовая линия на 50 кВт (3 фазы).</p>
+                        <p class="card-text">Абсолютный флагман экосистемы BREVVO, разработанный для локаций с экстремально высоким автомобильным трафиком. Конфигурация Pro — это тяжелое инфраструктурное решение на базе нового One-Trip морского контейнера площадью 14,8 м². Здание полностью адаптировано под экстремальные морозы Красноярска: выполнено бесшовное напыление пенополиуретана (ППУ) по всему контуру, ликвидированы мостики холода, установлены греющие кабели на сливах и высокоскоростная тепловая завеса над окном выдачи. Архитектура кухни построена по принципу Lean (бережливое производство) для одновременной работы 3-х бариста в пиковые часы с пропускной способностью 40–50 заказов в час. На борту развернута флагманская кофейная группа ресторанного класса: трехгруппная автоматическая Nuova Simonelli Appia Life, автоматический темпер Puqpress M2, эспрессо-молки MDJ/MDXS и промышленная Mahlkönig EK43 для фильтр-станций BWT обратного осмоса. Кухня укомплектована инжекторным пароконвектоматом Radax Turgenev на 6 уровней GN 1/1 для регенерации замороженной выпечки от крафтовых пекарен-партнеров. Для бесперебойного снабжения теплового пака выкуплены официальные ТУ и силовая линия на 50 кВт (3 фазы).</p>
                     </div>
                 </div>
 
-                <!-- Фотогалерея Флагманского варианта (Резиновые отступы и скругления) -->
+                <!-- Фотогалерея Флагманского варианта (Прямые углы, резиновые отступы и зазоры) -->
                 <div class="gallery-container">
                     <h2 class="gallery-title">Архитектурная 3D-визуализация экстерьера комплекса Pro</h2>
                     <div class="gallery-grid">
@@ -65,8 +63,8 @@
             <div class="tab-content-view" id="viewLocalFinance">
                 <div class="content-grid" style="grid-template-columns: 1fr;">
                     
-                    <div class="premium-card" style="background: rgba(4, 6, 5, 0.85);">
-                        <div class="card-label" style="color: var(--color-accent);">Финансовый план • Тяжелый CAPEX Pro</div>
+                    <div class="premium-card">
+                        <div class="card-label">Финансовый план • Тяжелый CAPEX Pro</div>
                         <div class="card-value">Детальная спецификация инвестиций комплекса под ключ</div>
                         
                         <!-- Жестко зафиксированная горизонтальная таблица (Защищена от сплющивания шрифтов) -->
@@ -162,14 +160,14 @@
         <section class="slide-section" style="padding-top: 40px;">
             <div class="slide-container">
                 <div class="title-wrap">
-                    <div class="giant-bg-text" style="color: rgba(16, 185, 129, 0.015); font-family: var(--font-premium, serif) !important;">Brevvo Metrics</div>
+                    <div class="giant-bg-text" style="color: rgba(16, 185, 129, 0.015);">Brevvo Metrics</div>
                     <h1 class="slide-title">Операционная <span>Эффективность Pro</span></h1>
                 </div>
 
                 <div class="content-grid">
                     
                     <!-- ТАБЛИЦА ЕЖЕМЕСЯЧНЫХ ОПЕРАЦИОННЫХ РАСХОДОВ (OPEX) -->
-                    <div class="premium-card" style="background: rgba(4, 6, 5, 0.85);">
+                    <div class="premium-card">
                         <div class="card-label" style="color: var(--color-accent);">Текущее содержание • Фиксированный OPEX</div>
                         <div class="card-value">Постоянные затраты комплекса Drive-Through</div>
                         
@@ -185,7 +183,7 @@
                                 <tbody>
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">ФОТ и взносы персонала</td>
-                                        <td>4 linear бариста (график 2/2, 65к net каждому) + 1 управляющий (85к net). Включает НДФЛ и взносы работодателя.</td>
+                                        <td>4 линейных бариста (график 2/2, 65к net каждому) + 1 управляющий (85к net). Включает НДФЛ и взносы работодателя.</td>
                                         <td>560 000</td>
                                     </tr>
                                     <tr>
@@ -195,7 +193,7 @@
                                     </tr>
                                     <tr>
                                         <td style="color: var(--color-accent); font-weight: 500;">Коммунальные ресурсы</td>
-                                        <td>Потребление активной мощности 50 кВт по коммерческому тарифу (зимние завесы, печь Radax, вентиляция).</td>
+                                        <td>Потребление active мощности 50 кВт по коммерческому тарифу (зимние завесы, печь Radax, вентиляция).</td>
                                         <td>120 000</td>
                                     </tr>
                                     <tr>
@@ -228,7 +226,7 @@
                     </div>
 
                     <!-- ТАБЛИЦА ИНВЕСТИЦИОННЫХ СЦЕНАРИЕВ ДОХОДНОСТИ -->
-                    <div class="premium-card" style="background: rgba(4, 6, 5, 0.85);">
+                    <div class="premium-card">
                         <div class="card-label" style="color: var(--color-accent);">Инвестиционный прогноз • Сценарии</div>
                         <div class="card-value">Расчет чистой прибыли и маржинальности Pro</div>
                         
@@ -302,11 +300,11 @@
                 </div>
             </div>
         </section>
-        <!-- СЛАЙД 3: КОНТАКТЫ АВТОРА И ПРАВОВОЙ ПОДВАЛ PRO -->
+        <!-- СЛАЙД 3: КОНТАКТЫ АВТОРА И ПРАВОВОЙ ПОДВАЛ PRO (ВЫНЕСЕН НАРУЖУ СНАРУЖИ НАВЕРХ) -->
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 60px;">
-            <div class="premium-card" style="border-left: 4px solid var(--color-accent); background: rgba(4, 6, 5, 0.85);">
+            <div class="premium-card" style="border-left: 2px solid var(--color-accent);">
                 <div class="card-label">Автор ИС и разработки Флагмана</div>
-                <div class="card-value" style="font-family: var(--font-premium, serif); font-size: 24px;">ОБСУДИТЬ КОМПЛЕКС PRO</div>
+                <div class="card-value">ОБСУДИТЬ КОМПЛЕКС PRO</div>
                 <div class="contact-grid">
                     <div class="contact-item"><span>Telegram</span><a href="https://t.me" target="_blank">@Architect_lis</a></div>
                     <div class="contact-item"><span>Email</span><a href="mailto:Lisenkovdaniil1910@gmail.com">Lisenkovdaniil1910@gmail.com</a></div>
@@ -329,20 +327,20 @@
     <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть" style="position: absolute; top: 30px; right: 30px; background: transparent; border: none; color: #fff; font-size: 30px; cursor: pointer;">&times;</button>
     <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" aria-label="Назад" style="position: absolute; left: 30px; background: transparent; border: none; color: #fff; font-size: 40px; cursor: pointer;">&#10218;</button>
     <div class="lightbox-content" style="max-width: 85%; max-height: 85%;">
-        <img src="" alt="Архитектурная визуализация комплекса Pro" class="lightbox-img" id="lightboxImg" style="width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius-premium);">
+        <img src="" alt="Архитектурная визуализация комплекса Pro" class="lightbox-img" id="lightboxImg" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
     <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" aria-label="Вперед" style="position: absolute; right: 30px; background: transparent; border: none; color: #fff; font-size: 40px; cursor: pointer;">&#10219;</button>
 </div>
 
 <!-- СКВОЗНАЯ СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS ДЛЯ СТРАНИЦЫ PRO -->
 <nav class="liquid-nav-panel">
-    <a href="index.html" class="liquid-btn">📊 Главная матрица</a>
-    <a href="base.html" class="liquid-btn">⚡ Base (2-3 млн)</a>
-    <a href="universal.html" class="liquid-btn">🔥 Universal (5-7 млн)</a>
-    <a href="pro.html" class="liquid-btn active">💎 Pro (12-15 млн)</a>
+    <a href="index.html" class="liquid-btn">Home</a>
+    <a href="base.html" class="liquid-btn">Base</a>
+    <a href="universal.html" class="liquid-btn">Universal</a>
+    <a href="pro.html" class="liquid-btn active">Pro</a>
 </nav>
 
-<!-- Принудительное сквозное подключение файлов оптимизации и предиктора Даниила Лисенкова -->
+<!-- Принудительное сквозное подключение файлов резиновой оптимизации -->
 <script src="optimize.js"></script>
 
 <script>

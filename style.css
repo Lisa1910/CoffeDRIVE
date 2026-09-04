@@ -1,22 +1,22 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — LUXURY APP UX (БЕЗ ТЕНЕЙ И БОКОВЫХ ВЫЛЕТОВ)
+   1. РЕЗИНОВАЯ ДИЗАЙН-СИСТЕМА QUIET LUXURY — КОНЦЕПЦИЯ ПОЛНОЙ ПРОЗРАЧНОСТИ
    ========================================================================== */
 :root {
     font-size: clamp(12px, 0.9vw, 16px);
-    --radius-premium: 0px; 
+    --radius-premium: 0px; /* Исключительно строгая люксовая геометрия */
     --radius-inner: 0px;
     --fs-xl: clamp(45px, 8vw, 95px);
     --font-premium: 'Garamond', 'Georgia', serif;
     
-    /* ИСПРАВЛЕННЫЙ ТЕМНЫЙ РЕЖИМ: ДОРОГАЯ МАТОВАЯ ПОЛУПРОЗРАЧНОСТЬ ХЛОПКА */
+    /* ТЕМНЫЙ РЕЖИМ (DARK): ИСКЛЮЧИТЕЛЬНО ТЕМНО-ПРОЗРАЧНЫЕ ПЛАШКИ */
     --bg-main: #060707;
-    --card-bg: rgba(13, 15, 15, 0.82); /* Вернули дорогую прозрачность плашек */
+    --card-bg: rgba(10, 12, 12, 0.75); /* Дорогая прозрачная темная хлопковая плашка */
     --card-border: rgba(255, 255, 255, 0.04);
     --text-main: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.52);
-    --table-header-bg: rgba(255, 255, 255, 0.03);
+    --text-dim: rgba(255, 255, 255, 0.5);
+    --table-header-bg: rgba(255, 255, 255, 0.02); /* Абсолютно прозрачные шапки */
     
     --color-accent: #d4cfc7;
     --badge-color: #e2ded5;
@@ -28,14 +28,14 @@ body.page-universal { --color-accent: #ff8b8b; --badge-color: #ffbaba; }
 body.page-pro { --color-accent: #68d89b; --badge-color: #9effca; }
 
 /* ==========================================================================
-   РЕАКТИВНЫЙ СВЕТЛЫЙ РЕЖИМ — СОВЕРШЕННЫЙ БЕЛО-ПРОЗРАЧНЫЙ КРИСТАЛЛ
+   СВЕТЛЫЙ РЕЖИМ (LIGHT): ИСКЛЮЧИТЕЛЬНО БЕЛО-ПРОЗРАЧНЫЕ ПЛАШКИ И ЧЕРНЫЙ ТЕКСТ
    ========================================================================== */
 body.light-theme {
-    --card-bg: rgba(255, 255, 255, 0.82); /* Идеальный бело-прозрачный шёлк */
+    --card-bg: rgba(255, 255, 255, 0.75); /* Дорогая прозрачная белая хлопковая плашка */
     --card-border: rgba(0, 0, 0, 0.05);
-    --text-main: #0c0d0d;
-    --text-dim: rgba(12, 13, 13, 0.65);
-    --table-header-bg: rgba(0, 0, 0, 0.03);
+    --text-main: #0c0d0d; /* Угольно-черный контрастный текст */
+    --text-dim: rgba(12, 13, 13, 0.6);
+    --table-header-bg: rgba(0, 0, 0, 0.03); /* Прозрачные светлые шапки */
     
     --color-accent: #222222;
     --badge-color: #111111;
@@ -53,17 +53,6 @@ html, body {
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
 body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; scroll-behavior: smooth; }
-/* Линия прогресса чтения сверху экрана */
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--color-accent);
-    width: 0%;
-    z-index: 3000;
-    transition: width 0.1s ease;
-}
 
 /* Текстурный бумажный холст */
 .presentation-wrapper {
@@ -76,14 +65,14 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     padding-bottom: 12rem;
 }
 
-/* Центральный контейнер сайта БЕЗ ВНЕШНИХ ТЕНЕЙ ПО БОКАМ */
+/* Центральный резиновый каркас сайта без внешних теней по бокам */
 .slide-container {
     width: 100%;
     max-width: 72rem;
     margin: 0 auto;
     position: relative;
     z-index: 10;
-    box-shadow: none !important; /* ПОЛНОСТЬЮ УБРАЛИ ТЕНЬ ПО БОКАМ САЙТА */
+    box-shadow: none !important;
 }
 
 .bg-layer-glow {
@@ -95,7 +84,7 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
 }
 
 /* ==========================================================================
-   2. МИНИАТЮРНЫЙ ПЕРЕКАТЫВАЮЩИЙСЯ iOS-ТУМБЛЕР (СОЛНЦЕ / ЛУНА)
+   2. МИНИАТЮРНЫЙ, СТРОГИЙ ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ В СТИЛЕ САЙТА
    ========================================================================== */
 .theme-toggle-container {
     position: fixed;
@@ -104,68 +93,46 @@ body { background-color: var(--bg-main); color: var(--text-main); font-family: '
     z-index: 4000;
 }
 
-/* Оболочка тумблера в стиле Apple Switch */
-.ios-switch {
-    position: relative;
-    display: inline-block;
-    width: 52px;
-    height: 32px;
-    background: #1c1e1f;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.theme-toggle-btn {
+    font-family: var(--font-premium) !important;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    background: var(--card-bg); /* Полностью прозрачная подложка кнопки в тон сайту */
+    border: 1px solid var(--card-border);
+    border-radius: 0px;
+    padding: 0.6rem 1.4rem;
     cursor: pointer;
-    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.theme-toggle-btn:hover {
+    border-color: var(--color-accent);
+}
+/* Линия прогресса чтения сверху экрана */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-accent);
+    width: 0%;
+    z-index: 3000;
+    transition: width 0.1s ease;
 }
 
-body.light-theme .ios-switch {
-    background: #e5e5e5;
-    border-color: rgba(0, 0, 0, 0.06);
-}
-
-/* Перекатывающийся внутренний круг-ползунок */
-.ios-thumb {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 26px;
-    height: 26px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
-}
-
-body.light-theme .ios-thumb {
-    transform: translateX(20px);
-    background: #111111;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-
-/* Встроенные иконки Солнца и Луны внутри ползунка */
-.ios-icon {
-    font-size: 14px;
-    user-select: none;
-    transition: opacity 0.2s ease, transform 0.3s ease;
-    display: block;
-    position: absolute;
-}
-
-.icon-sun { opacity: 0; transform: rotate(-45deg); color: #ffb703; }
-.icon-moon { opacity: 1; transform: rotate(0deg); color: #9bb1ff; }
-
-body.light-theme .icon-sun { opacity: 1; transform: rotate(0deg); }
-body.light-theme .icon-moon { opacity: 0; transform: rotate(45deg); }
 /* ==========================================================================
-   3. ОТЦЕНТРИРОВАННАЯ И УКРУПНЕННАЯ НАВИГАЦИЯ LIQUID GLASS (БЕЗ ВЫЛЕТОВ)
+   2. ПОЛНОСТЬЮ ПРОЗРАЧНАЯ ОТЦЕНТРИРОВАННАЯ НАВИГАЦИЯ LIQUID GLASS
    ========================================================================== */
 .liquid-nav-panel {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%) translateZ(0);
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: var(--card-bg) !important; /* Намертво прозрачная подложка в цвет карточек */
+    border: 1px solid var(--card-border) !important;
     border-radius: 0px;
     padding: 0.4rem;
     display: flex;
@@ -174,7 +141,7 @@ body.light-theme .icon-moon { opacity: 0; transform: rotate(45deg); }
     backdrop-filter: blur(35px) saturate(110%);
     -webkit-backdrop-filter: blur(35px) saturate(110%);
     z-index: 2500;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.85);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     width: auto;
     min-width: max-content;
     max-width: 92vw;
@@ -199,27 +166,22 @@ body.light-theme .icon-moon { opacity: 0; transform: rotate(45deg); }
 }
 .liquid-btn.active, .liquid-btn:hover {
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 -2px 0 0 var(--color-accent);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 -2px 0 0 var(--color-accent); /* Деликатный люксовый маркер активности */
 }
 body.light-theme .liquid-btn.active { background: rgba(0, 0, 0, 0.02); }
 
-/* Плотные контрастные подложки вкладок Концепция / Смета */
+/* Полностью прозрачные переключатели внутренних вкладок (Концепция / Смета) */
 .inner-tab-panel {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
-    background: rgba(10, 12, 12, 0.95); /* МАКСИМАЛЬНО ПЛОТНАЯ КОНТРАСТНАЯ ПОДЛОЖКА */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.4rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-body.light-theme .inner-tab-panel {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(0, 0, 0, 0.06);
+    background: var(--table-header-bg) !important; /* Убрана глухая чернота/белота подложки */
+    border: 1px solid var(--card-border) !important;
+    padding: 0.3rem;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .tab-trigger-btn {
@@ -238,14 +200,14 @@ body.light-theme .inner-tab-panel {
 }
 .tab-trigger-btn.active, .tab-trigger-btn:hover { 
     color: var(--text-main); 
-    background: rgba(255, 255, 255, 0.05); 
+    background: rgba(255, 255, 255, 0.04); 
 }
-body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.06); }
+body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.04); }
 
 .tab-content-view { display: none; width: 100%; }
 .tab-content-view.active { display: block; }
 /* ==========================================================================
-   4. СТРОГИЕ ПОЛУПРОЗРАЧНЫЕ КАРТОЧКИ И ВЕРСТКА РЕЗИНОВЫХ СМЕТ
+   3. ГЕОМЕТРИЯ СЕКЦИЙ И ЧИСТЫЕ ПОЛУПРОЗРАЧНЫЕ ПЛАШКИ QUIET LUXURY
    ========================================================================== */
 .slide-section { position: relative; width: 100%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2rem 6rem 2rem; z-index: 10; }
 .title-wrap { position: relative; margin-bottom: 3.5rem; }
@@ -268,7 +230,7 @@ body.light-theme .tab-trigger-btn.active { background: rgba(0, 0, 0, 0.06); }
 .slide-title { font-family: var(--font-premium) !important; font-size: clamp(24px, 4vw, 42px); color: var(--text-main); text-transform: uppercase; letter-spacing: 3px; font-weight: 400; position: relative; z-index: 2; }
 .slide-title span { color: var(--color-accent); }
 
-/* Полное выравнивание сеток: в тарифе Pro элементы встанут строго друг под другом */
+/* Силовое сквозное выравнивание: в тарифе Pro элементы встанут строго друг под другом */
 body.page-pro .content-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -283,28 +245,30 @@ body:not(.page-pro) .content-grid {
     width: 100%;
 }
 
-/* ДОРОГАЯ ХЛОПКОВАЯ ПОЛУПРОЗРАЧНОСТЬ — БЕЗ ПОЛОСОК И БЕЗ ГЛУХОЙ ТЕМНОТЫ */
+/* ИСТИННЫЙ ПРОЗРАЧНЫЙ АКРИЛ MICA ALT — УБРАНЫ ВСЕ ЖЕСТКИЕ ЦВЕТНЫЕ ПОЛОСКИ СБОКУ */
 .premium-card {
     position: relative;
-    background: var(--card-bg) !important;
+    background: var(--card-bg) !important; /* Намертво зафиксированная резиновая прозрачность */
     border: 1px solid var(--card-border) !important;
     border-radius: 0px;
     padding: 3.5rem;
     width: 100%;
     overflow: hidden;
-    backdrop-filter: blur(30px) saturate(110%);
-    -webkit-backdrop-filter: blur(30px) saturate(110%);
+    backdrop-filter: blur(40px) saturate(110%);
+    -webkit-backdrop-filter: blur(40px) saturate(110%);
     transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .card-label { font-family: var(--font-premium) !important; font-size: 0.8rem; color: var(--color-accent); letter-spacing: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
 .card-value { font-family: var(--font-premium) !important; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main); }
 .card-text { font-size: 0.95rem; color: var(--text-dim); font-weight: 300; line-height: 1.8; }
-
-/* Умные сметные таблицы без горизонтального скролла */
-.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.05); }
+/* ==========================================================================
+   4. СЛИТНЫЕ ПРОЗРАЧНЫЕ ТАБЛИЦЫ (БЕЗ ГЛУХОЙ НЕПРОЗРАЧНОСТИ В ШАПКАХ)
+   ========================================================================== */
+.premium-table-wrap { width: 100%; overflow-x: hidden; margin-top: 2rem; border: 1px solid var(--card-border); background: rgba(5, 6, 7, 0.02); }
 .premium-table { width: 100%; min-width: 100%; border-collapse: collapse; text-align: left; table-layout: fixed; }
 
+/* Пропорции резиновой сетки столбцов */
 .premium-table th:nth-child(1), .premium-table td:nth-child(1) { width: 45%; }
 .premium-table th:nth-child(2), .premium-table td:nth-child(2) { width: 30%; }
 .premium-table th:nth-child(3), .premium-table td:nth-child(3) { width: 10%; text-align: center; }
@@ -319,14 +283,14 @@ body:not(.page-pro) .content-grid {
     word-break: break-word;
 }
 
-/* Прозрачные шапки столбцов в стиле карточки */
+/* ПОЛНОСТЬЮ ИСПРАВЛЕННЫЙ ПРОЗРАЧНЫЙ СТИЛЬ ЗАГОЛОВКОВ ДЛЯ ВСЕХ СТРАНИЦ */
 .premium-table th {
     font-family: var(--font-premium) !important;
-    color: var(--badge-color) !important;
+    color: var(--badge-color) !important; /* Чёткий светлый пастельный или тёмный люкс-цвет */
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: var(--table-header-bg) !important;
+    background: var(--table-header-bg) !important; /* Убрана бесячая глухая заливка шапок! */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -334,8 +298,11 @@ body:not(.page-pro) .content-grid {
 .premium-table td { color: var(--text-dim); font-weight: 300; line-height: 1.5; }
 .premium-table tr:last-child td { border-bottom: none; }
 .premium-table .row-total td { font-family: var(--font-premium) !important; font-size: 1rem; color: var(--color-accent); font-weight: 500; border-top: 1px solid var(--color-accent); }
+
+.saas-highlight { background: rgba(255, 255, 255, 0.002); }
+body.light-theme .saas-highlight { background: rgba(0, 0, 0, 0.003); }
 /* ==========================================================================
-   5. ПЕЧАТЬ НА БУМАГЕ (ОБЪЕДИНЕННАЯ ГАЛЕРЕЯ И АДАПТИВUX)
+   5. ЭФФЕКТ ПЕЧАТИ НА БУМАГЕ ДЛЯ ФОТОГАЛЕРЕИ И СИСТЕМНЫЙ АДАПТИВ
    ========================================================================== */
 .gallery-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; margin-top: 2.5rem; }
 .gallery-title { font-family: var(--font-premium) !important; font-size: 1.1rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; }
@@ -343,21 +310,22 @@ body:not(.page-pro) .content-grid {
 .gallery-item { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #050606; overflow: hidden; border: 1px solid var(--card-border); }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+/* Наложение зернистой бумажной текстуры поверх красок фотографий */
 .gallery-item::after {
     content: ''; position: absolute; inset: 0; background-image: url('wallpaper.png'); background-size: repeat;
     mix-blend-mode: multiply; opacity: 0.85; pointer-events: none; z-index: 5;
 }
 
-/* Личные контакты автора и подвал */
+/* Личные контакты автора и сквозной подвал */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.5rem; margin-top: 2rem; width: 100%; }
-.contact-item { background: rgba(255, 255, 255, 0.002); border: 1px solid var(--card-border); padding: 1.6rem; }
-body.light-theme .contact-item { background: rgba(0, 0, 0, 0.005); }
+.contact-item { background: rgba(255, 255, 255, 0.001); border: 1px solid var(--card-border); padding: 1.6rem; }
+body.light-theme .contact-item { background: rgba(0, 0, 0, 0.002); }
 .contact-item span { display: block; font-size: 0.7rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
 .contact-item a { font-size: 1rem; color: var(--text-main); text-decoration: none; font-family: var(--font-premium); }
 
 .premium-footer { width: 100%; margin-top: 4rem; padding-top: 2rem; padding-bottom: 2.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; gap: 1.5rem; }
 
-/* СИСТЕМНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД ТЕЛЕФОНЫ */
+/* УЛЬТИМАТИВНЫЙ РЕЗИНОВЫЙ МОБИЛЬНЫЙ UX */
 @media (max-width: 768px) {
     :root { font-size: 10.5px !important; }
     .theme-toggle-container { top: 15px !important; right: 15px !important; }

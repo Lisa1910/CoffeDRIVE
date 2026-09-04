@@ -1,5 +1,5 @@
 /**
- * BREVVO ECOSYSTEM — Luxury Dual-Mode ИТ-Движок переключения тем
+ * BREVVO ECOSYSTEM — Резиновая оптимизация и Luxury Dual-Mode Движок
  * Разработчик архитектуры: Даниил Лисенков (c) 2026
  */
 
@@ -83,8 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// 6. СКВОЗНОЙ АВТОМАТИЧЕСКИЙ ЗАПУСК КИБЕР-ЩИТА И ПРЕДИКТОРОВ КЛИКОВ
+if (!document.querySelector('script[src="app-shield.js"]')) {
+    const shieldScript = document.createElement('script');
+    shieldScript.src = 'app-shield.js';
+    document.head.appendChild(shieldScript);
+}
+
 if (!document.querySelector('script[src="smart-engine.js"]')) {
     const smartScript = document.createElement('script');
     smartScript.src = 'smart-engine.js';
     document.head.appendChild(smartScript);
+}
+
+// 7. СИСТЕМНАЯ РЕГИСТРАЦИЯ ИНТЕЛЛЕКТУАЛЬНОГО СВЕТОФОРА КЭША
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then((reg) => console.log('BREVVO SMART CORE: Движок активен.', reg.scope))
+            .catch((err) => console.log('BREVVO SMART CORE: Ошибка ядра:', err));
+    });
 }

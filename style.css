@@ -1,44 +1,48 @@
 @import url('https://googleapis.com');
 
 /* ==========================================================================
-   1. ДИЗАЙН-СИСТЕМА BREVVO QUIET LUXURY (PAPER & MINIMALISM EDITION)
+   1. ДИЗАЙН-СИСТЕМА QUIET LUXURY — LUXURY APP EDITION (ЗАПРЕТ ЗУМА)
    ========================================================================== */
 :root {
-    /* Резиновая база: автоматически пропорционально сжимает весь сайт под экран смартфона */
-    font-size: clamp(11px, 0.85vw, 15px);
+    /* Резиновая база подстраивается под ширину дисплея */
+    font-size: clamp(12px, 0.9vw, 16px);
     
-    --bg-main: #0a0b0b; /* Угольно-чёрный матовый под бумагу */
+    --bg-main: #070808;
     --text-white: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.45);
+    --text-dim: rgba(255, 255, 255, 0.5);
     
-    --radius-premium: 16px; /* Строгие, аккуратные люксовые скругления */
-    --radius-inner: 8px;
+    --radius-premium: 0px; /* Строгая прямоугольная геометрия Bugatti */
+    --radius-inner: 0px;
     --fs-xl: clamp(40px, 8vw, 95px);
     
-    /* Дефолтный премиальный акцент (Теплый платиновый хлопок) */
     --color-accent: #d4cfc7;
-    --card-border: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.04);
     --font-premium: 'Garamond', 'Georgia', serif;
 }
 
-/* Строгие, дорогие акценты в виде цветной бумаги для каждого тарифа */
-body.page-main {
-    --color-accent: #e5e5e5;
-}
+/* Приглушенные цветовые схемы DDX в виде тонких рамок */
+body.page-main { --color-accent: #e5e5e5; }
 body.page-base {
-    --bg-main: #06090c;
-    --color-accent: #2c4257; /* Приглушенная благородная темно-синяя бумага */
-    --card-border: rgba(44, 66, 87, 0.15);
+    --bg-main: #04070a;
+    --color-accent: #2c4257; /* Приглушенная синяя бумага */
+    --card-border: rgba(44, 66, 87, 0.25);
 }
 body.page-universal {
-    --bg-main: #080505;
-    --color-accent: #5c1d24; /* Глубокий бордовый премиальный цвет (Шато Марго) */
-    --card-border: rgba(92, 29, 36, 0.15);
+    --bg-main: #060404;
+    --color-accent: #5c1d24; /* Глубокий бордовый Шато Марго */
+    --card-border: rgba(92, 29, 36, 0.25);
 }
 body.page-pro {
-    --bg-main: #040605;
-    --color-accent: #1b3b2b; /* Спокойный бутылочный темно-зеленый (Яхтенный люкс) */
-    --card-border: rgba(27, 59, 43, 0.2);
+    --bg-main: #030504;
+    --color-accent: #1b3b2b; /* Бутылочный темно-зеленый люкс */
+    --card-border: rgba(27, 59, 43, 0.3);
+}
+
+/* ИТ-БЛОКИРОВКА ЗУМА: Сайт ведет себя строго как мобильное приложение */
+html, body {
+    touch-action: pan-x pan-y; /* Разрешает обычный скролл, но запрещает щипок-зум */
+    -webkit-text-size-adjust: 100%; /* Запрещает автоизменение шрифтов при повороте */
+    max-width: 100%;
 }
 
 * {
@@ -57,28 +61,65 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Интеграция твоих файлов: Главный фоновый валлпейпер дорогой бумаги */
+/* Обертка с главной фоновой бумагой */
 .presentation-wrapper {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-image: url('wallpaper.png'); /* Твой файл качественной бумаги */
+    background-image: url('wallpaper.png');
     background-size: repeat;
     background-position: center;
-    padding-bottom: 10rem; /* Буфер для ультра-компактного меню */
+    padding-bottom: 12rem;
 }
 
-/* Мягкое благородное виньетирование краев экрана (Luxury Vignette) */
+/* Мягкая люксовая тень вокруг всего сайта (Сохранили твой любимый объем) */
+.slide-container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.6); /* Глубокая тень по контуру макета */
+}
+
 .bg-layer-glow {
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(2,3,3,0.6) 100%);
+    background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(2,3,3,0.7) 100%);
     pointer-events: none;
     z-index: 1;
 }
 
-.bg-layer-foam, .bg-layer-linen {
-    display: none; /* Полностью убираем старые неоновые подложки */
+/* ==========================================================================
+   2. ТЕКСТУРНОЕ НАЛОЖЕНИЕ НА ФОТО (ЭФФЕКТ ПЕЧАТИ НА БУМАГЕ)
+   ========================================================================== */
+.gallery-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #050606;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Создаем скрытый бумажный оверлей поверх каждой фотографии */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('wallpaper.png'); /* Накладываем бумагу на фото */
+    background-size: repeat;
+    mix-blend-mode: multiply; /* Эффект проявления текстуры сквозь краску */
+    opacity: 0.85; /* Оптимальная прозрачность наложения */
+    pointer-events: none;
+    z-index: 5;
 }
 /* Линия прогресса чтения сверху экрана */
 .scroll-progress {
@@ -93,34 +134,35 @@ body {
 }
 
 /* ==========================================================================
-   2. СИСТЕМНАЯ НАВИГАЦИЯ LIQUID GLASS (УЛЬТРА-КОМПАКТНЫЙ СТИЛЬ BUGATTI)
+   2. ОТЦЕНТРИРОВАННАЯ И УКРУПНЕННАЯ НАВИГАЦИЯ С АЙФОН-ФИЗИКОЙ
    ========================================================================== */
 .liquid-nav-panel {
     position: fixed;
     bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%);
-    background: rgba(10, 11, 11, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 0px; /* Строгая прямоугольная геометрия люкс-брендов */
-    padding: 0.2rem;
+    transform: translateX(-50%) translateZ(0); /* Жесткое центрирование на видеокарте */
+    background: rgba(10, 11, 11, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0px;
+    padding: 0.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     z-index: 2500;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.95);
     width: auto;
-    max-width: 94vw;
+    min-width: max-content;
+    max-width: 92vw;
 }
 
 .liquid-btn {
     font-family: var(--font-premium) !important;
-    font-size: 0.75rem; /* Ультра-компактный изящный размер */
+    font-size: 0.85rem; /* Пропорционально укрупнили размер для читаемости */
     letter-spacing: 2px;
     color: var(--text-dim);
-    padding: 0.7rem 1.4rem; /* Идеально зажатые отступы против вылетов за экран */
+    padding: 0.8rem 1.6rem; /* Увеличенные кликабельные отступы Apple-Style */
     background: transparent;
     border: none;
     cursor: pointer;
@@ -130,68 +172,54 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .liquid-btn.active, .liquid-btn:hover {
     color: var(--text-white);
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow: inset 0 -2px 0 0 var(--color-accent); /* Тонкий нижний маркер активности */
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 -2px 0 0 var(--color-accent);
 }
 
-/* Локальные горизонтальные переключатели вкладок внутри слайдов */
+/* ==========================================================================
+   3. ПОДЛОЖКИ ДЛЯ ВНУТРЕННИХ КНОПОК (КОНЦЕПЦИЯ / СМЕТА) — ЧЕТКАЯ ВИДИМОСТЬ
+   ========================================================================== */
 .inner-tab-panel {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02); /* Видимая полупрозрачная хлопковая база */
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 0.3rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .tab-trigger-btn {
     font-family: var(--font-premium) !important;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 1.5px;
     color: var(--text-dim);
     background: transparent;
     border: none;
-    padding: 0.8rem 0;
+    padding: 0.8rem 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
+    flex: 1; /* Кнопки равномерно распределяют ширину панели */
+    text-align: center;
     transition: all 0.3s ease;
-    position: relative;
 }
 
 .tab-trigger-btn.active, .tab-trigger-btn:hover {
     color: var(--text-white);
+    background: rgba(255, 255, 255, 0.04); /* Контрастное выделение активной вкладки */
 }
 
-.tab-trigger-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--color-accent);
-}
-
-.tab-content-view {
-    display: none;
-    width: 100%;
-}
-
-.tab-content-view.active {
-    display: block;
-    animation: luxuryFadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes luxuryFadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+.tab-content-view { display: none; width: 100%; }
+.tab-content-view.active { display: block; }
 /* ==========================================================================
-   3. ГЕОМЕТРИЯ СЕКЦИЙ И КАРТОЧКИ ИЗ МАТОВОГО ПЛОТНОГО ХЛОПКА
+   4. ПОЛУПРОЗРАЧНЫЙ MICA-АКРИЛ С ТЕКСТУРОЙ И ТЕНЯМИ
    ========================================================================== */
 .slide-section {
     position: relative;
@@ -200,20 +228,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6rem 3rem 6rem 3rem;
+    padding: 6rem 2rem 6rem 2rem;
     z-index: 10;
 }
 
-.slide-container {
-    width: 100%;
-    max-width: 72rem;
-    margin: 0 auto;
-}
-
-.title-wrap {
-    position: relative;
-    margin-bottom: 3.5rem;
-}
+.title-wrap { position: relative; margin-bottom: 3.5rem; }
 
 .giant-bg-text {
     position: absolute;
@@ -221,7 +240,7 @@ body {
     left: -0.5rem;
     font-family: var(--font-premium) !important;
     font-size: var(--fs-xl);
-    color: rgba(255, 255, 255, 0.008); /* Практически невидимые благородные титры */
+    color: rgba(255, 255, 255, 0.005);
     text-transform: uppercase;
     letter-spacing: 6px;
     line-height: 0.8;
@@ -245,30 +264,45 @@ body {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     gap: 3rem;
     width: 100%;
 }
 
-/* Строгая, дорогая матовая карточка-плашка с акцентной люксовой рамкой */
+/* Изящная полупрозрачная плашка с наложением фоновой бумаги сквозь неё */
 .premium-card {
-    background: rgba(13, 14, 15, 0.92);
-    border: 1px solid var(--card-border); /* Цветная бумага в виде тонкого благородного канта */
-    border-radius: 0px; /* Отказ от округлостей ради строгого премиального стиля */
+    position: relative;
+    background: rgba(10, 12, 12, 0.75); /* Сделали более прозрачной, виден бэкграунд */
+    border: 1px solid var(--card-border);
+    border-radius: 0px;
     padding: 3.5rem;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7); /* Сохранили твой объем и тень вокруг сайта */
     width: 100%;
     overflow: hidden;
+}
+
+/* Эффект наложения текстуры бумаги на саму плашку */
+.premium-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('wallpaper.png');
+    background-size: repeat;
+    mix-blend-mode: overlay; /* Мягко проявляет бумажное зерно на карточке */
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .card-label {
     font-family: var(--font-premium) !important;
     font-size: 0.8rem;
-    color: var(--color-accent); /* Фирменный маркер тарифа */
+    color: var(--color-accent);
     letter-spacing: 3px;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    opacity: 0.8;
+    position: relative;
+    z-index: 2;
 }
 
 .card-value {
@@ -278,6 +312,8 @@ body {
     margin-bottom: 1.2rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+    position: relative;
+    z-index: 2;
 }
 
 .card-text {
@@ -285,113 +321,84 @@ body {
     color: var(--text-dim);
     font-weight: 300;
     line-height: 1.8;
-    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 2;
 }
 /* ==========================================================================
-   4. ЖЕСТКАЯ ГОРИЗОНТАЛЬНАЯ ВЕРСТКА СМЕТ (ЗАЩИТА ОТ СМЯТИЯ)
+   5. РЕЗИНОВАЯ УСАДКА ТАБЛИЦ ПОД ЭКРАН ТЕЛЕФОНА (БЕЗ СКРОЛЛА)
    ========================================================================== */
 .premium-table-wrap {
     width: 100%;
-    overflow-x: auto; /* Включает безупречную прокрутку смет внутри карточки на телефонах */
+    overflow-x: hidden; /* ПОЛНОСТЬЮ УБРАЛИ ЛИШНИЕ ТЕЛОДВИЖЕНИЯ И СКРОЛЛ */
     margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    background: rgba(6, 7, 8, 0.4);
-    max-height: none !important;
-    height: auto !important;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    background: rgba(5, 6, 7, 0.3);
 }
 
 .premium-table {
     width: 100%;
-    min-width: 58rem; /* Силой держит смету горизонтально. Текст не сожмется! */
+    min-width: 100%; /* Таблица намертво зажата в ширину экрана устройства */
     border-collapse: collapse;
     text-align: left;
+    table-layout: fixed; /* Принудительный фиксированный шаг распределения колонок */
 }
 
+/* Настраиваем резиновые пропорции колонок */
+.premium-table th:nth-child(1), 
+.premium-table td:nth-child(1) { width: 45%; } /* Первому столбику отдаем максимум места */
+.premium-table th:nth-child(2), 
+.premium-table td:nth-child(2) { width: 30%; } /* Описание характеристик */
+.premium-table th:nth-child(3), 
+.premium-table td:nth-child(3) { width: 10%; text-align: center; } /* Кол-во */
+.premium-table th:nth-child(4), 
+.premium-table td:nth-child(4) { width: 15%; text-align: right; } /* Стоимость */
+
 .premium-table th, .premium-table td {
-    padding: 1.2rem 1.6rem;
+    padding: 1rem 0.8rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     vertical-align: middle;
-    white-space: normal;
+    
+    /* УМНОЕ ПЕРЕНЕСЕНИЕ СТРОК И СОКРАЩЕНИЕ ТЕКСТА */
+    white-space: normal !important; /* Разрешает автоперенос слов на новые строки */
+    word-break: break-word; /* Безопасно разрывает длинные технические термины */
 }
 
 .premium-table th {
     font-family: var(--font-premium) !important;
     color: var(--color-accent);
-    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    background: rgba(10, 11, 12, 0.98);
+    letter-spacing: 1px;
+    background: rgba(10, 11, 12, 0.9);
 }
 
 .premium-table td { 
     color: var(--text-dim); 
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .premium-table tr:last-child td { border-bottom: none; }
 
 .premium-table .row-total td {
     font-family: var(--font-premium) !important;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-accent);
     font-weight: 500;
     background: rgba(255, 255, 255, 0.01);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .saas-highlight {
-    background: rgba(255, 255, 255, 0.005);
-    border-left: 1px solid var(--color-accent);
-    border-right: 1px solid var(--color-accent);
+    background: rgba(255, 255, 255, 0.003);
+    box-shadow: inset 1px 0 0 rgba(255,255,255,0.03), inset -1px 0 0 rgba(255,255,255,0.03);
 }
 
+.gallery-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; margin-top: 3rem; }
+.gallery-title { font-family: var(--font-premium) !important; font-size: 1.1rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; width: 100%; }
 /* ==========================================================================
-   5. МАСШТАБИРУЕМАЯ ЛЮКС-ГАЛЕРЕЯ (ОТСТУПЫ И ЧЕТКИЙ ФОРМАТ)
-   ========================================================================== */
-.gallery-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    margin-top: 3rem;
-}
-
-.gallery-title {
-    font-family: var(--font-premium) !important;
-    font-size: 1.1rem;
-    color: var(--color-accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px; /* Сочный отступ между рендерами */
-    width: 100%;
-}
-
-.gallery-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: #050606;
-    border-radius: 0px; /* Строгие прямые углы Bugatti-Style */
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-/* ==========================================================================
-   6. ПУНКТ РАЗРАБОТЧИКА И АВТОРСКИЙ ПОДВАЛ (ВЫНЕСЕН ИЗ ВКЛАДОК НАВЕРХ)
+   6. КОНТАКТЫ И АВТОРСКИЙ ПОДВАЛ БЕЗ СБОЕВ РАЗМЕТКИ
    ========================================================================== */
 .contact-grid {
     display: grid;
@@ -405,7 +412,6 @@ body {
     background: rgba(255, 255, 255, 0.005);
     border: 1px solid rgba(255, 255, 255, 0.02);
     padding: 1.6rem;
-    border-radius: 0px;
 }
 
 .contact-item span {
@@ -417,18 +423,13 @@ body {
     margin-bottom: 0.6rem;
 }
 
-.contact-item a { 
-    font-size: 1rem; 
-    color: var(--text-white); 
-    text-decoration: none;
-    font-family: var(--font-premium);
-}
+.contact-item a { font-size: 1rem; color: var(--text-white); text-decoration: none; font-family: var(--font-premium); }
 
 .premium-footer {
     width: 100%;
     margin-top: 4rem;
     padding-top: 2rem;
-    padding-bottom: 2rem; /* Огромный зазор от нижнего меню */
+    padding-bottom: 2.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.02);
     display: flex;
     justify-content: space-between;
@@ -441,59 +442,51 @@ body {
 }
 
 /* ==========================================================================
-   7. УЛЬТИМАТИВНЫЙ РЕЗИНОВЫЙ АДАПТИВ ПОД СМАРТФОНЫ (БЕЗ ВЫЛЕТОВ МЕНЮ)
+   7. СИСТЕМНАЯ МОБИЛЬНАЯ УСАДКА LUXURY APP UX
    ========================================================================== */
 @media (max-width: 1024px) { 
     .content-grid { grid-template-columns: 1fr; } 
 }
 
 @media (max-width: 768px) {
-    /* Силовое пропорциональное ужимание всего сайта на телефонах на 35% */
+    /* Силовое резиновое сжатие шрифтов на смартфонах для укладки таблиц */
     :root { font-size: 10.5px !important; }
 
+    /* Отцентрованная укрупненная панель свайпов */
     .liquid-nav-panel {
-        width: 88vw !important;
-        max-width: 88vw !important;
+        width: 90vw !important;
+        max-width: 90vw !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         bottom: 20px !important;
-        padding: 2px !important;
-        gap: 0px !important; /* Убираем зазоры, превращая в монолитную ленту */
+        padding: 4px 6px !important;
+        justify-content: center !important; /* Центрируем кнопки внутри панели */
+        border-radius: 0px !important;
     }
 
     .liquid-btn {
-        padding: 0.8rem 1.1rem !important; /* Ультра-компактные кнопки */
-        font-size: 0.75rem !important;
-        letter-spacing: 1.5px !important;
+        padding: 0.9rem 1.4rem !important; /* Идеальный размер под палец инвестора */
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
     }
 
-    .slide-section { padding: 4.5rem 1rem 7.5rem 1rem !important; }
+    /* Сметная усадка на телефонах: ужимаем паддинги ячеек, чтобы всё влезло */
+    .premium-table th, .premium-table td {
+        padding: 0.8rem 0.4rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    .slide-section { padding: 4.5rem 1rem 8.5rem 1rem !important; }
     .premium-card { padding: 2rem 1rem !important; }
-    .inner-tab-panel { flex-direction: column; gap: 0.5rem; width: 100%; }
-    .tab-trigger-btn { width: 100%; text-align: center; }
+    .inner-tab-panel { flex-direction: row; gap: 0.3rem; width: 100%; } /* Табы концепции стоят в ряд */
+    .tab-trigger-btn { font-size: 0.8rem !important; padding: 0.7rem 0.2rem !important; }
     .gallery-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
     .premium-footer { flex-direction: column; text-align: center; gap: 10px; }
 }
 
-/* ==========================================================================
-   8. ИНТЕРФЕЙС LIGHTBOX-ПЛЕЕРА С ТАКТИЛЬНЫМ МАТОВЫМ РАЗМЫТИЕМ
-   ========================================================================== */
-.premium-lightbox {
-    transition: opacity 0.4s ease, visibility 0.4s;
-    opacity: 0;
-    visibility: hidden;
-}
-.premium-lightbox.active {
-    opacity: 1;
-    visibility: visible;
-}
-.lightbox-close, .lightbox-arrow {
-    transition: all 0.3s ease;
-    user-select: none;
-}
-.lightbox-close:hover, .lightbox-arrow:hover {
-    color: var(--color-accent) !important;
-}
-@media (max-width: 768px) {
-    .lightbox-arrow { display: none !important; }
-}
+/* Lightbox-плеер */
+.premium-lightbox { transition: opacity 0.4s ease, visibility 0.4s; opacity: 0; visibility: hidden; }
+.premium-lightbox.active { opacity: 1; visibility: visible; }
+.lightbox-close, .lightbox-arrow { transition: all 0.3s ease; user-select: none; }
+.lightbox-close:hover, .lightbox-arrow:hover { color: var(--color-accent) !important; }
+@media (max-width: 768px) { .lightbox-arrow { display: none !important; } }

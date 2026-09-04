@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ИТ-директива кэширования Даниила Лисенкова -->
-<meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
-<meta http-equiv="Pragma" content="cache">
-<meta http-equiv="Expires" content="604800">
-
     <title>BREVVO DRIVE COFFEE — Матрица Инвестиций</title>
+    <!-- ИТ-директива упреждающего кэширования Даниила Лисенкова -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    <meta http-equiv="Pragma" content="cache">
+    <meta http-equiv="Expires" content="604800">
+    
+    <!-- Директивы пререндеринга для мгновенного отклика смежных страниц -->
+    <link rel="prerender" href="index.html">
+    <link rel="prerender" href="base.html">
+    <link rel="prerender" href="universal.html">
+    <link rel="prerender" href="pro.html">
+
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- ИТ-директива упреждающего пререндеринга Даниила Лисенкова -->
-<link rel="prerender" href="index.html">
-<link rel="prerender" href="base.html">
-<link rel="prerender" href="universal.html">
-<link rel="prerender" href="pro.html">
 </head>
 <body class="page-main">
 
@@ -39,9 +40,9 @@
                 <div class="giant-bg-text">Brevvo Ecosystem</div>
                 <h1 class="slide-title">МАТРИЦА ИНВЕСТИЦИОННЫХ <span>РЕШЕНИЙ BREVVO</span></h1>
             </div>
-            <div class="premium-card" style="padding: 50px;">
+            <div class="premium-card" style="padding: 45px;">
                 <div class="card-label">Стратегическое планирование HoReCa</div>
-                <div class="card-value" style="font-family: 'Perandory', serif; font-size: 28px;">МАСШТАБИРУЕМАЯ СЕТЬ КОФЕЕН</div>
+                <div class="card-value" style="font-family: var(--font-premium, serif); font-size: 28px;">МАСШТАБИРУЕМАЯ СЕТЬ КОФЕЕН</div>
                 <p class="card-text">Добро пожаловать в экосистему бизнес-планирования BREVVO. Для защиты перед инвесторами и гибкого управления капиталом архитектурная концепция кофейни была полностью переформатирована в три независимых тарифа. Каждое решение представляет собой математически точную бизнес-модель: от бюджетного пилотного павильона до флагманского роботизированного drive-through комплекса из морских контейнеров. Ниже представлена сквозная сравнительная матрица смет, оборудования и операционной эффективности. Выберите интересующий тариф на панели внизу экрана, чтобы перейти к детализированному 3D-концепту и таблицам.</p>
             </div>
         </section>
@@ -60,7 +61,7 @@
                             <th>Бизнес-метрика / Наполнение пакета</th>
                             <th>⚡ Бюджетный BASE</th>
                             <th>🔥 Универсальный UNIVERSAL</th>
-                            <th class="saas-highlight" style="color: #10b981;">💎 Флагманский PRO</th>
+                            <th class="saas-highlight" style="color: #097a49;">💎 Флагманский PRO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,7 +141,7 @@
                             <td>Точка безубыточности (Break-Even)</td>
                             <td>45 чеков / сутки</td>
                             <td>90 чеков / сутки</td>
-                            <td class="saas-highlight" style="color: #10b981; font-weight: 600;">160 – 190 чеков / сутки</td>
+                            <td class="saas-highlight" style="color: #097a49; font-weight: 600;">160 – 190 чеков / сутки</td>
                         </tr>
                     </tbody>
                 </table>
@@ -150,7 +151,7 @@
         <section class="slide-section" style="min-height: auto; padding-top: 20px; padding-bottom: 40px;">
             <div class="premium-card" style="border-left: 4px solid var(--text-white);">
                 <div class="card-label">Автор ИС и разработки</div>
-                <div class="card-value" style="font-family: 'Perandory', serif; font-size: 24px;">КОНТАКТНЫЕ ДАННЫЕ</div>
+                <div class="card-value" style="font-family: var(--font-premium, serif); font-size: 24px;">КОНТАКТНЫЕ ДАННЫЕ</div>
                 <div class="contact-grid">
                     <div class="contact-item"><span>Telegram</span><a href="https://t.me" target="_blank">@Architect_lis</a></div>
                     <div class="contact-item"><span>Email</span><a href="mailto:Lisenkovdaniil1910@gmail.com">Lisenkovdaniil1910@gmail.com</a></div>
@@ -162,7 +163,6 @@
             <footer class="premium-footer">
                 <div>© 2026 BREVVO ECOSYSTEM. Все права защищены.</div>
                 <div>Разработчик архитектуры и смет: Даниил Лисенков</div>
-                <div>Стиль и физика интерфейса инспирированы DDX-дизайном</div>
             </footer>
         </section>
 
@@ -178,18 +178,10 @@
     <a href="pro.html" class="liquid-btn">💎 Pro (12-15 млн)</a>
 </nav>
 
-<script>
-    // Скрипт плавного трекинга линии прогресса скролла сверху страницы
-    window.addEventListener('scroll', () => {
-        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById('progressBar');
-        if (progressBar) {
-            progressBar.style.width = scrolled + '%';
-        }
-    });
+<!-- Принудительное подключение файлов оптимизации и предиктора -->
+<script src="optimize.js"></script>
 
+<script>
     // ИТ-валидация сквозной навигации: подсвечиваем активную кнопку на основе текущего URL
     document.addEventListener("DOMContentLoaded", () => {
         const currentUrl = window.location.pathname.split("/").pop();
@@ -205,8 +197,5 @@
         });
     });
 </script>
-<!-- Подключение модуля оптимизации видеокарты Даниила Лисенкова -->
-<script src="optimize.js"></script>
-
 </body>
 </html>
